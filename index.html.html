@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move, Measure, Analyze | Mobile Sports Science Assessments</title>
+    <meta name="description" content="Force plate assessments for athletes and teams in New Hampshire. We come to you with professional-grade Hawkin Dynamics equipment.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --off-white: #f8f8f8;
+            --gold: #f4bd2a;
+            --gold-dark: #d4a520;
+            --gray-lighter: #e0e0e0;
+            --gray-light: #666666;
+            --gray-text: #555555;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 50px; width: auto; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--gold-dark); }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--white) 0%, var(--off-white) 100%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-logo { width: 150px; height: auto; margin-bottom: 2rem; }
+        .hero-tagline {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--gold-dark);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 span { color: var(--gold-dark); }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-text);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary { background: var(--gold); color: var(--black); }
+        .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); }
+        .btn-secondary { background: transparent; color: var(--black); border: 2px solid var(--gray-lighter); }
+        .btn-secondary:hover { border-color: var(--gold); color: var(--gold-dark); }
+        section { padding: 6rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+        .section-header p { color: var(--gray-text); max-width: 600px; margin: 0 auto; }
+        #services { background: var(--off-white); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border: 1px solid var(--gray-lighter);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .service-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .service-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            background: rgba(201, 162, 39, 0.15);
+            padding: 0.4rem 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .service-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .service-card > p { color: var(--gray-text); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .service-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+        .service-price span {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            color: var(--gray-light);
+        }
+        .service-details {
+            list-style: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-lighter);
+        }
+        .service-details li {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+        .service-details li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
+        #deliverables { background: var(--white); }
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .deliverable-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--off-white);
+            border-left: 3px solid var(--gold);
+        }
+        .deliverable-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .deliverable-item h4 { font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; }
+        .deliverable-item p { color: var(--gray-text); font-size: 0.9rem; }
+        #about { background: var(--off-white); }
+        .about-content { max-width: 800px; margin: 0 auto; }
+        .about-text p { color: var(--gray-text); margin-bottom: 1rem; font-size: 1.05rem; }
+        .credentials { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+        .credential-tag {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gold-dark);
+            background: rgba(201, 162, 39, 0.1);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+        #area { background: var(--white); }
+        .area-content { max-width: 700px; margin: 0 auto; text-align: center; }
+        .area-highlight { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold-dark); margin-bottom: 1rem; }
+        .area-note {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--off-white);
+            border-left: 3px solid var(--gold);
+            text-align: left;
+        }
+        #contact { background: var(--off-white); }
+        .contact-container { max-width: 600px; margin: 0 auto; }
+        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-group label { font-size: 0.85rem; font-weight: 500; color: var(--gray-light); }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 1rem;
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            color: var(--black);
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus { outline: none; border-color: var(--gold); }
+        .form-group textarea { min-height: 150px; resize: vertical; }
+        .form-group select { cursor: pointer; }
+        .contact-form .btn { margin-top: 1rem; }
+        .contact-alt {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-lighter);
+        }
+        .contact-alt p { color: var(--gray-text); margin-bottom: 1rem; }
+        .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .contact-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-links a:hover { color: var(--gold-dark); }
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background: var(--black);
+        }
+        footer p { color: var(--gray-light); font-size: 0.85rem; }
+        footer a { color: var(--gold); text-decoration: none; }
+        @media (max-width: 768px) {
+            nav { padding: 0.75rem 1rem; }
+            .logo img { height: 40px; }
+            .nav-links { display: none; }
+            section { padding: 4rem 1.5rem; }
+            .hero { padding: 5rem 1.5rem 3rem; }
+            .hero-logo { width: 120px; }
+            .hero h1 { font-size: 2.8rem; }
+            .service-card { padding: 2rem; }
+            .service-price { font-size: 2rem; }
+            .area-highlight { font-size: 2.2rem; }
+            .contact-links { flex-direction: column; align-items: center; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeInUp 0.8s ease forwards; }
+        .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
+        </a>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#area">Service Area</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="Logo_Transparent.png" alt="Move, Measure, Analyze" class="hero-logo fade-in">
+            <p class="hero-tagline fade-in fade-in-delay-1">Mobile Sports Science</p>
+            <h1 class="fade-in fade-in-delay-1">Measure What <span>Matters</span></h1>
+            <p class="hero-subtitle fade-in fade-in-delay-2">Force plate assessments for athletes and teams. Professional-grade testing brought directly to your facility.</p>
+            <div class="hero-cta fade-in fade-in-delay-3">
+                <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
+                <a href="#services" class="btn btn-secondary">View Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-header">
+            <h2>Services</h2>
+            <p>Data-driven performance testing with individualized reporting and actionable insights.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-badge">Individual Athletes</span>
+                <h3>Athlete Speed Profile</h3>
+                <p>Comprehensive force-velocity profiling for individual athletes looking to optimize their training and performance.</p>
+                <div class="service-price">$195–$225 <span>/ session</span></div>
+                <ul class="service-details">
+                    <li>4 assessments tailored to your needs</li>
+                    <li>Force-velocity profiling</li>
+                    <li>Asymmetry & imbalance detection</li>
+                    <li>Individual PDF report with benchmarks</li>
+                    <li>Training recommendations</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-badge">Teams & Clubs</span>
+                <h3>Squad Diagnostic</h3>
+                <p>Half-day team assessment providing baseline metrics and identifying athletes who may need individualized attention.</p>
+                <div class="service-price">$1,200 <span>/ up to 20 athletes</span></div>
+                <ul class="service-details">
+                    <li>2 assessments per athlete</li>
+                    <li>Tests selected based on your resources & goals</li>
+                    <li>Individual reports for each athlete</li>
+                    <li>Team-wide comparison dashboard</li>
+                    <li>Coach summary with team insights</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-badge">Large Groups</span>
+                <h3>Team Add-On</h3>
+                <p>For teams exceeding the 20-athlete base package. Same comprehensive assessment for additional athletes.</p>
+                <div class="service-price">$50 <span>/ additional athlete</span></div>
+                <ul class="service-details">
+                    <li>Same testing protocol</li>
+                    <li>Individual report included</li>
+                    <li>Added to team dashboard</li>
+                    <li>Scales for any team size</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="deliverables">
+        <div class="section-header">
+            <h2>What You Get</h2>
+            <p>Every assessment includes detailed reporting and actionable data.</p>
+        </div>
+        <div class="deliverables-grid">
+            <div class="deliverable-item">
+                <div class="deliverable-icon">📊</div>
+                <div>
+                    <h4>Professional PDF Report</h4>
+                    <p>Individual athlete reports with metrics, visualizations, and normative comparisons.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-icon">⚖️</div>
+                <div>
+                    <h4>Asymmetry Analysis</h4>
+                    <p>Left-right imbalance detection to identify injury risk and training priorities.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-icon">📈</div>
+                <div>
+                    <h4>Benchmark Comparisons</h4>
+                    <p>See how metrics compare to published research data from similar populations.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-icon">🎯</div>
+                <div>
+                    <h4>Training Recommendations</h4>
+                    <p>Specific, actionable guidance based on individual force-velocity profiles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-header">
+            <h2>About</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Move, Measure, Analyze brings professional sports science testing directly to athletes, teams, and clinics across New Hampshire and the Seacoast region.</p>
+                <p>Using Hawkin Dynamics force plates — the same technology used by professional and collegiate programs — we provide objective, data-driven assessments that inform training decisions and track progress over time.</p>
+                <p>Founded by Dr. Ferdinand Delgado, a biomechanist with over a decade of experience in athletic performance analysis and research.</p>
+                <div class="credentials">
+                    <span class="credential-tag">PhD in Exercise Science</span>
+                    <span class="credential-tag">MS in Kinesiology & Sport Science</span>
+                    <span class="credential-tag">10+ Years Coaching Experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="area">
+        <div class="section-header">
+            <h2>Service Area</h2>
+        </div>
+        <div class="area-content">
+            <div class="area-highlight">Durham, NH & Surrounding Areas</div>
+            <p style="color: var(--gray-text);">We bring the lab to you — gyms, fields, clinics, or any facility with space for testing.</p>
+            <div class="area-note">
+                <strong>Travel Policy:</strong> Assessments within 15 miles of Durham, NH are included at base price. Beyond 15 miles, a travel fee of $25 per 10-mile increment applies. Contact us for a quote for your location.
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header">
+            <h2>Book a Free Consultation</h2>
+            <p>Schedule a free 15–30 minute call to discuss your team's needs and goals. No commitment required.</p>
+        </div>
+        <div class="contact-container">
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service...</option>
+                        <option value="individual">Athlete Speed Profile (Individual)</option>
+                        <option value="team">Squad Diagnostic (Team)</option>
+                        <option value="other">Other / Not Sure</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="athletes">Number of Athletes (if team)</label>
+                    <input type="text" id="athletes" name="athletes" placeholder="e.g., 25">
+                </div>
+                <div class="form-group">
+                    <label for="location">Your Location / Facility</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., Portsmouth, NH">
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell Us More</label>
+                    <textarea id="message" name="message" placeholder="Sport, goals, preferred dates, questions..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Request Consultation</button>
+            </form>
+            <div class="contact-alt">
+                <p>Or reach out directly:</p>
+                <div class="contact-links">
+                    <a href="mailto:fdelgadophd@movemeasure.com">
+                        <span>✉</span> fdelgadophd@movemeasure.com
+                    </a>
+                    <a href="https://www.instagram.com/movemeasureanalyze" target="_blank">
+                        <span>📷</span> @movemeasureanalyze
+                    </a>
+                    <a href="https://www.linkedin.com/company/109068575" target="_blank">
+                        <span>💼</span> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Move, Measure, Analyze LLC. All rights reserved. | <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            nav.style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none';
+        });
+    </script>
+</body>
+</html>
