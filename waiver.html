@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release of Liability | Move, Measure, Analyze</title>
+    <meta name="description" content="Release of Liability form for Move, Measure, Analyze LLC assessments.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --off-white: #f8f8f8;
+            --gold: #f4bd2a;
+            --gold-dark: #d4a520;
+            --gray-dark: #2a2a2a;
+            --gray-mid: #e8e8e8;
+            --gray-light: #666666;
+            --gray-text: #555555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: var(--black);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .page-title {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            background: var(--off-white);
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            color: var(--gray-text);
+        }
+
+        .waiver-content {
+            background: var(--white);
+            padding: 2rem;
+            border: 1px solid var(--gray-mid);
+            margin: 2rem 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .waiver-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .waiver-content h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .waiver-content p {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .waiver-content .warning {
+            background: #fff3cd;
+            border-left: 4px solid var(--gold);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--off-white);
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+
+        .download-section p {
+            margin-bottom: 1rem;
+            color: var(--gray-text);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--gray-mid);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-dark);
+        }
+
+        .signature-form {
+            background: var(--off-white);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .signature-form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .form-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--gray-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--white);
+            border: 1px solid var(--gray-mid);
+            color: var(--black);
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 0.2rem;
+            cursor: pointer;
+            accent-color: var(--gold);
+        }
+
+        .checkbox-group label {
+            font-size: 0.95rem;
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        .minor-section {
+            display: none;
+            background: var(--white);
+            padding: 1.5rem;
+            border: 1px solid var(--gold);
+            margin-top: 1rem;
+        }
+
+        .minor-section.visible {
+            display: block;
+        }
+
+        .minor-section h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--gold-dark);
+        }
+
+        .signature-box {
+            background: var(--white);
+            border: 2px solid var(--gray-mid);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .signature-box label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--gray-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-box input {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid var(--black);
+            padding: 0.5rem 0;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5rem;
+            background: transparent;
+        }
+
+        .signature-box input:focus {
+            outline: none;
+            border-bottom-color: var(--gold);
+        }
+
+        .submit-section {
+            text-align: center;
+            padding-top: 1rem;
+        }
+
+        .submit-section .btn {
+            padding: 1rem 3rem;
+            font-size: 1rem;
+        }
+
+        .legal-note {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--gray-light);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--black);
+            color: var(--gray-light);
+            font-size: 0.85rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="Logo_Transparent.png" alt="Move, Measure, Analyze" class="logo">
+        </a>
+    </header>
+
+    <div class="page-title">
+        <h1>Release of Liability</h1>
+        <p>Please read carefully and sign below before your assessment</p>
+    </div>
+
+    <div class="container">
+        <div class="waiver-content">
+            <p class="warning"><strong>Read Carefully — This Affects Your Legal Rights</strong></p>
+            
+            <p>In exchange for being permitted to participate in physical performance and health assessments (the "Activities") conducted by Move, Measure, Analyze LLC, I agree to the following terms and conditions. The Activities include, but are not limited to, jump testing, balance and stability testing, grip strength, body composition assessments using specialized equipment, and consulting services involving the interpretation of results and recommendations. I acknowledge that I have been advised to consult my own primary care provider for any medical concerns before participating in the Activities. On behalf of myself and (if applicable) for the members of my family, I agree to the following:</p>
+
+            <h3>1. Agreement To Follow Directions</h3>
+            <p>I agree to observe all rules and warnings, and to follow all safety instructions and guidance provided by Move, Measure, Analyze LLC staff to ensure the safe and proper execution of the Activities.</p>
+
+            <h3>2. Assumption of the Risks and Release</h3>
+            <p>I recognize that there are certain inherent risks associated with the above-described activity and I assume full responsibility for personal injury to myself and (if applicable) my family members, and further release and discharge Move, Measure, Analyze LLC for injury, loss, or damage arising out of my or my family's participation in the Activities, regardless of the location where such Activities take place, whether caused by the fault of myself, my family, Move, Measure, Analyze LLC or other third parties.</p>
+
+            <h3>3. Indemnification</h3>
+            <p>I agree to indemnify and defend Move, Measure, Analyze LLC against all claims, causes of action, damages, judgments, costs, or expenses, including attorney fees and other litigation costs, which may in any way arise from my or my family's participation in the Activities conducted by Move, Measure, Analyze LLC.</p>
+
+            <h3>4. Damage to Equipment</h3>
+            <p>I agree to pay for any damages to the equipment of Move, Measure, Analyze LLC caused by any negligent, reckless, or willful actions by me or my family.</p>
+
+            <h3>5. Applicable Law</h3>
+            <p>Any legal or equitable claim that may arise from participation in the above shall be resolved under New Hampshire law.</p>
+
+            <h3>6. No Duress</h3>
+            <p>I agree and acknowledge that I am under no pressure or duress to sign this agreement and that I have been given a reasonable opportunity to review it before signing. I further agree and acknowledge that I am free to have my own legal counsel review this agreement if I so desire. I further agree and acknowledge that Move, Measure, Analyze LLC has offered to refund any fees I have paid for its services if I choose not to sign this agreement.</p>
+
+            <h3>7. Arm's Length Agreement</h3>
+            <p>This agreement and each of its terms are the product of an arm's length negotiation between the Parties. In the event any ambiguity is found to exist in the interpretation of this agreement or any of its provisions, the Parties, and each of them, explicitly reject the application of any legal or equitable rule of interpretation which would lead to a construction either "for" or "against" a particular party based upon their status as the drafter of a specific term, language, or provision giving rise to such ambiguity.</p>
+
+            <h3>8. Enforceability</h3>
+            <p>The invalidity or unenforceability of any provision of this agreement, whether standing alone or as applied to a particular occurrence or circumstance, shall not affect the validity or enforceability of any other provision of this agreement or of any other applications of such provision, as the case may be. Such invalid or unenforceable provision shall be deemed not to be a part of this agreement.</p>
+
+            <h3>9. Dispute Resolution</h3>
+            <p>The parties will attempt to resolve any dispute arising out of or relating to this agreement through friendly negotiations among the parties. If the matter is not resolved by negotiation, the parties will resolve the dispute using the below Alternative Dispute Resolution (ADR) procedure: Any controversies or disputes arising out of or relating to this agreement will be submitted to mediation in accordance with any statutory rules of mediation. If mediation is not successful in resolving the entire dispute or is unavailable, any outstanding issues will be submitted to final and binding arbitration under the rules of the American Arbitration Association. The arbitrator's award will be final, and judgment may be entered upon it by any court having proper jurisdiction.</p>
+        </div>
+
+        <div class="download-section">
+            <p>Prefer to print and sign a physical copy?</p>
+            <a href="Release_of_Liability.pdf" download class="btn btn-secondary">Download PDF</a>
+        </div>
+
+        <form class="signature-form" action="https://formspree.io/f/mvzbzyzn" method="POST">
+            <h2>Sign Electronically</h2>
+            
+            <input type="hidden" name="_subject" value="New Waiver Signed - Move, Measure, Analyze">
+            <input type="hidden" name="form_type" value="Release of Liability Waiver">
+            
+            <div class="form-section">
+                <h3>Participant Information</h3>
+                <div class="form-group">
+                    <label for="participant_name">Participant Full Name *</label>
+                    <input type="text" id="participant_name" name="participant_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="participant_email">Email Address *</label>
+                    <input type="email" id="participant_email" name="participant_email" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="emergency_contact">Emergency Contact Name *</label>
+                        <input type="text" id="emergency_contact" name="emergency_contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergency_phone">Emergency Contact Phone *</label>
+                        <input type="tel" id="emergency_phone" name="emergency_phone" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="participant_age">Is the participant 18 years or older? *</label>
+                    <select id="participant_age" name="participant_age" required onchange="toggleMinorSection()">
+                        <option value="">Select...</option>
+                        <option value="adult">Yes, 18 or older</option>
+                        <option value="minor">No, under 18</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="minor-section" id="minor-section">
+                <h4>Parent/Guardian Consent (Required for Minors)</h4>
+                <p style="font-size: 0.9rem; color: var(--gray-text); margin-bottom: 1rem;">As the parent or legal guardian of the minor named above, I have read this Release of Liability in its entirety and I consent to the minor's participation in the Activities. I agree to all the terms of this document on behalf of the minor and myself. In the event of an emergency, if I cannot be reached, I grant permission to the staff of Move, Measure, Analyze LLC to arrange for any necessary medical treatment for the minor, and I agree to be financially responsible for all costs associated with such treatment.</p>
+                <div class="form-group">
+                    <label for="guardian_name">Parent/Guardian Full Name *</label>
+                    <input type="text" id="guardian_name" name="guardian_name">
+                </div>
+                <div class="form-group">
+                    <label for="guardian_phone">Parent/Guardian Phone *</label>
+                    <input type="tel" id="guardian_phone" name="guardian_phone">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Agreement & Signature</h3>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree" name="agreement" value="I agree to the terms" required>
+                    <label for="agree"><strong>I HAVE READ THIS DOCUMENT AND UNDERSTAND IT. I FURTHER UNDERSTAND THAT BY SIGNING THIS RELEASE, I VOLUNTARILY SURRENDER CERTAIN LEGAL RIGHTS.</strong></label>
+                </div>
+                
+                <div class="signature-box">
+                    <label>Type your full legal name as your electronic signature *</label>
+                    <input type="text" id="signature" name="electronic_signature" placeholder="Type your full name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sign_date">Date *</label>
+                        <input type="date" id="sign_date" name="signature_date" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <button type="submit" class="btn btn-primary">Submit Signed Waiver</button>
+                <p class="legal-note">By clicking submit, you agree that your electronic signature is the legal equivalent of your handwritten signature.</p>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Move, Measure, Analyze LLC. All rights reserved. | <a href="index.html">Back to Home</a></p>
+    </footer>
+
+    <script>
+        function toggleMinorSection() {
+            const select = document.getElementById('participant_age');
+            const minorSection = document.getElementById('minor-section');
+            const guardianName = document.getElementById('guardian_name');
+            const guardianPhone = document.getElementById('guardian_phone');
+            
+            if (select.value === 'minor') {
+                minorSection.classList.add('visible');
+                guardianName.required = true;
+                guardianPhone.required = true;
+            } else {
+                minorSection.classList.remove('visible');
+                guardianName.required = false;
+                guardianPhone.required = false;
+            }
+        }
+
+        // Set default date to today
+        document.getElementById('sign_date').valueAsDate = new Date();
+    </script>
+</body>
+</html>
