@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move, Measure, Analyze | Mobile Sports Science Assessments</title>
     <meta name="description" content="Force plate assessments for athletes and teams in New Hampshire. We come to you with professional-grade Hawkin Dynamics equipment.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Move, Measure, Analyze LLC",
+        "description": "Mobile force plate assessments for athletes and teams in New Hampshire. Professional-grade Hawkin Dynamics testing brought to your facility.",
+        "url": "https://movemeasure.com",
+        "email": "fdelgadophd@movemeasure.com",
+        "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 43.1339, "longitude": -70.9264 },
+            "geoRadius": "50 mi"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Durham",
+            "addressRegion": "NH",
+            "addressCountry": "US"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Dr. Ferdinand Delgado",
+            "jobTitle": "Exercise Scientist",
+            "honorificPrefix": "Dr."
+        },
+        "sameAs": [
+            "https://www.instagram.com/movemeasureanalyze",
+            "https://www.linkedin.com/company/109068575"
+        ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -55,6 +86,15 @@
             transition: color 0.2s ease;
         }
         .nav-links a:hover { color: var(--gold-dark); }
+        .nav-cta {
+            background: var(--gold);
+            color: var(--black) !important;
+            padding: 0.5rem 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            transition: background 0.2s ease;
+        }
+        .nav-cta:hover { background: var(--gold-dark); color: var(--black) !important; }
         .hero {
             min-height: 100vh;
             display: flex;
@@ -200,6 +240,57 @@
         .deliverable-icon { font-size: 1.5rem; flex-shrink: 0; }
         .deliverable-item h4 { font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; }
         .deliverable-item p { color: var(--gray-text); font-size: 0.9rem; }
+        /* Sample Report CTA */
+        .report-preview {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .report-preview-visual {
+            flex: 0 0 240px;
+            background: var(--off-white);
+            border: 1px solid var(--gray-lighter);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .report-preview-visual .mock-page {
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.7rem;
+            color: var(--gray-light);
+            text-align: left;
+            line-height: 1.8;
+        }
+        .report-preview-visual .mock-bar {
+            height: 6px;
+            background: var(--gray-lighter);
+            margin-bottom: 0.5rem;
+            border-radius: 3px;
+        }
+        .report-preview-visual .mock-bar.gold { background: var(--gold); width: 70%; }
+        .report-preview-visual .mock-bar.short { width: 50%; }
+        .report-preview-text { flex: 1; min-width: 280px; }
+        .report-preview-text h3 { font-size: 2rem; margin-bottom: 1rem; }
+        .report-preview-text p { color: var(--gray-text); margin-bottom: 1.5rem; font-size: 1rem; }
+        .report-preview-text ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .report-preview-text ul li {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+        }
+        .report-preview-text ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
+
         #about { background: var(--off-white); }
         .about-content { max-width: 800px; margin: 0 auto; }
         .about-text p { color: var(--gray-text); margin-bottom: 1rem; font-size: 1.05rem; }
@@ -271,10 +362,43 @@
         }
         footer p { color: var(--gray-light); font-size: 0.85rem; }
         footer a { color: var(--gold); text-decoration: none; }
+        /* Mobile hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--black);
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
         @media (max-width: 768px) {
             nav { padding: 0.75rem 1rem; }
             .logo img { height: 40px; }
-            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(255,255,255,0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 1000;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.2rem; }
+            .nav-cta { padding: 0.75rem 2rem; font-size: 1rem; }
             section { padding: 4rem 1.5rem; }
             .hero { padding: 5rem 1.5rem 3rem; }
             .hero-logo { width: 200px; }
@@ -283,6 +407,8 @@
             .service-price { font-size: 2rem; }
             .area-highlight { font-size: 2.2rem; }
             .contact-links { flex-direction: column; align-items: center; }
+            .report-preview { flex-direction: column; text-align: center; }
+            .report-preview-text ul { text-align: left; }
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -300,6 +426,9 @@
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
             <span style="font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; margin-left: 0.75rem; color: var(--black); letter-spacing: 0.05em;">Move, Measure, Analyze LLC</span>
         </a>
+        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
+            <span></span><span></span><span></span>
+        </div>
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#how-it-works">How It Works</a>
@@ -307,6 +436,7 @@
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <a href="waiver.html" target="_blank">Waiver</a>
+            <a href="#contact" class="nav-cta">Book an Assessment</a>
         </div>
     </nav>
 
@@ -465,6 +595,40 @@
         </div>
     </section>
 
+    <section id="sample-report" style="background: var(--off-white);">
+        <div class="section-header">
+            <h2>See What You'll Receive</h2>
+            <p>Every assessment includes detailed reporting with actionable insights.</p>
+        </div>
+        <div class="report-preview">
+            <div class="report-preview-visual">
+                <div class="mock-page">
+                    <div class="mock-bar gold"></div>
+                    <div class="mock-bar"></div>
+                    <div class="mock-bar short"></div>
+                    <div class="mock-bar"></div>
+                    <div class="mock-bar gold"></div>
+                    <div class="mock-bar short"></div>
+                </div>
+                <span style="font-size: 0.75rem; color: var(--gray-light);">Sample Report Preview</span>
+            </div>
+            <div class="report-preview-text">
+                <h3>Your Assessment Reports</h3>
+                <p>Reports are generated from your force plate data and include objective metrics, visual breakdowns, and clear next steps.</p>
+                <ul>
+                    <li>Performance snapshot with key metrics</li>
+                    <li>Force-time curve analysis</li>
+                    <li>Asymmetry detection with status ratings</li>
+                    <li>Personalized training recommendations</li>
+                </ul>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="Sample_Team_Report_Website.pdf" target="_blank" class="btn btn-primary">Download Team Report</a>
+                    <span class="btn btn-secondary" style="cursor: default; opacity: 0.6;">Individual Report — Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="about">
         <div class="section-header">
             <h2>About</h2>
@@ -600,13 +764,20 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Move, Measure, Analyze LLC. All rights reserved. | <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
+        <p>&copy; 2026 Move, Measure, Analyze LLC. All rights reserved. | <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
     </footer>
 
     <script>
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
             nav.style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none';
+        });
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('open');
+                document.querySelector('.hamburger').classList.remove('active');
+            });
         });
     </script>
 </body>
