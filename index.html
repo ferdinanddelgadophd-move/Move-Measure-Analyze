@@ -5,37 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move, Measure, Analyze | Mobile Sports Science Assessments</title>
     <meta name="description" content="Force plate assessments for athletes and teams in New Hampshire. We come to you with professional-grade Hawkin Dynamics equipment.">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Move, Measure, Analyze LLC",
-        "description": "Mobile force plate assessments for athletes and teams in New Hampshire. Professional-grade Hawkin Dynamics testing brought to your facility.",
-        "url": "https://movemeasure.com",
-        "email": "fdelgadophd@movemeasure.com",
-        "areaServed": {
-            "@type": "GeoCircle",
-            "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 43.1339, "longitude": -70.9264 },
-            "geoRadius": "50 mi"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Durham",
-            "addressRegion": "NH",
-            "addressCountry": "US"
-        },
-        "founder": {
-            "@type": "Person",
-            "name": "Dr. Ferdinand Delgado",
-            "jobTitle": "Exercise Scientist",
-            "honorificPrefix": "Dr."
-        },
-        "sameAs": [
-            "https://www.instagram.com/movemeasureanalyze",
-            "https://www.linkedin.com/company/109068575"
-        ]
-    }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -86,15 +55,6 @@
             transition: color 0.2s ease;
         }
         .nav-links a:hover { color: var(--gold-dark); }
-        .nav-cta {
-            background: var(--gold);
-            color: var(--black) !important;
-            padding: 0.5rem 1.25rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            transition: background 0.2s ease;
-        }
-        .nav-cta:hover { background: var(--gold-dark); color: var(--black) !important; }
         .hero {
             min-height: 100vh;
             display: flex;
@@ -120,7 +80,7 @@
             position: relative;
             z-index: 1;
         }
-        .hero-logo { width: 280px; height: auto; margin-bottom: 2rem; }
+        .hero-logo { width: 150px; height: auto; margin-bottom: 2rem; }
         .hero-tagline {
             font-size: 0.85rem;
             font-weight: 600;
@@ -240,57 +200,6 @@
         .deliverable-icon { font-size: 1.5rem; flex-shrink: 0; }
         .deliverable-item h4 { font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; }
         .deliverable-item p { color: var(--gray-text); font-size: 0.9rem; }
-        /* Sample Report CTA */
-        .report-preview {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .report-preview-visual {
-            flex: 0 0 240px;
-            background: var(--off-white);
-            border: 1px solid var(--gray-lighter);
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        .report-preview-visual .mock-page {
-            background: var(--white);
-            border: 1px solid var(--gray-lighter);
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.7rem;
-            color: var(--gray-light);
-            text-align: left;
-            line-height: 1.8;
-        }
-        .report-preview-visual .mock-bar {
-            height: 6px;
-            background: var(--gray-lighter);
-            margin-bottom: 0.5rem;
-            border-radius: 3px;
-        }
-        .report-preview-visual .mock-bar.gold { background: var(--gold); width: 70%; }
-        .report-preview-visual .mock-bar.short { width: 50%; }
-        .report-preview-text { flex: 1; min-width: 280px; }
-        .report-preview-text h3 { font-size: 2rem; margin-bottom: 1rem; }
-        .report-preview-text p { color: var(--gray-text); margin-bottom: 1.5rem; font-size: 1rem; }
-        .report-preview-text ul {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        .report-preview-text ul li {
-            color: var(--gray-text);
-            font-size: 0.9rem;
-            padding: 0.4rem 0 0.4rem 1.5rem;
-            position: relative;
-        }
-        .report-preview-text ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
-
         #about { background: var(--off-white); }
         .about-content { max-width: 800px; margin: 0 auto; }
         .about-text p { color: var(--gray-text); margin-bottom: 1rem; font-size: 1.05rem; }
@@ -362,53 +271,18 @@
         }
         footer p { color: var(--gray-light); font-size: 0.85rem; }
         footer a { color: var(--gold); text-decoration: none; }
-        /* Mobile hamburger menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-        }
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background: var(--black);
-            transition: all 0.3s ease;
-        }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
         @media (max-width: 768px) {
             nav { padding: 0.75rem 1rem; }
             .logo img { height: 40px; }
-            .hamburger { display: flex; }
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(255,255,255,0.98);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                z-index: 1000;
-            }
-            .nav-links.open { display: flex; }
-            .nav-links a { font-size: 1.2rem; }
-            .nav-cta { padding: 0.75rem 2rem; font-size: 1rem; }
+            .nav-links { display: none; }
             section { padding: 4rem 1.5rem; }
             .hero { padding: 5rem 1.5rem 3rem; }
-            .hero-logo { width: 200px; }
+            .hero-logo { width: 120px; }
             .hero h1 { font-size: 2.8rem; }
             .service-card { padding: 2rem; }
             .service-price { font-size: 2rem; }
             .area-highlight { font-size: 2.2rem; }
             .contact-links { flex-direction: column; align-items: center; }
-            .report-preview { flex-direction: column; text-align: center; }
-            .report-preview-text ul { text-align: left; }
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -424,19 +298,12 @@
     <nav>
         <a href="#" class="logo">
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
-            <span style="font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; margin-left: 0.75rem; color: var(--black); letter-spacing: 0.05em;">Move, Measure, Analyze LLC</span>
         </a>
-        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
-            <span></span><span></span><span></span>
-        </div>
         <div class="nav-links">
             <a href="#services">Services</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#faq">FAQ</a>
             <a href="#about">About</a>
+            <a href="#area">Service Area</a>
             <a href="#contact">Contact</a>
-            <a href="waiver.html" target="_blank">Waiver</a>
-            <a href="#contact" class="nav-cta">Book an Assessment</a>
         </div>
     </nav>
 
@@ -444,7 +311,7 @@
         <div class="hero-content">
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze" class="hero-logo fade-in">
             <p class="hero-tagline fade-in fade-in-delay-1">Mobile Sports Science</p>
-            <h1 class="fade-in fade-in-delay-1">Measure Today,<br><span>Inform Tomorrow's Training</span></h1>
+            <h1 class="fade-in fade-in-delay-1">Measure What <span>Matters</span></h1>
             <p class="hero-subtitle fade-in fade-in-delay-2">Force plate assessments for athletes and teams. Professional-grade testing brought directly to your facility.</p>
             <div class="hero-cta fade-in fade-in-delay-3">
                 <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
@@ -461,9 +328,9 @@
         <div class="services-grid">
             <div class="service-card">
                 <span class="service-badge">Individual Athletes</span>
-                <h3>Athlete Performance Assessment</h3>
-                <p>Comprehensive force plate testing to quantify power, asymmetry, and neuromuscular strategy using professional-grade equipment.</p>
-                <div class="service-price">$225 <span>/ session</span></div>
+                <h3>Athlete Speed Profile</h3>
+                <p>Comprehensive force-velocity profiling for individual athletes looking to optimize their training and performance.</p>
+                <div class="service-price">$195–$225 <span>/ session</span></div>
                 <ul class="service-details">
                     <li>4 assessments tailored to your needs</li>
                     <li>Force-velocity profiling</li>
@@ -473,87 +340,29 @@
                 </ul>
             </div>
             <div class="service-card">
-                <span class="service-badge">Individual Athletes</span>
-                <span class="service-badge" style="background: rgba(26, 26, 26, 0.1); color: var(--black); margin-left: 0.5rem;">Recommended</span>
-                <h3>Performance Monitoring Package</h3>
-                <p>Structured monitoring across a training cycle — preseason baseline, mid-season check, and post-season reassessment.</p>
-                <div class="service-price">$575 <span>/ 3 sessions</span></div>
-                <ul class="service-details">
-                    <li>Three full force plate assessments</li>
-                    <li>Longitudinal comparison across time points</li>
-                    <li>Performance trend analysis</li>
-                    <li>Asymmetry tracking over time</li>
-                    <li>Updated recommendations after each session</li>
-                </ul>
-            </div>
-            <div class="service-card">
                 <span class="service-badge">Teams & Clubs</span>
-                <h3>Team Baseline Assessment</h3>
-                <p>Establish baseline metrics for your team and identify athletes who may need individualized attention.</p>
-                <div class="service-price">$1,500 <span>/ up to 20 athletes</span></div>
+                <h3>Squad Diagnostic</h3>
+                <p>Half-day team assessment providing baseline metrics and identifying athletes who may need individualized attention.</p>
+                <div class="service-price">$1,200 <span>/ up to 20 athletes</span></div>
                 <ul class="service-details">
                     <li>2 assessments per athlete</li>
-                    <li>1.5–2 hour session (excludes warm-up)</li>
+                    <li>Tests selected based on your resources & goals</li>
                     <li>Individual reports for each athlete</li>
-                    <li>Coach summary with follow-up call</li>
-                    <li>Reach out to discuss multiple visits</li>
+                    <li>Team-wide comparison dashboard</li>
+                    <li>Coach summary with team insights</li>
                 </ul>
             </div>
             <div class="service-card">
                 <span class="service-badge">Large Groups</span>
                 <h3>Team Add-On</h3>
                 <p>For teams exceeding the 20-athlete base package. Same comprehensive assessment for additional athletes.</p>
-                <div class="service-price">$50 <span>/ athlete (21–30)</span></div>
-                <div class="service-price" style="margin-top: 0.5rem;">$45 <span>/ athlete (31+)</span></div>
+                <div class="service-price">$50 <span>/ additional athlete</span></div>
                 <ul class="service-details">
                     <li>Same testing protocol</li>
                     <li>Individual report included</li>
-                    <li>Volume discount for larger teams</li>
+                    <li>Added to team dashboard</li>
+                    <li>Scales for any team size</li>
                 </ul>
-            </div>
-            <div class="service-card">
-                <span class="service-badge">Injured / Return-to-Sport</span>
-                <h3>Asymmetry Audit</h3>
-                <p>Single-limb testing to uncover side-to-side differences that bilateral assessments can't detect — critical for injury recovery and prevention.</p>
-                <div class="service-price">$299 <span>/ session</span></div>
-                <ul class="service-details">
-                    <li>Unilateral (single-leg) jump testing</li>
-                    <li>Left vs. right force production comparison</li>
-                    <li>Identifies compensations hidden in bilateral tests</li>
-                    <li>Ideal for post-injury clearance decisions</li>
-                    <li>Detailed asymmetry report with recommendations</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="how-it-works" style="background: var(--white);">
-        <div class="section-header">
-            <h2>How It Works</h2>
-            <p>From first contact to actionable data — here's what to expect.</p>
-        </div>
-        <div style="max-width: 900px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                <div style="text-align: center; padding: 1.5rem;">
-                    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem;">01</div>
-                    <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem;">Free Consultation</h4>
-                    <p style="color: var(--gray-text); font-size: 0.9rem;">We discuss your goals, team size, and what assessments make sense for your athletes.</p>
-                </div>
-                <div style="text-align: center; padding: 1.5rem;">
-                    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem;">02</div>
-                    <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem;">We Come to You</h4>
-                    <p style="color: var(--gray-text); font-size: 0.9rem;">I bring the force plates to your gym, field, or facility — no need to travel.</p>
-                </div>
-                <div style="text-align: center; padding: 1.5rem;">
-                    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem;">03</div>
-                    <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem;">Athletes Get Tested</h4>
-                    <p style="color: var(--gray-text); font-size: 0.9rem;">Quick, non-invasive assessments. About 1.5–2 hours for a team of 20, or 30–60 minutes for individuals.</p>
-                </div>
-                <div style="text-align: center; padding: 1.5rem;">
-                    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem;">04</div>
-                    <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem;">Reports Delivered</h4>
-                    <p style="color: var(--gray-text); font-size: 0.9rem;">Individual reports within 48 hours. Teams receive a follow-up call to walk through results together.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -582,7 +391,7 @@
                 <div class="deliverable-icon">📈</div>
                 <div>
                     <h4>Benchmark Comparisons</h4>
-                    <p>See how metrics compare to published research data from similar populations (when available).</p>
+                    <p>See how metrics compare to published research data from similar populations.</p>
                 </div>
             </div>
             <div class="deliverable-item">
@@ -590,40 +399,6 @@
                 <div>
                     <h4>Training Recommendations</h4>
                     <p>Specific, actionable guidance based on individual force-velocity profiles.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sample-report" style="background: var(--off-white);">
-        <div class="section-header">
-            <h2>See What You'll Receive</h2>
-            <p>Every assessment includes detailed reporting with actionable insights.</p>
-        </div>
-        <div class="report-preview">
-            <div class="report-preview-visual">
-                <div class="mock-page">
-                    <div class="mock-bar gold"></div>
-                    <div class="mock-bar"></div>
-                    <div class="mock-bar short"></div>
-                    <div class="mock-bar"></div>
-                    <div class="mock-bar gold"></div>
-                    <div class="mock-bar short"></div>
-                </div>
-                <span style="font-size: 0.75rem; color: var(--gray-light);">Sample Report Preview</span>
-            </div>
-            <div class="report-preview-text">
-                <h3>Your Assessment Reports</h3>
-                <p>Reports are generated from your force plate data and include objective metrics, visual breakdowns, and clear next steps.</p>
-                <ul>
-                    <li>Performance snapshot with key metrics</li>
-                    <li>Force-time curve analysis</li>
-                    <li>Asymmetry detection with status ratings</li>
-                    <li>Personalized training recommendations</li>
-                </ul>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="Sample_Team_Report_Website.pdf" target="_blank" class="btn btn-primary">Download Sample Team Report</a>
-                    <span class="btn btn-secondary" style="cursor: default; opacity: 0.6;">Sample Individual Report — Coming Soon</span>
                 </div>
             </div>
         </div>
@@ -637,7 +412,7 @@
             <div class="about-text">
                 <p>Move, Measure, Analyze brings professional sports science testing directly to athletes, teams, and clinics across New Hampshire and the Seacoast region.</p>
                 <p>Using Hawkin Dynamics force plates — the same technology used by professional and collegiate programs — we provide objective, data-driven assessments that inform training decisions and track progress over time.</p>
-                <p>Founded by Dr. Ferdinand Delgado, an exercise scientist with over a decade of experience in athletic performance analysis and research.</p>
+                <p>Founded by Dr. Ferdinand Delgado, a biomechanist with over a decade of experience in athletic performance analysis and research.</p>
                 <div class="credentials">
                     <span class="credential-tag">PhD in Exercise Science</span>
                     <span class="credential-tag">MS in Kinesiology & Sport Science</span>
@@ -660,59 +435,13 @@
         </div>
     </section>
 
-    <section id="faq" style="background: var(--white);">
-        <div class="section-header">
-            <h2>Frequently Asked Questions</h2>
-        </div>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-mid);">
-                <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--black);">How long does a testing session take?</h4>
-                <p style="color: var(--gray-text); font-size: 0.95rem;">For individuals, about 30–60 minutes depending on the assessments. For teams of 20 athletes with 2 assessments each, expect 1.5–2 hours (excluding warm-up time).</p>
-            </div>
-            <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-mid);">
-                <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--black);">What space or equipment do you need at our facility?</h4>
-                <p style="color: var(--gray-text); font-size: 0.95rem;">A flat, hard surface for the force plates is essential. If we're doing isometric testing, access to a weight room with racks is needed. For drop/depth jumps, we'll need boxes or a platform. We'll discuss specifics during the consultation.</p>
-            </div>
-            <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-mid);">
-                <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--black);">What should athletes wear?</h4>
-                <p style="color: var(--gray-text); font-size: 0.95rem;">Normal workout clothes that allow unrestricted movement, plus sneakers. Ideally, athletes should wear the same shoes they'd use for training or competition.</p>
-            </div>
-            <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-mid);">
-                <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--black);">How soon do we get results?</h4>
-                <p style="color: var(--gray-text); font-size: 0.95rem;">Individual athlete reports are delivered within 48 hours and include detailed analysis and recommendations. For teams, we schedule a follow-up call to walk through the results together rather than just sending a stack of PDFs.</p>
-            </div>
-            <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-mid);">
-                <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--black);">Do you travel outside New Hampshire?</h4>
-                <p style="color: var(--gray-text); font-size: 0.95rem;">Yes, with travel fees applied beyond 15 miles from Durham, NH. For recurring sessions outside NH, we'd need to register the business in that state, which we can discuss.</p>
-            </div>
-            <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-mid);">
-                <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--black);">Can we retest athletes later to track progress?</h4>
-                <p style="color: var(--gray-text); font-size: 0.95rem;">Absolutely — that's the real value of these assessments. Retesting allows you to measure the impact of training interventions and track development over time.</p>
-            </div>
-            <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-mid);">
-                <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--black);">What's the difference between individual and team reports?</h4>
-                <p style="color: var(--gray-text); font-size: 0.95rem;">Individual athletes receive 4 assessments with in-depth analysis, detailed written interpretation, and comprehensive training recommendations. Team athletes receive 2 assessments with streamlined reports focused on key metrics — coaches then get a follow-up call to discuss the full team picture. If a team athlete needs deeper analysis, they can book an individual session.</p>
-            </div>
-            <div style="margin-bottom: 0;">
-                <h4 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--black);">What ages or skill levels do you work with?</h4>
-                <p style="color: var(--gray-text); font-size: 0.95rem;">Athletes 13 and older. Athletes under 18 require parent/guardian permission. Younger athletes may be included if we determine the assessment would be beneficial for their development.</p>
-            </div>
-        </div>
-    </section>
-
     <section id="contact">
         <div class="section-header">
             <h2>Book a Free Consultation</h2>
             <p>Schedule a free 15–30 minute call to discuss your team's needs and goals. No commitment required.</p>
         </div>
         <div class="contact-container">
-            <div style="text-align: center; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--gray-mid);">
-                <p style="color: var(--gray-text); margin-bottom: 1.5rem; font-size: 1.05rem;">Ready to schedule? Book directly on my calendar:</p>
-                <a href="https://calendar.app.google/CUFvaN63vdNEKiyj9" target="_blank" class="btn btn-primary" style="font-size: 1rem; padding: 1.25rem 3rem;">Schedule a Call</a>
-                <p style="color: var(--gray-light); margin-top: 1.5rem; font-size: 0.9rem;">All participants must complete a <a href="waiver.html" style="color: var(--gold);">Release of Liability</a> before their assessment.</p>
-            </div>
-            <p style="text-align: center; color: var(--gray-light); margin-bottom: 2rem; font-size: 0.9rem;">Or send a message and I'll get back to you within 24 hours:</p>
-            <form class="contact-form" action="https://formspree.io/f/mvzbzyzn" method="POST">
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -725,10 +454,8 @@
                     <label for="service">Service Interested In</label>
                     <select id="service" name="service" required>
                         <option value="">Select a service...</option>
-                        <option value="individual">Athlete Performance Assessment (Individual)</option>
-                        <option value="monitoring">Performance Monitoring Package (3 Sessions)</option>
-                        <option value="asymmetry">Asymmetry Audit (Injured/RTS)</option>
-                        <option value="team">Team Baseline Assessment (Team)</option>
+                        <option value="individual">Athlete Speed Profile (Individual)</option>
+                        <option value="team">Squad Diagnostic (Team)</option>
                         <option value="other">Other / Not Sure</option>
                     </select>
                 </div>
@@ -764,20 +491,13 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Move, Measure, Analyze LLC. All rights reserved. | <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
+        <p>&copy; 2025 Move, Measure, Analyze LLC. All rights reserved. | <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
     </footer>
 
     <script>
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
             nav.style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none';
-        });
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.querySelector('.nav-links').classList.remove('open');
-                document.querySelector('.hamburger').classList.remove('active');
-            });
         });
     </script>
 </body>
