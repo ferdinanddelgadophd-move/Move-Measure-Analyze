@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance & Fall Prevention | Move, Measure, Analyze</title>
+    <meta name="description" content="Research-grade balance and fall-risk assessments for older adults in New Hampshire. Personalized reports, take-home exercises, and progress tracking. We come to you.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --off-white: #f8f8f8;
+            --gold: #f4bd2a;
+            --gold-dark: #d4a520;
+            --gold-light: #fdf3d7;
+            --gray-lighter: #e0e0e0;
+            --gray-light: #666666;
+            --gray-text: #555555;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 0.75rem;
+        }
+        .nav-logo img { height: 40px; width: auto; }
+        .nav-logo span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.03em;
+            color: var(--black);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--gray-text);
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold-dark); }
+        .nav-links a.active {
+            color: var(--gold-dark);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 2px;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--black);
+            transition: all 0.3s;
+        }
+        .hero {
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--off-white) 100%);
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.06) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            line-height: 1.05;
+            margin-bottom: 1rem;
+        }
+        .hero h1 span { color: var(--gold-dark); }
+        .hero .subheadline {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.85rem 2.5rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .hero-cta:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(244, 189, 42, 0.3);
+        }
+        section { padding: 5rem 2rem; }
+        .section-inner { max-width: 900px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+        .section-intro {
+            font-size: 1.05rem;
+            color: var(--gray-text);
+            max-width: 650px;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+        .problem-section { background: var(--off-white); }
+        .problem-section .section-title { text-align: center; margin-bottom: 2.5rem; }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .problem-card {
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            padding: 2.25rem 1.75rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .problem-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+        }
+        .problem-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--gold-dark);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+        .problem-text {
+            font-size: 0.95rem;
+            color: var(--gray-text);
+            line-height: 1.5;
+        }
+        .why-section .lead-text {
+            font-size: 1.15rem;
+            color: var(--gray-text);
+            font-weight: 300;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+        .identify-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        .identify-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-left: 3px solid var(--gold);
+            background: var(--off-white);
+        }
+        .identify-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            color: var(--gold-dark);
+        }
+        .identify-card h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+        .identify-card p { font-size: 0.9rem; color: var(--gray-text); }
+        .measure-section { background: var(--off-white); }
+        .measure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+        .measure-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border: 1px solid var(--gray-lighter);
+            border-top: 3px solid var(--gold);
+        }
+        .measure-item h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
+        .measure-item p { font-size: 0.85rem; color: var(--gray-text); }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .pricing-card {
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .pricing-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+        .pricing-card.featured { border: 2px solid var(--gold); }
+        .pricing-badge {
+            position: absolute;
+            top: -1px; right: 2rem;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+        }
+        .pricing-header {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 0.25rem;
+        }
+        .pricing-name { font-size: 1.6rem; }
+        .pricing-duration { font-size: 0.8rem; color: var(--gray-light); font-weight: 400; }
+        .pricing-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            color: var(--gold-dark);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .pricing-desc { font-size: 0.95rem; color: var(--gray-text); line-height: 1.5; }
+        .addon-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .addon-card {
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .addon-info h3 { font-size: 1.2rem; margin-bottom: 0.15rem; }
+        .addon-info p { font-size: 0.85rem; color: var(--gray-text); }
+        .addon-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--gold-dark);
+            white-space: nowrap;
+        }
+        .includes-box {
+            background: var(--off-white);
+            border: 1px solid var(--gray-lighter);
+            border-top: 3px solid var(--gold);
+            padding: 2rem;
+        }
+        .includes-box h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+        .includes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.5rem 2rem;
+        }
+        .includes-list-item {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .includes-list-item::before {
+            content: '';
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: var(--gold);
+            flex-shrink: 0;
+            margin-top: 0.4rem;
+        }
+        .how-section { background: var(--off-white); }
+        .sample-section { background: var(--off-white); }
+        .sample-preview {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .sample-preview iframe {
+            width: 100%;
+            height: 700px;
+            border: 1px solid var(--gray-lighter);
+            background: var(--white);
+        }
+        .sample-fallback {
+            margin-top: 1rem;
+        }
+        .sample-fallback p {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .sample-preview iframe {
+                height: 450px;
+            }
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .step {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+        }
+        .step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px; height: 44px;
+            border: 2px solid var(--gold);
+            color: var(--gold-dark);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            margin: 0 auto 1rem;
+        }
+        .step h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .step p { font-size: 0.85rem; color: var(--gray-text); }
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+        .diff-col { padding: 2rem; }
+        .diff-col:first-child {
+            background: var(--off-white);
+            border: 1px solid var(--gray-lighter);
+        }
+        .diff-col:last-child {
+            background: var(--white);
+            border: 2px solid var(--gold);
+        }
+        .diff-col h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .diff-col:last-child h3 { color: var(--gold-dark); }
+        .diff-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .diff-list li {
+            font-size: 0.95rem;
+            color: var(--gray-text);
+            padding-left: 1.25rem;
+            position: relative;
+        }
+        .diff-list li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0.5rem;
+            width: 6px; height: 6px;
+        }
+        .diff-col:first-child .diff-list li::before { background: var(--gray-lighter); }
+        .diff-col:last-child .diff-list li::before { background: var(--gold); }
+        .faq-section { background: var(--off-white); }
+        .faq-list { max-width: 700px; }
+        .faq-item {
+            border-bottom: 1px solid var(--gray-lighter);
+            padding: 1.25rem 0;
+        }
+        .faq-q {
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .faq-q::after {
+            content: '+';
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.open .faq-a {
+            max-height: 300px;
+            padding-top: 0.75rem;
+        }
+        .faq-a p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.6; }
+        .cta-section { text-align: center; }
+        .cta-section .section-title { margin-bottom: 1rem; }
+        .cta-section p {
+            font-size: 1.05rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.85rem 2.5rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(244, 189, 42, 0.3);
+        }
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--black);
+            padding: 0.85rem 2.5rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid var(--black);
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: var(--black); color: var(--white); }
+        footer {
+            padding: 2.5rem 2rem;
+            background: var(--black);
+            text-align: center;
+        }
+        .footer-contact { margin-bottom: 1rem; }
+        .footer-contact a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 0 0.75rem;
+        }
+        .footer-contact a:hover { text-decoration: underline; }
+        footer p { color: var(--gray-light); font-size: 0.8rem; }
+        footer p a { color: var(--gold); text-decoration: none; }
+        .footer-disclaimer { margin-top: 0.75rem; font-size: 0.7rem; color: #555; }
+
+        @media (max-width: 768px) {
+            nav { padding: 0.75rem 1.25rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem 1.5rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--gray-lighter);
+            }
+            .nav-links.open { display: flex; }
+            .hamburger { display: flex; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            section { padding: 3.5rem 1.5rem; }
+            .problem-grid { grid-template-columns: 1fr; }
+            .identify-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .addon-row { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr 1fr; }
+            .diff-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .steps { grid-template-columns: 1fr; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeInUp 0.6s ease forwards; }
+        .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
+            <span>Move, Measure, Analyze</span>
+        </a>
+        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="athletes.html">Athletes</a>
+            <a href="balance.html" class="active">Balance</a>
+            <a href="mailto:fdelgadophd@movemeasure.com">Contact</a>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Understand Your Balance.<br><span>Maintain Your Independence.</span></h1>
+            <p class="subheadline fade-in fade-in-delay-1">Balance assessments designed for adults age 65+.</p>
+            <a href="#pricing" class="hero-cta fade-in fade-in-delay-2">View Assessment Options</a>
+        </div>
+    </section>
+
+    <!-- SECTION 2: DID YOU KNOW -->
+    <section class="problem-section">
+        <div class="section-inner">
+            <h2 class="section-title">Did You Know?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-num">1 in 4</div>
+                    <p class="problem-text">older adults falls each year</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-num">#1</div>
+                    <p class="problem-text">Falls are the leading cause of injury among adults 65+</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-num">2&times;</div>
+                    <p class="problem-text">Falling once doubles the chance of falling again</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: WHY ASSESS BALANCE -->
+    <section class="why-section">
+        <div class="section-inner">
+            <div class="section-label">Why Assess Balance</div>
+            <h2 class="section-title">Changes Happen Gradually</h2>
+            <p class="lead-text">Many balance changes occur gradually and are not noticeable until a fall occurs. A balance assessment can help identify:</p>
+            <div class="identify-grid">
+                <div class="identify-card">
+                    <svg class="identify-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <div>
+                        <h3>Changes in Stability</h3>
+                        <p>Subtle shifts in postural control that go unnoticed in daily life but increase risk over time.</p>
+                    </div>
+                </div>
+                <div class="identify-card">
+                    <svg class="identify-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    <div>
+                        <h3>Lower Body Strength</h3>
+                        <p>Whether your legs produce enough force to rise from a chair safely and support you during movement.</p>
+                    </div>
+                </div>
+                <div class="identify-card">
+                    <svg class="identify-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12H3M12 3v18"/><path d="M16 7l-4-4-4 4M8 17l4 4 4-4"/></svg>
+                    <div>
+                        <h3>Side-to-Side Differences</h3>
+                        <p>Left/right asymmetries in how your body distributes weight during standing and sit-to-stand tasks.</p>
+                    </div>
+                </div>
+                <div class="identify-card">
+                    <svg class="identify-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <div>
+                        <h3>Challenging Positions</h3>
+                        <p>How well you maintain control during progressively difficult balance tasks like tandem and single-leg stances.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE MEASURE -->
+    <section class="measure-section">
+        <div class="section-inner">
+            <div class="section-label">Assessment Details</div>
+            <h2 class="section-title">What We Measure</h2>
+            <p class="section-intro">Every test is safe, gentle, and appropriate for community-dwelling older adults. No jumping or strenuous activity required.</p>
+            <div class="measure-grid">
+                <div class="measure-item">
+                    <h3>Quiet Standing</h3>
+                    <p>How much your body sways while standing still, measured through center of pressure.</p>
+                </div>
+                <div class="measure-item">
+                    <h3>Stance Progression</h3>
+                    <p>Feet together, semi-tandem, tandem, and single-leg stances to challenge your balance system progressively.</p>
+                </div>
+                <div class="measure-item">
+                    <h3>Left/Right Symmetry</h3>
+                    <p>Whether one side is doing more work than the other during standing and sit-to-stand tasks.</p>
+                </div>
+                <div class="measure-item">
+                    <h3>Sit-to-Stand</h3>
+                    <p>Lower-body strength and power measured through chair-rise tasks, compared to age-referenced clinical thresholds.</p>
+                </div>
+                <div class="measure-item">
+                    <h3>Eyes Open vs. Closed</h3>
+                    <p>Comparing balance with and without vision to assess how much you rely on visual input for stability.</p>
+                </div>
+                <div class="measure-item">
+                    <h3>Sway Velocity</h3>
+                    <p>The speed of your postural corrections, a sensitive indicator of balance control quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+        <div class="section-inner">
+            <div class="section-label">Assessment Options</div>
+            <h2 class="section-title">Individual Pricing</h2>
+            <p class="section-intro">Every assessment includes a personalized report with results in plain language, comparison to research-based thresholds, and take-home exercises.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Balance Snapshot</h3>
+                        <span class="pricing-duration">10-15 min</span>
+                    </div>
+                    <div class="pricing-price">$75</div>
+                    <p class="pricing-desc">Five balance stances (feet together, semi-tandem, tandem, single-leg right, single-leg left) and Five Times Sit-to-Stand. A quick, focused look at your balance and lower-body strength. You receive a one-page Balance Snapshot report with your results, left/right symmetry analysis, and exercises.</p>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Balance Profile</h3>
+                        <span class="pricing-duration">30 min</span>
+                    </div>
+                    <div class="pricing-price">$195</div>
+                    <p class="pricing-desc">Everything in the Balance Snapshot plus quiet standing with eyes open and eyes closed (to assess vestibular balance), opposite-foot semi-tandem and tandem stances, and 30-Second Chair Stand for muscular endurance. Full report with charts, detailed symmetry analysis, and progress tracking across visits.</p>
+                </div>
+            </div>
+            <div class="addon-row">
+                <div class="addon-card">
+                    <div class="addon-info">
+                        <h3>Couples Snapshot</h3>
+                        <p>Two Balance Snapshots together (save $25)</p>
+                    </div>
+                    <div class="addon-price">$125</div>
+                </div>
+                <div class="addon-card">
+                    <div class="addon-info">
+                        <h3>3-Session Package</h3>
+                        <p>Initial Balance Profile + two follow-ups</p>
+                    </div>
+                    <div class="addon-price">$450</div>
+                </div>
+            </div>
+            <div class="includes-box">
+                <h3>Every Assessment Includes</h3>
+                <div class="includes-list">
+                    <div class="includes-list-item">Personalized report with plain-language results</div>
+                    <div class="includes-list-item">Comparison to published research thresholds (with citations)</div>
+                    <div class="includes-list-item">Left/right symmetry analysis</div>
+                    <div class="includes-list-item">Take-home balance exercises</div>
+                    <div class="includes-list-item">Progress tracking when you return for follow-up visits</div>
+                    <div class="includes-list-item">All assessments use Hawkin Dynamics research-grade force plates</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAMPLE REPORT -->
+    <section class="sample-section">
+        <div class="section-inner">
+            <div class="section-label">See What You Receive</div>
+            <h2 class="section-title">Sample Balance Snapshot Report</h2>
+            <p class="section-intro">Every assessment produces a personalized report like the one below. Results are written in plain language with visual charts and take-home exercises.</p>
+            <div class="sample-preview">
+                <iframe src="Snapshot_Example.pdf" title="Sample Balance Snapshot Report"></iframe>
+                <div class="sample-fallback">
+                    <p>Can't see the preview?</p>
+                    <a href="Snapshot_Example.pdf" target="_blank" class="btn-primary" style="font-size:0.75rem; padding:0.65rem 1.75rem;">Open Sample Report (PDF)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section">
+        <div class="section-inner">
+            <div class="section-label">The Process</div>
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>We Come to You</h3>
+                    <p>Portable force plates set up in any room with a flat floor and a chair.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>Brief Testing</h3>
+                    <p>You stand on the plates for a series of gentle balance tasks. No jumping or strenuous activity.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>Your Report</h3>
+                    <p>You receive a report with your results, what they mean, and exercises to take home.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h3>Track Progress</h3>
+                    <p>Return visits show changes over time, keeping you informed and motivated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT MAKES THIS DIFFERENT -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">Why Force Plates</div>
+            <h2 class="section-title">What Makes This Different</h2>
+            <p class="section-intro">Traditional fall-risk screenings rely on observation and stopwatches. Force plates measure what the eye cannot see.</p>
+            <div class="diff-grid">
+                <div class="diff-col">
+                    <h3>Traditional Screening</h3>
+                    <ul class="diff-list">
+                        <li>Pass/fail based on timed observation</li>
+                        <li>Subjective visual judgment</li>
+                        <li>Cannot detect subtle left/right differences</li>
+                        <li>No way to track small improvements</li>
+                        <li>Limited to what the eye can see</li>
+                    </ul>
+                </div>
+                <div class="diff-col">
+                    <h3>Force Plate Assessment</h3>
+                    <ul class="diff-list">
+                        <li>1,000 data points per second</li>
+                        <li>Objective, repeatable measurements</li>
+                        <li>Precise left/right symmetry analysis</li>
+                        <li>Detects changes too small to observe visually</li>
+                        <li>Every threshold backed by published research</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="section-inner">
+            <div class="section-label">Common Questions</div>
+            <h2 class="section-title">FAQ</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is the testing safe?</div>
+                    <div class="faq-a"><p>Yes. All testing is gentle and appropriate for community-dwelling older adults. You stand on the force plates (which sit flush on the floor) and perform simple balance tasks like standing still or rising from a chair. No jumping or strenuous activity is required.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What should I wear?</div>
+                    <div class="faq-a"><p>Comfortable clothing and supportive shoes. You will step on and off the force plates, so shoes with a stable sole work best.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need a doctor's referral?</div>
+                    <div class="faq-a"><p>No. These assessments are informational and screening-based. They do not replace a medical diagnosis. If results suggest further evaluation is needed, we recommend sharing your report with your physician or physical therapist.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How is this different from what my doctor does?</div>
+                    <div class="faq-a"><p>Most clinical balance screenings use observation and a stopwatch. Force plates capture 1,000 data points per second and reveal left/right asymmetries, sway patterns, and postural control quality that cannot be seen with the naked eye. Your report includes comparisons to published research thresholds with full citations.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can you come to our facility or community center?</div>
+                    <div class="faq-a"><p>Yes. The equipment is fully portable. We need a flat floor surface and a standard chair. We serve locations throughout New Hampshire.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Which assessment should I choose?</div>
+                    <div class="faq-a"><p>The Balance Snapshot is a focused 10-15 minute screen that covers the essentials. The Balance Profile is a more comprehensive 30-minute assessment that adds vestibular testing (eyes closed), additional stance positions, and muscular endurance testing. If you are unsure, the Balance Profile gives the most complete picture.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you offer group rates for facilities?</div>
+                    <div class="faq-a"><p>Yes. If you run a senior living community, recreation program, PT clinic, or wellness group, contact us for volume pricing and scheduling. We can also pair screenings with a short educational presentation on balance and fall prevention.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="section-inner">
+            <h2 class="section-title">Ready to Get Started?</h2>
+            <p>Schedule your assessment or reach out with questions. We serve individuals, couples, and facilities throughout New Hampshire.</p>
+            <div class="cta-buttons">
+                <a href="mailto:fdelgadophd@movemeasure.com" class="btn-primary">Email Us</a>
+                <a href="index.html" class="btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-contact">
+            <a href="mailto:fdelgadophd@movemeasure.com">fdelgadophd@movemeasure.com</a>
+            <a href="https://www.instagram.com/movemeasureanalyze" target="_blank">@movemeasureanalyze</a>
+            <a href="https://www.linkedin.com/company/109068575" target="_blank">LinkedIn</a>
+        </div>
+        <p>&copy; 2026 Move, Measure, Analyze LLC &middot; Durham, NH &middot; <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
+        <p class="footer-disclaimer">Assessments are for informational and screening purposes only. Not a medical diagnosis.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            document.querySelector('nav').style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none';
+        });
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.querySelector('.hamburger').classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>
