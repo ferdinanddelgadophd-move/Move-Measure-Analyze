@@ -92,20 +92,35 @@
             transition: all 0.3s;
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO WITH BACKGROUND IMAGE ===== */
         .hero {
             padding: 8rem 2rem 5rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--white) 0%, var(--off-white) 100%);
             position: relative;
+            overflow: hidden;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .hero::before {
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('hero-team-jump.png');
+            background-size: cover;
+            background-position: center 20%;
+            background-repeat: no-repeat;
+            opacity: 0.12;
+            filter: grayscale(40%);
+        }
+        .hero::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.06) 0%, transparent 40%);
+            background: 
+                linear-gradient(to bottom, rgba(255,255,255,0.85) 0%, rgba(248,248,248,0.7) 50%, rgba(255,255,255,0.95) 100%),
+                radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.04) 0%, transparent 40%);
             pointer-events: none;
         }
         .hero-content {
@@ -206,6 +221,55 @@
             max-width: 600px;
             margin: 0 auto;
             font-weight: 300;
+        }
+
+        /* ===== ATMOSPHERIC IMAGE ===== */
+        .atmo-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            margin: 2.5rem auto;
+            max-width: 480px;
+        }
+        .atmo-image-wrapper img {
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: 0.55;
+            filter: grayscale(30%);
+            transition: opacity 0.4s ease, filter 0.4s ease;
+        }
+        .atmo-image-wrapper:hover img {
+            opacity: 0.7;
+            filter: grayscale(15%);
+        }
+        /* Soft fade edges */
+        .atmo-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+        }
+        .atmo-fade-white::after {
+            background: 
+                linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 15%),
+                linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 15%),
+                linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 8%),
+                linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 8%);
+        }
+        .atmo-fade-offwhite::after {
+            background: 
+                linear-gradient(to top, var(--off-white) 0%, rgba(248,248,248,0) 15%),
+                linear-gradient(to bottom, var(--off-white) 0%, rgba(248,248,248,0) 15%),
+                linear-gradient(to left, var(--off-white) 0%, rgba(248,248,248,0) 8%),
+                linear-gradient(to right, var(--off-white) 0%, rgba(248,248,248,0) 8%);
+        }
+        .atmo-caption {
+            text-align: center;
+            font-size: 0.75rem;
+            font-style: italic;
+            color: var(--gray-light);
+            margin-top: 0.5rem;
+            opacity: 0.8;
         }
 
         /* ===== WHAT ARE FORCE PLATES ===== */
@@ -610,12 +674,14 @@
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
             section { padding: 3.5rem 1.5rem; }
+            .hero { min-height: auto; padding: 7rem 1.5rem 3.5rem; }
             .service-card { padding: 2rem; }
             .service-price { font-size: 2rem; }
             .area-highlight { font-size: 2.2rem; }
             .report-preview { flex-direction: column; text-align: center; }
             .report-preview-text ul { text-align: left; }
             .contact-links { flex-direction: column; align-items: center; }
+            .atmo-image-wrapper { max-width: 320px; }
         }
 
         @keyframes fadeInUp {
@@ -648,6 +714,7 @@
 
     <!-- HERO -->
     <section class="hero">
+        <div class="hero-bg" role="img" aria-label="Athlete performing countermovement jump on force plates (AI-generated illustration)"></div>
         <div class="hero-content">
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze" class="fade-in" style="width: 220px; height: auto; margin-bottom: 2rem;">
             <h1 class="fade-in fade-in-delay-1">Measure Today,<br><span>Inform Tomorrow's Training</span></h1>
@@ -667,6 +734,13 @@
                 <p>The technology behind data-driven performance testing.</p>
             </div>
             <p style="color: var(--gray-text); font-size: 1.05rem; text-align: center; margin-bottom: 2.5rem;">Force plates are precision instruments that measure the forces your body produces during movement &#8212; like jumping, landing, or pushing. Think of them as a highly sensitive scale that captures not just <em>how much</em> force you generate, but <em>how</em> you generate it.</p>
+            
+            <!-- Inline atmospheric image -->
+            <div class="atmo-image-wrapper atmo-fade-offwhite">
+                <img src="squat-assessment.png" alt="Athlete in countermovement position on dual force plates" loading="lazy">
+            </div>
+            <p class="atmo-caption">Illustration of countermovement jump assessment (AI-generated)</p>
+
             <div class="fp-grid">
                 <div class="fp-card">
                     <h4>Power & Explosiveness</h4>
@@ -777,6 +851,13 @@
                 <h2>How It Works</h2>
                 <p>From first contact to actionable data &#8212; here's what to expect.</p>
             </div>
+
+            <!-- Inline atmospheric image -->
+            <div class="atmo-image-wrapper atmo-fade-white">
+                <img src="team-testing.png" alt="Team force plate testing session in weight room" loading="lazy">
+            </div>
+            <p class="atmo-caption">Illustration of team testing session (AI-generated)</p>
+
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-num">01</div>
