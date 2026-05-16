@@ -68,6 +68,61 @@
             letter-spacing: 0.02em;
         }
 
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 2rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .nav-brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .nav-brand span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        /* ── LANDING ── */
         .landing {
             flex: 1;
             display: flex;
@@ -133,10 +188,57 @@
             font-size: 1.15rem;
             color: var(--gray-text);
             max-width: 550px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2rem;
             font-weight: 300;
         }
 
+        /* ── TRUST STRIP ── */
+        .trust-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            padding: 1.25rem 1.75rem;
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            border-top: 3px solid var(--gold);
+            max-width: 860px;
+            width: 100%;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.15rem;
+        }
+
+        .trust-label {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray-light);
+        }
+
+        .trust-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            color: var(--black);
+            line-height: 1.3;
+        }
+
+        .trust-divider {
+            width: 1px;
+            height: 44px;
+            background: var(--gray-lighter);
+            flex-shrink: 0;
+        }
+
+        /* ── PATHS ── */
         .paths {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -219,6 +321,7 @@
             text-decoration: underline;
         }
 
+        /* ── FOOTER ── */
         footer {
             padding: 1.5rem 2rem;
             text-align: center;
@@ -235,11 +338,42 @@
             text-decoration: none;
         }
 
-        @media (max-width: 600px) {
+        .footer-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-social a {
+            color: #aaa;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: var(--gold);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            nav {
+                padding: 0.75rem 1.25rem;
+            }
+            .nav-brand span {
+                display: none;
+            }
+            .nav-links {
+                gap: 1.25rem;
+            }
             .landing {
-                padding: 1.5rem 1.5rem;
+                padding: 2rem 1.5rem 1.5rem;
                 justify-content: flex-start;
-                padding-top: 3rem;
             }
             .logo {
                 width: 90px;
@@ -259,7 +393,21 @@
             }
             .subheadline {
                 font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            .trust-strip {
+                gap: 0.6rem 1rem;
+                padding: 0.85rem 1rem;
                 margin-bottom: 1.25rem;
+            }
+            .trust-divider {
+                display: none;
+            }
+            .trust-value {
+                font-size: 0.82rem;
+            }
+            .trust-label {
+                font-size: 0.58rem;
             }
             .paths {
                 grid-template-columns: 1fr;
@@ -295,24 +443,69 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
+        .fade-in { animation: fadeInUp 0.6s ease forwards; }
         .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
         .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
         .fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .fade-in-delay-4 { animation-delay: 0.4s; opacity: 0; }
     </style>
 </head>
 <body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-brand">
+            <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
+            <span>Move, Measure, Analyze</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="athletes.html">Athletes</a></li>
+            <li><a href="balance.html">Balance</a></li>
+            <li><a href="mailto:fdelgadophd@movemeasure.com">Contact</a></li>
+        </ul>
+    </nav>
+
     <section class="landing">
         <div class="landing-content">
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze" class="logo fade-in">
             <div class="company-name fade-in">Move, Measure, Analyze</div>
             <p class="tagline fade-in fade-in-delay-1">Mobile Assessment Services</p>
-            
+
             <h1 class="headline fade-in fade-in-delay-1">Objective Data.<br><span>Informed Decisions.</span></h1>
             <p class="subheadline fade-in fade-in-delay-2">Professional force plate and balance assessments brought directly to your facility in New Hampshire.</p>
+
+            <!-- TRUST STRIP -->
+            <div class="trust-strip fade-in fade-in-delay-2">
+
+                <div class="trust-item">
+                    <span class="trust-label">Founded by</span>
+                    <span class="trust-value">Dr. Ferdinand Delgado, PhD</span>
+                </div>
+
+                <div class="trust-divider"></div>
+
+                <div class="trust-item">
+                    <span class="trust-label">Experience</span>
+                    <span class="trust-value">10+ Years in Sport Science</span>
+                    <span class="trust-value">8+ Years in Aging &amp; Fall Prevention</span>
+                </div>
+
+                <div class="trust-divider"></div>
+
+                <div class="trust-item">
+                    <span class="trust-label">Services</span>
+                    <span class="trust-value">Athlete Assessment &middot; Sprint Consulting &middot; Balance &amp; Fall Prevention</span>
+                </div>
+
+                <div class="trust-divider"></div>
+
+                <div class="trust-item">
+                    <span class="trust-label">Based in Durham, NH</span>
+                    <span class="trust-value">Mobile &mdash; Out-of-state? Let&rsquo;s discuss.</span>
+                </div>
+
+            </div>
 
             <div class="paths fade-in fade-in-delay-3">
                 <a href="athletes.html" class="path-card">
@@ -351,13 +544,18 @@
                 </a>
             </div>
 
-            <p class="footer-note fade-in fade-in-delay-3">
+            <p class="footer-note fade-in fade-in-delay-4">
                 Questions? <a href="mailto:fdelgadophd@movemeasure.com">fdelgadophd@movemeasure.com</a>
             </p>
         </div>
     </section>
 
     <footer>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/movemeasureanalyze" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.linkedin.com/company/109068575" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="mailto:fdelgadophd@movemeasure.com">Email</a>
+        </div>
         <p>&copy; 2026 Move, Measure, Analyze LLC &middot; Durham, NH</p>
         <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #555;">Website Designed &amp; Developed by <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
     </footer>
