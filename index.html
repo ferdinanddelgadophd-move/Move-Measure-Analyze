@@ -80,33 +80,25 @@
             padding: 0.85rem 2rem;
             border-bottom: 2px solid var(--gold);
         }
-
         .nav-brand {
             display: flex;
             align-items: center;
             gap: 0.6rem;
             text-decoration: none;
         }
-
-        .nav-brand img {
-            height: 32px;
-            width: auto;
-        }
-
+        .nav-brand img { height: 32px; width: auto; }
         .nav-brand span {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.1rem;
             letter-spacing: 0.05em;
             color: var(--white);
         }
-
         .nav-links {
             display: flex;
             align-items: center;
             gap: 2rem;
             list-style: none;
         }
-
         .nav-links a {
             font-size: 0.8rem;
             font-weight: 600;
@@ -116,11 +108,8 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-
         .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--gold);
-        }
+        .nav-links a.active { color: var(--gold); }
 
         /* ── LANDING ── */
         .landing {
@@ -134,29 +123,21 @@
             background: linear-gradient(135deg, var(--white) 0%, var(--off-white) 100%);
             position: relative;
         }
-
         .landing::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: 
+            background:
                 radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.06) 0%, transparent 40%);
             pointer-events: none;
         }
-
         .landing-content {
             position: relative;
             z-index: 1;
             max-width: 900px;
         }
-
-        .logo {
-            width: 200px;
-            height: auto;
-            margin-bottom: 1.5rem;
-        }
-
+        .logo { width: 200px; height: auto; margin-bottom: 1.5rem; }
         .company-name {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2rem;
@@ -164,7 +145,6 @@
             color: var(--black);
             margin-bottom: 0.5rem;
         }
-
         .tagline {
             font-size: 0.85rem;
             font-weight: 600;
@@ -173,17 +153,12 @@
             text-transform: uppercase;
             margin-bottom: 2.5rem;
         }
-
         .headline {
             font-size: clamp(2.5rem, 6vw, 4rem);
             line-height: 1;
             margin-bottom: 1rem;
         }
-
-        .headline span {
-            color: var(--gold-dark);
-        }
-
+        .headline span { color: var(--gold-dark); }
         .subheadline {
             font-size: 1.15rem;
             color: var(--gray-text);
@@ -207,14 +182,12 @@
             max-width: 860px;
             width: 100%;
         }
-
         .trust-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.15rem;
         }
-
         .trust-label {
             font-size: 0.62rem;
             font-weight: 700;
@@ -222,7 +195,6 @@
             text-transform: uppercase;
             color: var(--gray-light);
         }
-
         .trust-value {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 0.95rem;
@@ -230,7 +202,6 @@
             color: var(--black);
             line-height: 1.3;
         }
-
         .trust-divider {
             width: 1px;
             height: 44px;
@@ -246,7 +217,6 @@
             width: 100%;
             max-width: 860px;
         }
-
         .path-card {
             background: var(--white);
             border: 1px solid var(--gray-lighter);
@@ -259,32 +229,24 @@
             align-items: center;
             text-align: center;
         }
-
         .path-card:hover {
             border-color: var(--gold);
             transform: translateY(-4px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-
         .path-icon {
             width: 64px;
             height: 64px;
             margin-bottom: 1.5rem;
             color: var(--gold-dark);
         }
-
-        .path-card h2 {
-            font-size: 1.6rem;
-            margin-bottom: 0.75rem;
-        }
-
+        .path-card h2 { font-size: 1.6rem; margin-bottom: 0.75rem; }
         .path-card p {
             color: var(--gray-text);
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
             flex-grow: 1;
         }
-
         .path-cta {
             font-size: 0.8rem;
             font-weight: 600;
@@ -295,49 +257,20 @@
             align-items: center;
             gap: 0.5rem;
         }
-
-        .path-cta svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.2s ease;
-        }
-
-        .path-card:hover .path-cta svg {
-            transform: translateX(4px);
-        }
-
+        .path-cta svg { width: 16px; height: 16px; transition: transform 0.2s ease; }
+        .path-card:hover .path-cta svg { transform: translateX(4px); }
         .footer-note {
             margin-top: 3rem;
             font-size: 0.85rem;
             color: var(--gray-light);
         }
-
-        .footer-note a {
-            color: var(--gold-dark);
-            text-decoration: none;
-        }
-
-        .footer-note a:hover {
-            text-decoration: underline;
-        }
+        .footer-note a { color: var(--gold-dark); text-decoration: none; }
+        .footer-note a:hover { text-decoration: underline; }
 
         /* ── FOOTER ── */
-        footer {
-            padding: 1.5rem 2rem;
-            text-align: center;
-            background: var(--black);
-        }
-
-        footer p {
-            color: var(--gray-light);
-            font-size: 0.8rem;
-        }
-
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
+        footer { padding: 1.5rem 2rem; text-align: center; background: var(--black); }
+        footer p { color: var(--gray-light); font-size: 0.8rem; }
+        footer a { color: var(--gold); text-decoration: none; }
         .footer-social {
             display: flex;
             align-items: center;
@@ -345,7 +278,6 @@
             gap: 1.5rem;
             margin-bottom: 0.75rem;
         }
-
         .footer-social a {
             color: #aaa;
             font-size: 0.75rem;
@@ -355,94 +287,36 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-
-        .footer-social a:hover {
-            color: var(--gold);
-        }
+        .footer-social a:hover { color: var(--gold); }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 700px) {
-            nav {
-                padding: 0.75rem 1.25rem;
-            }
-            .nav-brand span {
-                display: none;
-            }
-            .nav-links {
-                gap: 1.25rem;
-            }
-            .landing {
-                padding: 2rem 1.5rem 1.5rem;
-                justify-content: flex-start;
-            }
-            .logo {
-                width: 90px;
-                margin-bottom: 0.5rem;
-            }
-            .company-name {
-                font-size: 1.2rem;
-                margin-bottom: 0.15rem;
-            }
-            .tagline {
-                font-size: 0.7rem;
-                margin-bottom: 1rem;
-            }
-            .headline {
-                font-size: 1.8rem;
-                margin-bottom: 0.5rem;
-            }
-            .subheadline {
-                font-size: 0.9rem;
-                margin-bottom: 1rem;
-            }
-            .trust-strip {
-                gap: 0.6rem 1rem;
-                padding: 0.85rem 1rem;
-                margin-bottom: 1.25rem;
-            }
-            .trust-divider {
-                display: none;
-            }
-            .trust-value {
-                font-size: 0.82rem;
-            }
-            .trust-label {
-                font-size: 0.58rem;
-            }
-            .paths {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-            }
-            .path-card {
-                padding: 1.25rem;
-            }
-            .path-icon {
-                width: 36px;
-                height: 36px;
-                margin-bottom: 0.5rem;
-            }
-            .path-card h2 {
-                font-size: 1.2rem;
-                margin-bottom: 0.25rem;
-            }
-            .path-card p {
-                font-size: 0.8rem;
-                margin-bottom: 0.5rem;
-            }
-            .path-cta {
-                font-size: 0.7rem;
-            }
-            .footer-note {
-                margin-top: 1.25rem;
-                font-size: 0.75rem;
-            }
+            nav { padding: 0.75rem 1.25rem; }
+            .nav-brand span { display: none; }
+            .nav-links { gap: 1.25rem; }
+            .landing { padding: 2rem 1.5rem 1.5rem; justify-content: flex-start; }
+            .logo { width: 90px; margin-bottom: 0.5rem; }
+            .company-name { font-size: 1.2rem; margin-bottom: 0.15rem; }
+            .tagline { font-size: 0.7rem; margin-bottom: 1rem; }
+            .headline { font-size: 1.8rem; margin-bottom: 0.5rem; }
+            .subheadline { font-size: 0.9rem; margin-bottom: 1rem; }
+            .trust-strip { gap: 0.6rem 1rem; padding: 0.85rem 1rem; margin-bottom: 1.25rem; }
+            .trust-divider { display: none; }
+            .trust-value { font-size: 0.82rem; }
+            .trust-label { font-size: 0.58rem; }
+            .paths { grid-template-columns: 1fr; gap: 0.75rem; }
+            .path-card { padding: 1.25rem; }
+            .path-icon { width: 36px; height: 36px; margin-bottom: 0.5rem; }
+            .path-card h2 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+            .path-card p { font-size: 0.8rem; margin-bottom: 0.5rem; }
+            .path-cta { font-size: 0.7rem; }
+            .footer-note { margin-top: 1.25rem; font-size: 0.75rem; }
         }
 
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .fade-in { animation: fadeInUp 0.6s ease forwards; }
         .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
         .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
@@ -473,7 +347,7 @@
             <p class="tagline fade-in fade-in-delay-1">Mobile Assessment Services</p>
 
             <h1 class="headline fade-in fade-in-delay-1">Objective Data.<br><span>Informed Decisions.</span></h1>
-            <p class="subheadline fade-in fade-in-delay-2">Professional force plate and balance assessments brought directly to your facility in New Hampshire.</p>
+            <p class="subheadline fade-in fade-in-delay-2">Force &amp; power assessments, speed development consulting, and balance assessments &mdash; we come to you.</p>
 
             <!-- TRUST STRIP -->
             <div class="trust-strip fade-in fade-in-delay-2">
@@ -495,8 +369,8 @@
 
                 <div class="trust-item">
                     <span class="trust-label">Services</span>
-                    <span class="trust-value">Athlete Assessment &middot; Sprint Consulting</span> 
-                    <span class="trust-value"> Balance &amp; Fall Prevention</span>
+                    <span class="trust-value">Force &amp; Power Assessment &middot; Speed &amp; Power Consulting</span>
+                    <span class="trust-value">Balance &amp; Fall Prevention</span>
                 </div>
 
                 <div class="trust-divider"></div>
@@ -516,8 +390,8 @@
                         <rect x="17" y="6" width="4" height="15"/>
                         <path d="M2 21h20"/>
                     </svg>
-                    <h2>Athletes & Teams</h2>
-                    <p>Force plate assessments to quantify power, asymmetry, and neuromuscular strategy. For individual athletes, teams, and sports programs.</p>
+                    <h2>Athletes &amp; Teams</h2>
+                    <p>Force &amp; power assessments and speed development consulting for athletes, teams, and sports programs.</p>
                     <span class="path-cta">
                         View Services
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -534,7 +408,7 @@
                         <path d="M17 7l-2 7c0 1.1 1.3 2 3 2s3-.9 3-2l-2-7"/>
                         <path d="M9 22h6"/>
                     </svg>
-                    <h2>Balance & Fall Prevention</h2>
+                    <h2>Balance &amp; Fall Prevention</h2>
                     <p>Balance assessments for older adults to identify fall risk, track progress, and support clinical decision-making.</p>
                     <span class="path-cta">
                         View Services
