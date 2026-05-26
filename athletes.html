@@ -4,913 +4,1650 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Athletes & Teams | Move, Measure, Analyze</title>
-    <meta name="description" content="Data-driven force and power assessments and speed development consulting for athletes and teams in New Hampshire. Hawkin Dynamics technology brought to your facility.">
+    <meta name="description" content="Mobile sports science. Hawkin Dynamics force plate assessments and speed development consulting for athletes and teams in New Hampshire.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #0a0a0a;
-            --white: #ffffff;
-            --off-white: #f8f8f8;
+            --ink: #141414;
+            --paper: #ffffff;
+            --cream: #f4efe6;
+            --cream-deep: #ebe3d3;
             --gold: #f4bd2a;
-            --gold-dark: #d4a520;
-            --gold-light: #fdf3d7;
-            --gray-lighter: #e0e0e0;
-            --gray-light: #666666;
-            --gray-text: #555555;
+            --gold-dark: #c8961f;
+            --gold-deep: #8a6612;
+            --gray-line: #d8d4cb;
+            --gray-line-dark: #2a2a2a;
+            --gray-text: #4a4a4a;
+            --gray-mute: #8a8378;
+            --gray-mute-dark: #888;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--white);
-            color: var(--black);
-            line-height: 1.6;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        h1, h2, h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-        }
+        h1, h2, h3, h4 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 0.015em; }
+        .serif-it { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
 
         /* ===== NAV ===== */
         nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 0.75rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-lighter);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10,10,10,0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: background 0.3s ease;
         }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            gap: 0.75rem;
+        nav.scrolled { background: rgba(10,10,10,0.98); }
+        .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+        .nav-logo img { height: 36px; width: auto; filter: brightness(1.05); }
+        .nav-logo-text {
+            display: flex; flex-direction: column; line-height: 1;
         }
-        .nav-logo img { height: 40px; width: auto; }
-        .nav-logo span {
+        .nav-logo-text .mark {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 0.03em;
-            color: var(--black);
+            font-size: 1.05rem; letter-spacing: 0.04em;
+            color: var(--paper);
         }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
+        .nav-logo-text .sub {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.7rem; color: var(--gold); margin-top: 2px;
         }
+        .nav-links { display: flex; gap: 2.25rem; align-items: center; }
         .nav-links a {
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            color: var(--gray-text);
-            transition: color 0.2s;
+            text-decoration: none; font-size: 0.78rem; font-weight: 600;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(255,255,255,0.7); transition: color 0.2s;
+            position: relative;
         }
-        .nav-links a:hover { color: var(--gold-dark); }
-        .nav-links a.active {
-            color: var(--gold-dark);
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 2px;
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.active { color: var(--gold); }
+        .nav-links a.active::after {
+            content: ''; position: absolute; bottom: -6px; left: 0; right: 0;
+            height: 1px; background: var(--gold);
         }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
+        .nav-cta {
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
         }
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background: var(--black);
-            transition: all 0.3s;
-        }
+        .nav-cta:hover { background: var(--gold); color: var(--black) !important; }
+        .nav-cta::after { display: none !important; }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .hamburger span { width: 22px; height: 1.5px; background: var(--paper); transition: all 0.3s; }
 
         /* ===== HERO ===== */
         .hero {
-            padding: 8rem 2rem 5rem;
-            text-align: center;
             position: relative;
+            background: var(--black);
+            color: var(--paper);
+            padding: 9rem 2rem 6rem;
             overflow: hidden;
-            min-height: 520px;
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: center;
         }
         .hero-bg {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            position: absolute; inset: 0;
             background-image: url('hero-team-jump.png');
-            background-size: cover;
-            background-position: center 20%;
-            background-repeat: no-repeat;
-            opacity: 0.12;
-            filter: grayscale(40%);
+            background-size: cover; background-position: center 30%;
+            opacity: 0.22;
+            filter: grayscale(60%) contrast(1.1);
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 75% 30%, rgba(244,189,42,0.12) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.5) 50%, rgba(10,10,10,0.9) 100%);
+            pointer-events: none;
         }
         .hero::after {
             content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                linear-gradient(to bottom, rgba(255,255,255,0.85) 0%, rgba(248,248,248,0.7) 50%, rgba(255,255,255,0.95) 100%),
-                radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.04) 0%, transparent 40%);
+            position: absolute; inset: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(255,255,255,0.012) 3px),
+                repeating-linear-gradient(90deg, transparent 0px, transparent 2px, rgba(255,255,255,0.012) 3px);
             pointer-events: none;
         }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 750px;
-            margin: 0 auto;
+        .hero-grid {
+            position: relative; z-index: 1;
+            max-width: 1400px; margin: 0 auto; width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+        .hero-eyebrow::before {
+            content: ''; width: 32px; height: 1px; background: var(--gold);
         }
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            line-height: 1.05;
-            margin-bottom: 1rem;
+            font-size: clamp(3.5rem, 9vw, 7.5rem);
+            line-height: 0.88;
+            letter-spacing: -0.01em;
+            margin-bottom: 2rem;
+            max-width: 14ch;
         }
-        .hero h1 span { color: var(--gold-dark); }
-        .hero .subheadline {
-            font-size: 1.2rem;
-            color: var(--gray-text);
+        .hero h1 .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: -0.02em;
+        }
+        .hero-sub {
+            font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+            color: rgba(255,255,255,0.78);
             font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
+            max-width: 540px;
+            margin-bottom: 3rem;
+            line-height: 1.5;
         }
         .hero-cta-row {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: flex; gap: 1rem; flex-wrap: wrap;
+            align-items: center;
+        }
+        .hero-meta {
+            position: absolute;
+            bottom: 3rem; right: 2rem;
+            text-align: right;
+            z-index: 2;
+            display: flex; flex-direction: column; gap: 0.3rem;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .hero-meta .num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.25rem;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+        .hero-meta .label-it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            text-transform: none; letter-spacing: 0;
+            font-size: 0.95rem; color: rgba(255,255,255,0.65);
         }
 
         /* ===== BUTTONS ===== */
         .btn-primary {
-            display: inline-block;
-            background: var(--gold);
+            display: inline-block; background: var(--gold);
             color: var(--black);
-            padding: 0.85rem 2.5rem;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            padding: 1rem 2.25rem;
+            font-weight: 700; font-size: 0.78rem;
+            letter-spacing: 0.16em; text-transform: uppercase;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(.2,.7,.3,1);
+            border: 1px solid var(--gold);
+            position: relative; overflow: hidden;
         }
         .btn-primary:hover {
-            background: var(--gold-dark);
+            background: var(--paper); border-color: var(--paper);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(244, 189, 42, 0.3);
+            box-shadow: 0 10px 30px rgba(244,189,42,0.25);
         }
-        .btn-secondary {
-            display: inline-block;
-            background: transparent;
-            color: var(--black);
-            padding: 0.85rem 2.5rem;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+        .btn-ghost {
+            display: inline-block; background: transparent;
+            color: var(--paper);
+            padding: 1rem 2.25rem;
+            font-weight: 700; font-size: 0.78rem;
+            letter-spacing: 0.16em; text-transform: uppercase;
             text-decoration: none;
-            border: 2px solid var(--gray-lighter);
-            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.25);
+            transition: all 0.25s;
         }
-        .btn-secondary:hover {
-            border-color: var(--gold);
-            color: var(--gold-dark);
+        .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-outline-dark {
+            display: inline-block; background: transparent;
+            color: var(--ink);
+            padding: 0.95rem 2.25rem;
+            font-weight: 700; font-size: 0.78rem;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--ink);
+            transition: all 0.25s;
+        }
+        .btn-outline-dark:hover { background: var(--ink); color: var(--paper); }
+
+        /* ===== MARQUEE ===== */
+        .marquee {
+            background: var(--black);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 1.1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .marquee-track {
+            display: flex; gap: 3rem;
+            white-space: nowrap;
+            animation: marquee 38s linear infinite;
+            width: max-content;
+        }
+        .marquee-item {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.18em;
+            color: rgba(255,255,255,0.65);
+            display: inline-flex; align-items: center; gap: 3rem;
+        }
+        .marquee-item::after {
+            content: '◆';
+            color: var(--gold);
+            font-size: 0.6rem;
+        }
+        .marquee-item .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            letter-spacing: 0; color: var(--gold);
+            text-transform: none;
+            font-size: 1.25rem;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        /* ===== SUB-NAV ===== */
-        .sub-nav {
-            position: sticky;
-            top: 65px;
-            z-index: 900;
-            background: var(--white);
-            border-bottom: 2px solid var(--gray-lighter);
-            display: flex;
-            justify-content: center;
+        /* ===== STATEMENT / INTRO ===== */
+        .statement {
+            background: var(--cream);
+            padding: 7rem 2rem;
+            position: relative;
         }
-        .sub-nav-inner {
-            display: flex;
-            max-width: 900px;
-            width: 100%;
+        .statement-inner {
+            max-width: 1000px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 4rem;
+            align-items: start;
         }
-        .sub-nav-link {
-            flex: 1;
+        .statement-label {
+            font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--gold-deep);
+            white-space: nowrap;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--ink);
+            min-width: 90px;
+        }
+        .statement-text {
+            font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+            line-height: 1.25;
+            color: var(--ink);
+            font-weight: 300;
+            letter-spacing: -0.005em;
+        }
+        .statement-text .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold-deep);
+        }
+
+        /* ===== SUB-NAV (two pillars) ===== */
+        .pillars {
+            position: sticky; top: 64px; z-index: 900;
+            background: var(--paper);
+            border-bottom: 1px solid var(--gray-line);
+            display: flex; justify-content: center;
+        }
+        .pillars-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1100px; width: 100%;
+        }
+        .pillar-link {
             text-align: center;
-            padding: 1rem 1.5rem;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            padding: 1.25rem 1.5rem;
             text-decoration: none;
-            color: var(--gray-text);
+            color: var(--gray-mute);
             border-bottom: 3px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.2s;
+            margin-bottom: -1px;
+            transition: all 0.25s;
+            position: relative;
         }
-        .sub-nav-link:hover {
-            color: var(--gold-dark);
+        .pillar-link .pl-num {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.9rem; color: var(--gold-deep);
+            margin-right: 0.5rem;
+        }
+        .pillar-link .pl-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.1em;
+        }
+        .pillar-link:hover { color: var(--ink); }
+        .pillar-link.active {
+            color: var(--ink);
             border-bottom-color: var(--gold);
         }
-        .sub-nav-link.active {
-            color: var(--gold-dark);
-            border-bottom-color: var(--gold);
-        }
+        .pillar-link.active .pl-num { color: var(--gold-dark); }
 
-        /* ===== SECTIONS ===== */
-        section { padding: 5rem 2rem; }
-        .section-inner { max-width: 900px; margin: 0 auto; }
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            margin-bottom: 0.5rem;
-        }
-        .section-title {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            line-height: 1.05;
+        /* ===== SECTION BASE ===== */
+        section { padding: 7rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .container-narrow { max-width: 900px; margin: 0 auto; }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--gold-deep);
             margin-bottom: 1.5rem;
         }
-        .section-intro {
-            font-size: 1.05rem;
-            color: var(--gray-text);
-            max-width: 650px;
-            font-weight: 300;
-            margin-bottom: 2.5rem;
+        .eyebrow::before {
+            content: ''; width: 24px; height: 1px; background: var(--gold-deep);
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
+        .eyebrow-light { color: var(--gold); }
+        .eyebrow-light::before { background: var(--gold); }
+        .h-display {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.005em;
+            margin-bottom: 1.5rem;
         }
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            margin-bottom: 0.75rem;
+        .h-display .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold-deep); font-weight: 400;
+            letter-spacing: -0.02em;
         }
-        .section-header p {
+        .lede {
+            font-size: 1.15rem;
             color: var(--gray-text);
             max-width: 600px;
-            margin: 0 auto;
             font-weight: 300;
+            line-height: 1.55;
         }
 
-        /* ===== ATMOSPHERIC IMAGE ===== */
-        .atmo-image-wrapper {
+        /* ===== FORCE PLATES EXPLAINER ===== */
+        .explainer { background: var(--paper); }
+        .explainer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+            margin-top: 3.5rem;
+        }
+        .explainer-visual {
+            position: sticky; top: 130px;
+        }
+        .explainer-img-wrap {
             position: relative;
+            background: var(--cream);
+            padding: 2rem;
             overflow: hidden;
-            margin: 2.5rem auto;
-            max-width: 480px;
         }
-        .atmo-image-wrapper img {
-            display: block;
-            width: 100%;
-            height: auto;
-            opacity: 0.55;
-            filter: grayscale(30%);
-            transition: opacity 0.4s ease, filter 0.4s ease;
-        }
-        .atmo-image-wrapper:hover img {
-            opacity: 0.7;
-            filter: grayscale(15%);
-        }
-        .atmo-image-wrapper::after {
+        .explainer-img-wrap::before {
             content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(0,0,0,0.02) 12px, rgba(0,0,0,0.02) 13px);
             pointer-events: none;
         }
-        .atmo-fade-white::after {
-            background:
-                linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 15%),
-                linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 15%),
-                linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 8%),
-                linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 8%);
+        .explainer-img-wrap img {
+            display: block; width: 100%; height: auto;
+            opacity: 0.85;
+            filter: grayscale(15%);
+            position: relative; z-index: 1;
         }
-        .atmo-fade-offwhite::after {
-            background:
-                linear-gradient(to top, var(--off-white) 0%, rgba(248,248,248,0) 15%),
-                linear-gradient(to bottom, var(--off-white) 0%, rgba(248,248,248,0) 15%),
-                linear-gradient(to left, var(--off-white) 0%, rgba(248,248,248,0) 8%),
-                linear-gradient(to right, var(--off-white) 0%, rgba(248,248,248,0) 8%);
+        .explainer-img-tag {
+            position: absolute; bottom: 1rem; right: 1rem;
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.75rem; color: var(--gray-mute);
+            background: rgba(244,239,230,0.85);
+            padding: 0.3rem 0.6rem;
+            z-index: 2;
         }
-        .atmo-caption {
-            text-align: center;
-            font-size: 0.75rem;
-            font-style: italic;
-            color: var(--gray-light);
-            margin-top: 0.5rem;
-            opacity: 0.8;
+        .explainer-stat {
+            margin-top: 1.5rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--ink);
+            color: var(--paper);
+            display: flex; align-items: center; gap: 1rem;
         }
-
-        /* ===== WHAT ARE FORCE PLATES ===== */
-        .fp-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .fp-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-left: 3px solid var(--gold);
-        }
-        .fp-card h4 {
+        .explainer-stat-num {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
+            font-size: 2.5rem; color: var(--gold);
+            line-height: 1;
+        }
+        .explainer-stat-text {
+            font-size: 0.85rem; color: rgba(255,255,255,0.8);
+            line-height: 1.35;
+        }
+        .explainer-stat-text .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold);
+        }
+        .explainer-list {
+            display: flex; flex-direction: column;
+            gap: 0;
+        }
+        .explainer-item {
+            padding: 1.75rem 0;
+            border-top: 1px solid var(--gray-line);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.75rem;
+            align-items: start;
+        }
+        .explainer-item:last-child { border-bottom: 1px solid var(--gray-line); }
+        .explainer-item-num {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1.3rem; color: var(--gold-dark);
+            line-height: 1; padding-top: 0.4rem;
+        }
+        .explainer-item h4 {
+            font-size: 1.7rem;
             margin-bottom: 0.5rem;
         }
-        .fp-card p {
+        .explainer-item p {
             color: var(--gray-text);
-            font-size: 0.9rem;
-            margin: 0;
+            font-size: 0.97rem; line-height: 1.55;
+        }
+        .explainer-closer {
+            margin-top: 4.5rem;
+            text-align: center;
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1.3rem;
+            color: var(--gray-text);
+            max-width: 700px; margin-left: auto; margin-right: auto;
+            line-height: 1.45;
         }
 
         /* ===== ASSESSMENT SERVICES ===== */
-        .services-section { background: var(--off-white); }
+        .services { background: var(--paper); padding-top: 4rem; }
+        .services-header { margin-bottom: 4rem; }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
         }
         .service-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border: 1px solid var(--gray-lighter);
-            transition: all 0.3s ease;
+            background: var(--paper);
+            border: 1px solid var(--gray-line);
+            padding: 2.25rem;
+            transition: all 0.35s cubic-bezier(.2,.7,.3,1);
+            position: relative;
+            display: flex; flex-direction: column;
         }
         .service-card:hover {
-            border-color: var(--gold);
+            border-color: var(--gold-dark);
             transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 18px 50px -10px rgba(10,10,10,0.12);
         }
-        .service-badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            background: rgba(201, 162, 39, 0.15);
-            padding: 0.4rem 0.8rem;
-            margin-bottom: 1.5rem;
+        .service-card.span-2 { grid-column: span 2; }
+        .service-card.span-3 { grid-column: span 3; }
+        .service-card.span-4 { grid-column: span 4; }
+        .service-card.span-6 { grid-column: span 6; }
+
+        .service-card.featured {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+            position: relative;
+            overflow: hidden;
         }
-        .service-badge-dark {
-            background: rgba(26, 26, 26, 0.1);
+        .service-card.featured::before {
+            content: '';
+            position: absolute; top: 0; right: 0;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle at top right, rgba(244,189,42,0.18) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .service-tag-row {
+            display: flex; gap: 0.5rem; align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+        .service-tag {
+            font-size: 0.66rem; font-weight: 700;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            padding: 0.4rem 0.7rem;
+            background: rgba(200,150,31,0.12);
+            color: var(--gold-deep);
+            border: 1px solid rgba(200,150,31,0.25);
+        }
+        .service-card.featured .service-tag {
+            background: rgba(244,189,42,0.15);
+            color: var(--gold);
+            border-color: rgba(244,189,42,0.3);
+        }
+        .service-tag-rec {
+            background: var(--gold);
             color: var(--black);
-            margin-left: 0.5rem;
+            border-color: var(--gold);
         }
-        .service-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .service-card > p { color: var(--gray-text); margin-bottom: 1.5rem; font-size: 0.95rem; }
-        .service-price {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            color: var(--gold-dark);
+        .service-card.featured .service-tag-rec {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+        .service-card h3 {
+            font-size: 1.85rem;
+            line-height: 1.05;
+            margin-bottom: 1rem;
+        }
+        .service-card.featured h3 .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold); font-weight: 400;
+        }
+        .service-desc {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        .service-card.featured .service-desc { color: rgba(255,255,255,0.75); }
+        .service-price-row {
+            display: flex; align-items: baseline; gap: 0.5rem;
             margin-bottom: 0.5rem;
         }
-        .service-price span {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 0.9rem;
-            color: var(--gray-light);
+        .service-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.6rem;
+            color: var(--ink);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+        .service-card.featured .service-price { color: var(--gold); }
+        .service-price-unit {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.95rem;
+            color: var(--gray-mute);
+        }
+        .service-card.featured .service-price-unit { color: rgba(255,255,255,0.55); }
+        .service-price-extra {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: var(--gold-dark);
+            line-height: 1;
+            margin-top: 0.5rem;
         }
         .service-details {
             list-style: none;
             margin-top: 1.5rem;
             padding-top: 1.5rem;
-            border-top: 1px solid var(--gray-lighter);
+            border-top: 1px solid var(--gray-line);
+            display: flex; flex-direction: column; gap: 0.55rem;
         }
+        .service-card.featured .service-details { border-top-color: rgba(255,255,255,0.12); }
         .service-details li {
             color: var(--gray-text);
             font-size: 0.9rem;
-            padding: 0.5rem 0 0.5rem 1.5rem;
+            padding-left: 1.5rem;
             position: relative;
+            line-height: 1.5;
         }
+        .service-card.featured .service-details li { color: rgba(255,255,255,0.78); }
         .service-details li::before {
-            content: '\2192';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
+            content: '';
+            position: absolute; left: 0; top: 0.55rem;
+            width: 8px; height: 1px;
+            background: var(--gold-dark);
         }
-        .testing-freq {
-            max-width: 800px;
-            margin: 3rem auto 0;
-            background: var(--white);
-            padding: 1.5rem;
-            border-left: 3px solid var(--gold);
+        .service-card.featured .service-details li::before { background: var(--gold); }
+        .service-details li.note {
+            color: var(--gray-mute);
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.88rem;
+            padding-top: 0.65rem;
+            margin-top: 0.4rem;
+            border-top: 1px dashed var(--gray-line);
         }
-        .testing-freq h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
+        .service-card.featured .service-details li.note {
+            color: rgba(255,255,255,0.55);
+            border-top-color: rgba(255,255,255,0.12);
         }
-        .testing-freq p {
-            color: var(--gray-text);
-            font-size: 0.95rem;
-            margin: 0;
-        }
+        .service-details li.note::before { display: none; }
 
-        /* ===== HOW IT WORKS ===== */
-        .steps-grid {
+        /* ===== TESTING FREQUENCY CALLOUT ===== */
+        .freq-callout {
+            margin-top: 4rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            padding: 2.5rem 3rem;
+            background: var(--cream);
+            border-left: 4px solid var(--gold);
+            align-items: center;
         }
-        .step-card { text-align: center; padding: 1.5rem; }
-        .step-num {
+        .freq-callout-label {
+            font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--gold-deep);
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
             line-height: 1;
         }
-        .step-card h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .step-card p { color: var(--gray-text); font-size: 0.9rem; }
-
-        /* ===== DELIVERABLES ===== */
-        .deliverables-grid {
+        .freq-callout-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
-        .deliverable-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--off-white);
-            border-left: 3px solid var(--gold);
-        }
-        .deliverable-icon { font-size: 1.5rem; flex-shrink: 0; }
-        .deliverable-item h4 {
+        .freq-item h5 {
             font-family: 'Source Sans 3', sans-serif;
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
         }
-        .deliverable-item p { color: var(--gray-text); font-size: 0.9rem; }
-
-        /* ===== SAMPLE REPORT ===== */
-        .sample-section { background: var(--off-white); }
-        .report-preview {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .report-preview-visual {
-            flex: 0 0 240px;
-            background: var(--white);
-            border: 1px solid var(--gray-lighter);
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        .mock-page {
-            background: var(--white);
-            border: 1px solid var(--gray-lighter);
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            text-align: left;
-        }
-        .mock-bar {
-            height: 6px;
-            background: var(--gray-lighter);
-            margin-bottom: 0.5rem;
-            border-radius: 3px;
-        }
-        .mock-bar.gold { background: var(--gold); width: 70%; }
-        .mock-bar.short { width: 50%; }
-        .report-preview-text { flex: 1; min-width: 280px; }
-        .report-preview-text h3 { font-size: 2rem; margin-bottom: 1rem; }
-        .report-preview-text p { color: var(--gray-text); margin-bottom: 1.5rem; font-size: 1rem; }
-        .report-preview-text ul { list-style: none; margin-bottom: 2rem; }
-        .report-preview-text ul li {
+        .freq-item p {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1.15rem;
             color: var(--gray-text);
-            font-size: 0.9rem;
-            padding: 0.4rem 0 0.4rem 1.5rem;
+            line-height: 1.4;
+        }
+        .freq-item p strong {
+            font-style: normal;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-size: 1.45rem;
+            color: var(--gold-dark);
+            margin-right: 0.4rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== HOW IT WORKS (dark) ===== */
+        .how {
+            background: var(--black);
+            color: var(--paper);
+            position: relative;
+            overflow: hidden;
+        }
+        .how::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: url('team-testing.png');
+            background-size: cover; background-position: center;
+            opacity: 0.07;
+            filter: grayscale(80%);
+        }
+        .how::after {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 10% 20%, rgba(244,189,42,0.08) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.9) 100%);
+        }
+        .how-inner {
+            position: relative; z-index: 1;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .how-header { margin-bottom: 5rem; max-width: 700px; }
+        .how-header h2 { color: var(--paper); }
+        .how-header h2 .it { color: var(--gold); }
+        .how-header .lede { color: rgba(255,255,255,0.7); }
+
+        .timeline {
             position: relative;
         }
-        .report-preview-text ul li::before {
-            content: '\2192';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
+        .timeline::before {
+            content: '';
+            position: absolute; top: 0; bottom: 0; left: 60px;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent 0%, rgba(244,189,42,0.5) 10%, rgba(244,189,42,0.5) 90%, transparent 100%);
         }
-        .btn-disabled {
-            display: inline-block;
-            padding: 0.85rem 2.5rem;
-            font-weight: 700;
+        .timeline-step {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2.5rem;
+            padding: 2.5rem 0;
+            position: relative;
+            align-items: start;
+        }
+        .timeline-step:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .timeline-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4.5rem;
+            color: var(--gold);
+            line-height: 0.85;
+            position: relative;
+            z-index: 1;
+            background: var(--black);
+            padding-right: 1rem;
+        }
+        .timeline-num-sub {
+            display: block;
+            font-family: 'Instrument Serif', serif; font-style: italic;
             font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            border: 2px solid var(--gray-lighter);
-            color: var(--gray-light);
-            cursor: default;
-            opacity: 0.6;
+            color: rgba(255,255,255,0.4);
+            margin-top: 0.5rem;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .timeline-content h4 {
+            font-size: 2rem;
+            color: var(--paper);
+            margin-bottom: 0.6rem;
+            line-height: 1.1;
+        }
+        .timeline-content h4 .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold); font-weight: 400;
+        }
+        .timeline-content p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            max-width: 580px;
+            line-height: 1.6;
         }
 
-        /* ===== CONSULTING SECTION ===== */
-        .consulting-section { background: var(--white); }
-        .consulting-subsection-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gray-light);
-            margin-bottom: 1rem;
-            text-align: center;
+        /* ===== WHAT YOU GET / SAMPLE REPORT ===== */
+        .deliver {
+            background: var(--paper);
         }
-        .consulting-intro {
-            text-align: center;
-            max-width: 620px;
-            margin: 0 auto 2rem;
-            font-size: 0.95rem;
+        .deliver-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .deliver-list {
+            display: flex; flex-direction: column;
+        }
+        .deliver-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--gray-line);
+            align-items: start;
+        }
+        .deliver-item:first-child { border-top: 1px solid var(--gray-line); }
+        .deliver-item-num {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+            line-height: 1;
+            padding-top: 0.3rem;
+            min-width: 40px;
+        }
+        .deliver-item h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: var(--ink);
+            line-height: 1.1;
+        }
+        .deliver-item p {
             color: var(--gray-text);
-            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .report-visual-stack {
+            position: relative;
+            padding: 2rem;
+        }
+        .report-page {
+            background: var(--paper);
+            border: 1px solid var(--gray-line);
+            padding: 1.5rem;
+            box-shadow: 0 20px 60px -15px rgba(10,10,10,0.15);
+            position: relative;
+        }
+        .report-page-1 {
+            transform: rotate(-3deg);
+            margin-bottom: -180px;
+            margin-right: 40px;
+            background: var(--cream);
+        }
+        .report-page-2 {
+            transform: rotate(2deg);
+            margin-left: 60px;
+            background: var(--paper);
+            position: relative;
+            z-index: 2;
+        }
+        .mock-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--gray-line);
+        }
+        .mock-header .h-tag {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            color: var(--gold-dark);
+        }
+        .mock-header .h-num {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.7rem;
+            color: var(--gray-mute);
+        }
+        .mock-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+        }
+        .mock-bar {
+            height: 5px;
+            background: var(--gray-line);
+            margin-bottom: 0.45rem;
+            border-radius: 2px;
+        }
+        .mock-bar.gold { background: var(--gold); width: 70%; }
+        .mock-bar.gold-dark { background: var(--gold-dark); width: 55%; }
+        .mock-bar.short { width: 50%; }
+        .mock-bar.medium { width: 75%; }
+        .mock-chart {
+            margin-top: 1rem;
+            display: flex; align-items: end; gap: 4px;
+            height: 50px;
+        }
+        .mock-chart-bar {
+            flex: 1;
+            background: var(--gold-dark);
+            opacity: 0.7;
+        }
+        .mock-chart-bar:nth-child(odd) { background: var(--ink); opacity: 0.6; }
+        .deliver-cta {
+            margin-top: 3rem;
+            display: flex; gap: 1rem; flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-coming-soon {
+            display: inline-block;
+            padding: 1rem 2.25rem;
+            font-weight: 600; font-size: 0.78rem;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            border: 1px dashed var(--gray-line);
+            color: var(--gray-mute);
+            font-style: italic;
+            font-family: 'Instrument Serif', serif;
+            letter-spacing: 0.06em;
+        }
+
+        /* ===== CONSULTING ===== */
+        .consult {
+            background: var(--cream);
+            padding-top: 7rem;
+        }
+        .consult-header { margin-bottom: 4rem; max-width: 800px; }
+        .consult-sub-label {
+            display: flex; align-items: center; gap: 1rem;
+            font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--gold-deep);
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+        }
+        .consult-sub-label::before,
+        .consult-sub-label::after {
+            content: ''; flex: 1; height: 1px;
+            background: var(--gray-line);
+        }
+        .consult-intro {
+            text-align: center;
+            max-width: 620px; margin: 0 auto 2.5rem;
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            line-height: 1.45;
         }
         .onetime-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.25rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         .onetime-card {
-            background: var(--white);
-            border: 1px solid var(--gray-lighter);
-            padding: 1.5rem;
-            transition: all 0.3s ease;
+            background: var(--paper);
+            border: 1px solid var(--gray-line);
+            padding: 1.75rem;
+            transition: all 0.3s;
+            display: flex; flex-direction: column;
         }
         .onetime-card:hover {
-            border-color: var(--gold);
+            border-color: var(--gold-dark);
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+            box-shadow: 0 12px 30px -10px rgba(10,10,10,0.1);
         }
         .onetime-card h4 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             margin-bottom: 0.5rem;
+            line-height: 1.05;
         }
         .onetime-price {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--gold-dark);
+            font-size: 2.2rem;
+            color: var(--gold-deep);
             line-height: 1;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
         }
         .onetime-price span {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Instrument Serif', serif; font-style: italic;
             font-size: 0.85rem;
-            color: var(--gray-light);
+            color: var(--gray-mute);
+            margin-left: 0.3rem;
         }
         .onetime-card p {
             color: var(--gray-text);
-            font-size: 0.875rem;
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--gray-lighter);
+            font-size: 0.88rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-line);
             line-height: 1.5;
         }
         .ongoing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 0;
         }
         .ongoing-card {
-            background: var(--white);
-            border: 1px solid var(--gray-lighter);
-            padding: 2rem;
-            transition: all 0.3s ease;
+            background: var(--paper);
+            border: 1px solid var(--gray-line);
+            padding: 2.5rem;
+            transition: all 0.35s cubic-bezier(.2,.7,.3,1);
+            position: relative;
+            display: flex; flex-direction: column;
         }
         .ongoing-card:hover {
-            border-color: var(--gold);
+            border-color: var(--gold-dark);
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+            box-shadow: 0 18px 50px -15px rgba(10,10,10,0.12);
         }
         .ongoing-card.featured {
-            border-color: var(--gold);
-            border-width: 2px;
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+            position: relative;
+            overflow: hidden;
         }
-        .ongoing-badge {
+        .ongoing-card.featured::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold) 0%, var(--gold-dark) 100%);
+        }
+        .ongoing-card.featured::after {
+            content: '';
+            position: absolute; bottom: 0; right: 0;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle at bottom right, rgba(244,189,42,0.12) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .ongoing-tag {
             display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            background: rgba(201, 162, 39, 0.15);
-            padding: 0.4rem 0.8rem;
-            margin-bottom: 1rem;
-        }
-        .ongoing-card h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-        .ongoing-card > p {
-            color: var(--gray-text);
-            font-size: 0.9rem;
+            font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            padding: 0.4rem 0.7rem;
+            background: rgba(200,150,31,0.12);
+            color: var(--gold-deep);
+            border: 1px solid rgba(200,150,31,0.25);
             margin-bottom: 1.25rem;
-            font-weight: 300;
+            align-self: flex-start;
         }
-        .ongoing-price {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            color: var(--gold-dark);
-            margin-bottom: 0.25rem;
+        .ongoing-card.featured .ongoing-tag {
+            background: rgba(244,189,42,0.15);
+            color: var(--gold);
+            border-color: rgba(244,189,42,0.3);
+        }
+        .ongoing-card h3 {
+            font-size: 2.1rem;
+            margin-bottom: 0.75rem;
             line-height: 1;
         }
-        .ongoing-price span {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 0.9rem;
-            color: var(--gray-light);
-        }
-        .ongoing-addon {
-            font-size: 0.8rem;
-            color: var(--gray-light);
-            margin-bottom: 1.25rem;
-            font-style: italic;
-        }
-        .ongoing-details {
-            list-style: none;
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--gray-lighter);
-        }
-        .ongoing-details li {
-            color: var(--gray-text);
-            font-size: 0.875rem;
-            padding: 0.4rem 0 0.4rem 1.5rem;
-            position: relative;
-        }
-        .ongoing-details li::before {
-            content: '\2192';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-        }
-        .ongoing-details li.note {
-            color: var(--gray-light);
-            font-style: italic;
-            font-size: 0.825rem;
-            padding-top: 0.75rem;
-            margin-top: 0.5rem;
-            border-top: 1px solid var(--gray-lighter);
-        }
-        .ongoing-details li.note::before { content: ''; }
-        .bridge-callout {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--off-white);
-            border-left: 3px solid var(--gold);
-            padding: 1.5rem 2rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 1.25rem;
-        }
-        .bridge-callout-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
-        .bridge-callout h4 {
-            font-family: 'Source Sans 3', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-        }
-        .bridge-callout p { color: var(--gray-text); font-size: 0.9rem; line-height: 1.6; }
-
-        /* ===== ABOUT ===== */
-        .about-section { background: var(--off-white); }
-        .about-content { max-width: 800px; margin: 0 auto; }
-        .about-text p { color: var(--gray-text); margin-bottom: 1rem; font-size: 1.05rem; }
-        .credentials {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .credential-tag {
-            font-size: 0.8rem;
-            font-weight: 500;
+        .ongoing-card h3 .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-weight: 400;
             color: var(--gold-dark);
-            background: rgba(201, 162, 39, 0.1);
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(201, 162, 39, 0.3);
         }
-
-        /* ===== AREA ===== */
-        .area-content { max-width: 700px; margin: 0 auto; text-align: center; }
-        .area-highlight {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: var(--gold-dark);
-            margin-bottom: 1rem;
-        }
-        .area-note {
+        .ongoing-card.featured h3 .it { color: var(--gold); }
+        .ongoing-card > p {
             color: var(--gray-text);
             font-size: 0.95rem;
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: var(--off-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.55;
+        }
+        .ongoing-card.featured > p { color: rgba(255,255,255,0.75); }
+        .ongoing-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--ink);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+        .ongoing-card.featured .ongoing-price { color: var(--gold); }
+        .ongoing-price span {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1rem;
+            color: var(--gray-mute);
+            margin-left: 0.4rem;
+        }
+        .ongoing-card.featured .ongoing-price span { color: rgba(255,255,255,0.5); }
+        .ongoing-addon {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.92rem;
+            color: var(--gray-mute);
+            margin: 0.4rem 0 1.5rem;
+        }
+        .ongoing-card.featured .ongoing-addon { color: rgba(255,255,255,0.55); }
+        .ongoing-details {
+            list-style: none;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-line);
+            display: flex; flex-direction: column; gap: 0.55rem;
+        }
+        .ongoing-card.featured .ongoing-details { border-top-color: rgba(255,255,255,0.12); }
+        .ongoing-details li {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.55;
+        }
+        .ongoing-card.featured .ongoing-details li { color: rgba(255,255,255,0.78); }
+        .ongoing-details li::before {
+            content: '';
+            position: absolute; left: 0; top: 0.55rem;
+            width: 8px; height: 1px;
+            background: var(--gold-dark);
+        }
+        .ongoing-card.featured .ongoing-details li::before { background: var(--gold); }
+        .ongoing-details li.note {
+            color: var(--gray-mute);
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.85rem;
+            padding-top: 0.7rem;
+            margin-top: 0.4rem;
+            border-top: 1px dashed var(--gray-line);
+        }
+        .ongoing-card.featured .ongoing-details li.note {
+            color: rgba(255,255,255,0.55);
+            border-top-color: rgba(255,255,255,0.12);
+        }
+        .ongoing-details li.note::before { display: none; }
+
+        /* ===== BRIDGE (full-bleed dark) ===== */
+        .bridge {
+            background: var(--black);
+            color: var(--paper);
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .bridge::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at center, rgba(244,189,42,0.07) 0%, transparent 70%);
+        }
+        .bridge-inner {
+            position: relative; z-index: 1;
+            max-width: 800px; margin: 0 auto;
+        }
+        .bridge-mark {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        .bridge-eyebrow {
+            font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.25em; text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        .bridge h3 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+        .bridge h3 .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold); font-weight: 400;
+        }
+        .bridge p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ===== ABOUT ===== */
+        .about { background: var(--paper); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .about-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            line-height: 0.95;
+            margin-bottom: 0.5rem;
+        }
+        .about-name .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold-deep); font-weight: 400;
+        }
+        .about-role {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1.15rem;
+            color: var(--gray-mute);
+            margin-bottom: 2rem;
+        }
+        .about-text p {
+            color: var(--gray-text);
+            margin-bottom: 1.1rem;
+            font-size: 1.05rem;
+            line-height: 1.65;
+        }
+        .credentials {
+            display: flex; flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-line);
+        }
+        .credential-tag {
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--ink);
+            background: var(--cream);
+            padding: 0.55rem 0.95rem;
+            border: 1px solid var(--gray-line);
+        }
+
+        /* ===== SERVICE AREA ===== */
+        .area {
+            background: var(--cream);
+            padding: 7rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .area-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .area-big {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            line-height: 0.9;
+            color: var(--ink);
+            margin-bottom: 1rem;
+        }
+        .area-big .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold-deep); font-weight: 400;
+            display: block;
+            font-size: 0.55em;
+        }
+        .area-sub {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1.15rem;
+            color: var(--gray-text);
+            max-width: 400px;
+        }
+        .area-policy {
+            background: var(--paper);
+            padding: 2.25rem;
             border-left: 3px solid var(--gold);
-            text-align: left;
+        }
+        .area-policy h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: var(--ink);
+        }
+        .policy-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--gray-line);
+            align-items: baseline;
+        }
+        .policy-row:last-child { border-bottom: none; }
+        .policy-range {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.05rem;
+            color: var(--gold-dark);
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+        .policy-detail {
+            color: var(--gray-text);
+            font-size: 0.92rem;
         }
 
         /* ===== SCHEDULING ===== */
-        .scheduling-section { background: var(--off-white); }
-        .scheduling-list { max-width: 700px; margin: 0 auto; list-style: none; }
+        .scheduling { background: var(--paper); }
+        .scheduling-list {
+            max-width: 800px; margin: 0 auto;
+            list-style: none;
+            counter-reset: sched;
+        }
         .scheduling-list li {
+            counter-increment: sched;
             color: var(--gray-text);
-            font-size: 0.95rem;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--gray-lighter);
+            font-size: 1rem;
+            padding: 1.25rem 0 1.25rem 3.5rem;
+            border-bottom: 1px solid var(--gray-line);
+            position: relative;
+            line-height: 1.55;
         }
         .scheduling-list li:last-child { border-bottom: none; }
+        .scheduling-list li::before {
+            content: counter(sched, decimal-leading-zero);
+            position: absolute;
+            left: 0; top: 1.4rem;
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1.1rem;
+            color: var(--gold-dark);
+        }
 
         /* ===== FAQ ===== */
-        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq { background: var(--cream); }
+        .faq-list { max-width: 900px; margin: 0 auto; }
         .faq-item {
-            border-bottom: 1px solid var(--gray-lighter);
-            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--gray-line);
+            padding: 1.5rem 0;
         }
+        .faq-item:first-child { border-top: 1px solid var(--gray-line); }
         .faq-q {
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 500;
+            font-size: 1.05rem;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             user-select: none;
             gap: 1rem;
+            color: var(--ink);
         }
         .faq-q-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            display: flex; align-items: center; gap: 1rem;
             flex: 1;
         }
         .faq-tag {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.6rem;
-            border-radius: 2px;
+            font-size: 0.62rem; font-weight: 700;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            padding: 0.3rem 0.6rem;
             white-space: nowrap;
             flex-shrink: 0;
+            border: 1px solid;
         }
         .faq-tag-assessment {
-            background: rgba(201, 162, 39, 0.15);
-            color: var(--gold-dark);
+            background: rgba(200,150,31,0.1);
+            color: var(--gold-deep);
+            border-color: rgba(200,150,31,0.2);
         }
         .faq-tag-consulting {
-            background: rgba(10, 10, 10, 0.08);
+            background: rgba(10,10,10,0.05);
             color: var(--gray-text);
+            border-color: rgba(10,10,10,0.1);
         }
         .faq-q::after {
             content: '+';
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--gold-dark);
             transition: transform 0.3s;
             flex-shrink: 0;
+            line-height: 1;
         }
         .faq-item.open .faq-q::after { transform: rotate(45deg); }
         .faq-a {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.4s ease, padding 0.4s ease;
         }
-        .faq-item.open .faq-a { max-height: 400px; padding-top: 0.75rem; }
-        .faq-a p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.6; }
+        .faq-item.open .faq-a {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+        .faq-a p {
+            font-size: 0.95rem;
+            color: var(--gray-text);
+            line-height: 1.65;
+            max-width: 750px;
+        }
 
         /* ===== CONTACT ===== */
-        .contact-section { background: var(--off-white); }
-        .contact-container { max-width: 600px; margin: 0 auto; }
-        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
-        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-        .form-group label { font-size: 0.85rem; font-weight: 500; color: var(--gray-light); }
+        .contact {
+            background: var(--paper);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        .contact-left { position: sticky; top: 130px; }
+        .contact-book {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-book::before {
+            content: '';
+            position: absolute; top: 0; right: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(to right, var(--gold) 0%, transparent 100%);
+        }
+        .contact-book h3 {
+            font-size: 2rem;
+            color: var(--paper);
+            margin-bottom: 1rem;
+            line-height: 1.05;
+        }
+        .contact-book h3 .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold); font-weight: 400;
+        }
+        .contact-book p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.75rem;
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+        .contact-book .btn-primary { font-size: 0.82rem; padding: 1.1rem 2rem; }
+        .contact-book-note {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 1.5rem;
+        }
+        .contact-book-note a { color: var(--gold); text-decoration: none; }
+        .contact-book-note a:hover { text-decoration: underline; }
+        .contact-direct {
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-line);
+        }
+        .contact-direct h4 {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: var(--ink);
+            margin-bottom: 1rem;
+        }
+        .contact-links {
+            display: flex; flex-direction: column;
+            gap: 0.85rem;
+        }
+        .contact-links a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            display: flex; align-items: center; gap: 0.8rem;
+        }
+        .contact-links a:hover { color: var(--gold-dark); }
+        .contact-links a svg { flex-shrink: 0; }
+        .contact-form-wrap {
+            background: var(--cream);
+            padding: 2.5rem;
+        }
+        .contact-form-wrap h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.4rem;
+            line-height: 1;
+        }
+        .contact-form-wrap > p {
+            color: var(--gray-mute);
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .form-group label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--gray-mute);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
         .form-group input,
         .form-group textarea,
         .form-group select {
-            padding: 1rem;
-            background: var(--white);
-            border: 1px solid var(--gray-lighter);
-            color: var(--black);
+            padding: 0.85rem 1rem;
+            background: var(--paper);
+            border: 1px solid var(--gray-line);
+            color: var(--ink);
             font-family: 'Source Sans 3', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.2s;
+            font-size: 0.95rem;
+            transition: all 0.2s;
         }
         .form-group input:focus,
         .form-group textarea:focus,
-        .form-group select:focus { outline: none; border-color: var(--gold); }
-        .form-group textarea { min-height: 150px; resize: vertical; }
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold-dark);
+            background: var(--paper);
+            box-shadow: 0 0 0 3px rgba(244,189,42,0.1);
+        }
+        .form-group textarea { min-height: 120px; resize: vertical; }
         .form-group select { cursor: pointer; }
-        .contact-alt {
-            margin-top: 3rem;
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--gray-lighter);
+        .form-submit {
+            background: var(--ink);
+            color: var(--paper);
+            border: none;
+            padding: 1.1rem 2rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s;
+            margin-top: 0.5rem;
         }
-        .contact-alt p { color: var(--gray-text); margin-bottom: 1rem; }
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+        .form-submit:hover {
+            background: var(--gold);
+            color: var(--ink);
         }
-        .contact-links a {
-            color: var(--black);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .contact-links a:hover { color: var(--gold-dark); }
 
         /* ===== FOOTER ===== */
         footer {
-            padding: 2.5rem 2rem;
+            padding: 4rem 2rem 2.5rem;
             background: var(--black);
-            text-align: center;
+            color: var(--paper);
+            position: relative;
         }
-        .footer-contact { margin-bottom: 1rem; }
-        .footer-contact a {
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand {
+            display: flex; align-items: center; gap: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .footer-brand img { height: 40px; }
+        .footer-brand-text {
+            display: flex; flex-direction: column;
+            font-family: 'Bebas Neue', sans-serif;
+            line-height: 1.05;
+        }
+        .footer-brand-text .mark {
+            font-size: 1.1rem; color: var(--paper);
+            letter-spacing: 0.04em;
+        }
+        .footer-brand-text .tag {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-top: 2px;
+        }
+        .footer-byline {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.9rem;
+            max-width: 340px;
+            line-height: 1.5;
+        }
+        .footer-col h5 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.12em;
+            margin-bottom: 1.25rem;
+        }
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.3rem 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-bottom p {
+            color: rgba(255,255,255,0.45);
+            font-size: 0.78rem;
+        }
+        .footer-bottom p a {
             color: var(--gold);
             text-decoration: none;
-            font-size: 0.85rem;
-            margin: 0 0.75rem;
         }
-        .footer-contact a:hover { text-decoration: underline; }
-        footer p { color: var(--gray-light); font-size: 0.8rem; }
-        footer p a { color: var(--gold); text-decoration: none; }
+        .footer-bottom p a:hover { text-decoration: underline; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(.2,.7,.3,1), transform 0.8s cubic-bezier(.2,.7,.3,1);
+        }
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            nav { padding: 0.75rem 1.25rem; }
+        @media (max-width: 980px) {
+            .hero { min-height: auto; padding: 8rem 1.5rem 5rem; }
+            .hero-meta { display: none; }
+            .explainer-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .explainer-visual { position: static; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .service-card.span-2,
+            .service-card.span-3,
+            .service-card.span-4,
+            .service-card.span-6 { grid-column: span 2; }
+            .deliver-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .onetime-grid { grid-template-columns: repeat(2, 1fr); }
+            .ongoing-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .area-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-left { position: static; }
+            .footer-top { grid-template-columns: 1fr; }
+            .freq-callout { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; }
+            .freq-callout-content { grid-template-columns: 1fr; }
+            .timeline::before { left: 30px; }
+            .timeline-step { grid-template-columns: 80px 1fr; gap: 1.5rem; }
+            .timeline-num { font-size: 3rem; padding-right: 0.5rem; }
+            .statement-inner { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        @media (max-width: 640px) {
+            nav { padding: 0.85rem 1.25rem; }
             .nav-links {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0; right: 0;
-                background: var(--white);
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--black);
                 flex-direction: column;
-                padding: 1rem 1.5rem;
-                gap: 1rem;
-                border-bottom: 1px solid var(--gray-lighter);
+                padding: 1.25rem 1.5rem;
+                gap: 0.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
             }
+            .nav-links a { padding: 0.6rem 0; }
+            .nav-cta { display: inline-block; text-align: center; }
             .nav-links.open { display: flex; }
             .hamburger { display: flex; }
             .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-            section { padding: 3.5rem 1.5rem; }
-            .hero { min-height: auto; padding: 7rem 1.5rem 3.5rem; }
-            .service-card { padding: 2rem; }
-            .service-price { font-size: 2rem; }
-            .area-highlight { font-size: 2.2rem; }
-            .report-preview { flex-direction: column; text-align: center; }
-            .report-preview-text ul { text-align: left; }
-            .contact-links { flex-direction: column; align-items: center; }
-            .atmo-image-wrapper { max-width: 320px; }
-            .sub-nav-link { font-size: 0.7rem; padding: 0.85rem 0.75rem; letter-spacing: 0.06em; }
-            .onetime-grid { grid-template-columns: 1fr 1fr; }
-            .ongoing-grid { grid-template-columns: 1fr; }
-            .bridge-callout { flex-direction: column; gap: 0.75rem; }
-            .faq-tag { display: none; }
-        }
-        @media (max-width: 480px) {
+            section { padding: 4.5rem 1.25rem; }
+            .hero { padding: 7rem 1.25rem 4rem; }
+            .hero-cta-row { flex-direction: column; align-items: stretch; }
+            .hero-cta-row a { text-align: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card.span-2,
+            .service-card.span-3,
+            .service-card.span-4,
+            .service-card.span-6 { grid-column: span 1; }
             .onetime-grid { grid-template-columns: 1fr; }
+            .marquee-item { font-size: 0.85rem; gap: 2rem; }
+            .marquee-track { gap: 2rem; animation-duration: 30s; }
+            .pillars-inner { grid-template-columns: 1fr 1fr; }
+            .pillar-link { padding: 0.95rem 0.5rem; }
+            .pillar-link .pl-text { font-size: 0.85rem; letter-spacing: 0.06em; }
+            .pillar-link .pl-num { font-size: 0.75rem; }
+            .faq-tag { display: none; }
+            .freq-callout { padding: 1.5rem; }
+            .contact-form-wrap, .contact-book { padding: 1.75rem; }
+            .area-policy { padding: 1.75rem; }
+            .credentials { gap: 0.4rem; }
+            .credential-tag { font-size: 0.65rem; padding: 0.4rem 0.7rem; }
         }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in { animation: fadeInUp 0.6s ease forwards; }
-        .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
     </style>
 </head>
 <body>
 
     <!-- NAV -->
-    <nav>
+    <nav id="mainNav">
         <a href="index.html" class="nav-logo">
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
-            <span>Move, Measure, Analyze</span>
+            <div class="nav-logo-text">
+                <span class="mark">Move, Measure, Analyze</span>
+                <span class="sub">mobile sports science</span>
+            </div>
         </a>
         <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
             <span></span><span></span><span></span>
@@ -919,306 +1656,447 @@
             <a href="index.html">Home</a>
             <a href="athletes.html" class="active">Athletes</a>
             <a href="balance.html">Balance</a>
-            <a href="mailto:fdelgadophd@movemeasure.com">Contact</a>
+            <a href="#contact" class="nav-cta">Book a Call</a>
         </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-bg" role="img" aria-label="Athlete performing countermovement jump on force plates (AI-generated illustration)"></div>
-        <div class="hero-content">
-            <img src="Logo_Transparent.png" alt="Move, Measure, Analyze" class="fade-in" style="width: 220px; height: auto; margin-bottom: 2rem;">
-            <h1 class="fade-in fade-in-delay-1"><span>Inform Tomorrow's Training</span></h1>
-            <p class="subheadline fade-in fade-in-delay-2">Data-driven assessments and speed development consulting for athletes and teams.</p>
-            <div class="hero-cta-row fade-in fade-in-delay-2">
-                <a href="#contact" class="btn-primary">Book a Free Consultation</a>
-                <a href="#assessment" class="btn-secondary">View Services</a>
+        <div class="hero-bg" role="img" aria-label="Athlete performing countermovement jump on force plates"></div>
+        <div class="hero-grid">
+            <div>
+                <div class="hero-eyebrow reveal">For Athletes &amp; Teams</div>
+                <h1 class="reveal reveal-delay-1">
+                    Inform<br>
+                    <span class="it">tomorrow's</span><br>
+                    training.
+                </h1>
+                <p class="hero-sub reveal reveal-delay-2">
+                    Hawkin Dynamics force plate assessments and speed development consulting &#8212; brought directly to your gym, field, or clinic.
+                </p>
+                <div class="hero-cta-row reveal reveal-delay-3">
+                    <a href="#contact" class="btn-primary">Book a Free Call</a>
+                    <a href="#assessment" class="btn-ghost">View Services</a>
+                </div>
             </div>
+        </div>
+        <div class="hero-meta reveal reveal-delay-4">
+            <span class="num">1000 Hz</span>
+            <span class="label-it">force plate sampling</span>
         </div>
     </section>
 
-    <!-- SUB-NAV -->
-    <div class="sub-nav">
-        <div class="sub-nav-inner">
-            <a href="#assessment" class="sub-nav-link active" id="subnav-assessment">Force &amp; Power Assessment</a>
-            <a href="#consulting" class="sub-nav-link" id="subnav-consulting">Speed &amp; Power Consulting</a>
+    <!-- MARQUEE -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span class="marquee-item">Force &times; Velocity Profiling</span>
+            <span class="marquee-item"><span class="it">Hawkin Dynamics</span></span>
+            <span class="marquee-item">Mobile Lab</span>
+            <span class="marquee-item">Asymmetry Audit</span>
+            <span class="marquee-item"><span class="it">Return to Sport</span></span>
+            <span class="marquee-item">Power Development</span>
+            <span class="marquee-item">Durham, NH</span>
+            <span class="marquee-item"><span class="it">Data-Driven</span></span>
+            <!-- repeat for seamless loop -->
+            <span class="marquee-item">Force &times; Velocity Profiling</span>
+            <span class="marquee-item"><span class="it">Hawkin Dynamics</span></span>
+            <span class="marquee-item">Mobile Lab</span>
+            <span class="marquee-item">Asymmetry Audit</span>
+            <span class="marquee-item"><span class="it">Return to Sport</span></span>
+            <span class="marquee-item">Power Development</span>
+            <span class="marquee-item">Durham, NH</span>
+            <span class="marquee-item"><span class="it">Data-Driven</span></span>
+        </div>
+    </div>
+
+    <!-- STATEMENT -->
+    <section class="statement">
+        <div class="statement-inner">
+            <div class="statement-label">The work</div>
+            <p class="statement-text reveal">
+                We don't guess &#8212; we <span class="it">measure.</span> Every training recommendation traces back to objective data: force-time curves, force-velocity profiles, side-to-side symmetry. The kind of evidence you can defend in a meeting, share with a parent, or hand to a physical therapist.
+            </p>
+        </div>
+    </section>
+
+    <!-- PILLARS / SUB-NAV -->
+    <div class="pillars">
+        <div class="pillars-inner">
+            <a href="#assessment" class="pillar-link active" id="subnav-assessment">
+                <span class="pl-num">i.</span><span class="pl-text">Force &amp; Power Assessment</span>
+            </a>
+            <a href="#consulting" class="pillar-link" id="subnav-consulting">
+                <span class="pl-num">ii.</span><span class="pl-text">Speed &amp; Power Consulting</span>
+            </a>
         </div>
     </div>
 
     <!-- WHAT ARE FORCE PLATES -->
-    <section style="background: var(--off-white);">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>What Are Force Plates?</h2>
-                <p>The technology behind data-driven performance testing.</p>
+    <section class="explainer">
+        <div class="container">
+            <div style="max-width: 700px;">
+                <div class="eyebrow reveal">The Technology</div>
+                <h2 class="h-display reveal reveal-delay-1">What <span class="it">force plates</span> tell us.</h2>
+                <p class="lede reveal reveal-delay-2">Force plates are precision instruments that capture the forces your body produces during movement &#8212; jumping, landing, pushing. A scale, but vastly more sensitive: not just <em>how much</em> force you generate, but <em>how</em> you generate it.</p>
             </div>
-            <p style="color: var(--gray-text); font-size: 1.05rem; text-align: center; margin-bottom: 2.5rem;">Force plates are precision instruments that measure the forces your body produces during movement &#8212; like jumping, landing, or pushing. Think of them as a highly sensitive scale that captures not just <em>how much</em> force you generate, but <em>how</em> you generate it.</p>
 
-            <div class="atmo-image-wrapper atmo-fade-offwhite">
-                <img src="squat-assessment.png" alt="Athlete in countermovement position on dual force plates" loading="lazy">
-            </div>
-            <p class="atmo-caption">Illustration of countermovement jump assessment (AI-generated)</p>
+            <div class="explainer-grid">
+                <div class="explainer-visual reveal">
+                    <div class="explainer-img-wrap">
+                        <img src="squat-assessment.png" alt="Athlete in countermovement position on dual force plates">
+                        <span class="explainer-img-tag">Countermovement jump &middot; bilateral</span>
+                    </div>
+                    <div class="explainer-stat">
+                        <span class="explainer-stat-num">4</span>
+                        <span class="explainer-stat-text">measurement domains, one <span class="it">non-invasive</span> protocol.</span>
+                    </div>
+                </div>
 
-            <div class="fp-grid">
-                <div class="fp-card">
-                    <h4>Power &amp; Explosiveness</h4>
-                    <p>How quickly you can generate force &#8212; critical for sprinting, jumping, and change of direction.</p>
-                </div>
-                <div class="fp-card">
-                    <h4>Strength</h4>
-                    <p>Your ability to produce maximum force, similar to a 1-rep max but measured more precisely.</p>
-                </div>
-                <div class="fp-card">
-                    <h4>Reactive Ability</h4>
-                    <p>How well you absorb and redirect force &#8212; essential for agility, stability, and injury prevention.</p>
-                </div>
-                <div class="fp-card">
-                    <h4>Asymmetries</h4>
-                    <p>Differences between your left and right sides that may indicate injury risk or limit performance.</p>
+                <div class="explainer-list">
+                    <div class="explainer-item reveal">
+                        <div class="explainer-item-num">i.</div>
+                        <div>
+                            <h4>Power &amp; Explosiveness</h4>
+                            <p>How quickly you generate force &#8212; the rate that drives sprinting, jumping, and change of direction.</p>
+                        </div>
+                    </div>
+                    <div class="explainer-item reveal reveal-delay-1">
+                        <div class="explainer-item-num">ii.</div>
+                        <div>
+                            <h4>Strength</h4>
+                            <p>Your ability to produce maximum force, similar to a 1-rep max but measured with far greater precision.</p>
+                        </div>
+                    </div>
+                    <div class="explainer-item reveal reveal-delay-2">
+                        <div class="explainer-item-num">iii.</div>
+                        <div>
+                            <h4>Reactive Ability</h4>
+                            <p>How well you absorb and redirect force &#8212; the substrate of agility, stability, and injury resilience.</p>
+                        </div>
+                    </div>
+                    <div class="explainer-item reveal reveal-delay-3">
+                        <div class="explainer-item-num">iv.</div>
+                        <div>
+                            <h4>Asymmetries</h4>
+                            <p>Left-right differences that signal injury risk or cap performance &#8212; the kind bilateral testing hides.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p style="color: var(--gray-text); font-size: 0.95rem; text-align: center;">This data helps guide your training program, track progress over time, and make informed decisions about return-to-sport readiness.</p>
+
+            <p class="explainer-closer reveal">
+                Together, these signals guide training, track progress over time, and inform return-to-sport decisions with evidence rather than instinct.
+            </p>
         </div>
     </section>
 
     <!-- ASSESSMENT SERVICES -->
-    <section id="assessment" class="services-section">
-        <div class="section-header">
-            <p class="section-label">Force &amp; Power Assessment</p>
-            <h2>Assessment Services</h2>
-            <p>Data-driven performance testing with individualized reporting and actionable insights.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <span class="service-badge">Individual Athletes</span>
-                <h3>Athlete Performance Assessment</h3>
-                <p>Comprehensive force plate testing to quantify power, asymmetry, and neuromuscular strategy using professional-grade equipment.</p>
-                <div class="service-price">$225 <span>/ session</span></div>
-                <ul class="service-details">
-                    <li>4 assessments tailored to your needs</li>
-                    <li>Force-velocity profiling</li>
-                    <li>Asymmetry &amp; imbalance detection</li>
-                    <li>Individual PDF report with benchmarks</li>
-                    <li>Training recommendations</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <span class="service-badge">Individual Athletes</span>
-                <span class="service-badge service-badge-dark">Recommended</span>
-                <h3>3-Session Performance Package</h3>
-                <p>Structured monitoring across your training or competitive season with meaningful comparison across sessions and objective tracking of performance changes.</p>
-                <div class="service-price">$575 <span>/ 3 sessions</span></div>
-                <ul class="service-details">
-                    <li>Three full force plate assessments</li>
-                    <li>Valid for 6 months from first session</li>
-                    <li>Longitudinal comparison across time points</li>
-                    <li>Performance trend analysis</li>
-                    <li>Updated recommendations after each session</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <span class="service-badge">Teams &amp; Clubs</span>
-                <h3>Team Baseline Assessment</h3>
-                <p>Establish baseline metrics for your team and identify athletes who may need individualized attention.</p>
-                <div class="service-price">$1,500 <span>/ up to 20 athletes</span></div>
-                <ul class="service-details">
-                    <li>2 assessments per athlete</li>
-                    <li>1.5&#8211;2 hour session (excludes warm-up)</li>
-                    <li>Team report with athlete comparisons</li>
-                    <li>Coach summary with follow-up call</li>
-                    <li>Reach out to discuss multiple visits</li>
-                    <li style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--gray-lighter);"><em>Need unilateral testing or additional assessments? Contact us for custom pricing.</em></li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <span class="service-badge">Large Groups</span>
-                <h3>Team Add-On</h3>
-                <p>For teams exceeding the 20-athlete base package. Same comprehensive assessment for additional athletes.</p>
-                <div class="service-price">$50 <span>/ athlete (21&#8211;30)</span></div>
-                <div class="service-price" style="margin-top: 0.5rem;">$45 <span>/ athlete (31+)</span></div>
-                <ul class="service-details">
-                    <li>Same testing protocol</li>
-                    <li>Individual report included</li>
-                    <li>Volume discount for larger teams</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <span class="service-badge">Injured / Return-to-Sport</span>
-                <h3>Asymmetry Audit</h3>
-                <p>Single-limb testing to uncover side-to-side differences that bilateral assessments can't detect &#8212; critical for injury recovery and prevention.</p>
-                <div class="service-price">$299 <span>/ session</span></div>
-                <ul class="service-details">
-                    <li>Unilateral (single-leg) jump testing</li>
-                    <li>Left vs. right force production comparison</li>
-                    <li>Identifies compensations hidden in bilateral tests</li>
-                    <li>Ideal for post-injury clearance decisions</li>
-                    <li>Detailed asymmetry report with recommendations</li>
-                </ul>
-            </div>
-        </div>
-        <div class="testing-freq">
-            <h4>Recommended Testing Frequency</h4>
-            <p><strong>Performance monitoring:</strong> Every 4&#8211;8 weeks to track progress and adjust training<br>
-            <strong>Rehab / Return-to-sport:</strong> Every 1&#8211;4 weeks until cleared</p>
-        </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section>
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p>From first contact to actionable data &#8212; here's what to expect.</p>
+    <section id="assessment" class="services">
+        <div class="container">
+            <div class="services-header reveal">
+                <div class="eyebrow">Practice One &middot; Assessment</div>
+                <h2 class="h-display">Force &amp; <span class="it">Power</span> Assessment</h2>
+                <p class="lede">Professional-grade testing with individualized reporting. Use as a one-time snapshot, or repeat across a season to measure what's actually changing.</p>
             </div>
 
-            <div class="atmo-image-wrapper atmo-fade-white">
-                <img src="team-testing.png" alt="Team force plate testing session in weight room" loading="lazy">
-            </div>
-            <p class="atmo-caption">Illustration of team testing session (AI-generated)</p>
-
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-num">01</div>
-                    <h4>Free Consultation</h4>
-                    <p>We discuss your goals, team size, and what assessments make sense for your athletes.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-num">02</div>
-                    <h4>We Come to You</h4>
-                    <p>I bring the force plates to your gym, field, or facility &#8212; no need to travel.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-num">03</div>
-                    <h4>Athletes Get Tested</h4>
-                    <p>Quick, non-invasive assessments. About 1.5&#8211;2 hours for a team of 20, or 30&#8211;60 minutes for individuals.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-num">04</div>
-                    <h4>Reports Delivered</h4>
-                    <p>Individual reports within 48 hours. Teams receive a follow-up call to walk through results together.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHAT YOU GET -->
-    <section style="background: var(--off-white);">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>What You Get</h2>
-                <p>Every assessment includes detailed reporting and actionable data.</p>
-            </div>
-            <div class="deliverables-grid">
-                <div class="deliverable-item">
-                    <div class="deliverable-icon">&#128202;</div>
-                    <div>
-                        <h4>Professional PDF Report</h4>
-                        <p>Individual athlete reports with metrics, visualizations, and normative comparisons.</p>
+            <div class="services-grid">
+                <!-- Featured: 3-Session (span 3, dark) -->
+                <div class="service-card span-3 featured reveal">
+                    <div class="service-tag-row">
+                        <span class="service-tag">Individual</span>
+                        <span class="service-tag service-tag-rec">Most Popular</span>
                     </div>
-                </div>
-                <div class="deliverable-item">
-                    <div class="deliverable-icon">&#9878;&#65039;</div>
-                    <div>
-                        <h4>Asymmetry Analysis</h4>
-                        <p>Left-right imbalance detection to identify injury risk and training priorities.</p>
+                    <h3>3-Session <span class="it">Performance</span> Package</h3>
+                    <p class="service-desc">Structured monitoring across a training or competitive season. Meaningful session-to-session comparison and objective tracking of what's actually improving.</p>
+                    <div class="service-price-row">
+                        <span class="service-price">$575</span>
+                        <span class="service-price-unit">/ 3 sessions</span>
                     </div>
-                </div>
-                <div class="deliverable-item">
-                    <div class="deliverable-icon">&#128200;</div>
-                    <div>
-                        <h4>Benchmark Comparisons</h4>
-                        <p>See how metrics compare to published research data from similar populations (when available).</p>
-                    </div>
-                </div>
-                <div class="deliverable-item">
-                    <div class="deliverable-icon">&#127919;</div>
-                    <div>
-                        <h4>Training Recommendations</h4>
-                        <p>Specific, actionable guidance based on individual force-velocity profiles.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SAMPLE REPORT -->
-    <section class="sample-section">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>See What You'll Receive</h2>
-                <p>Every assessment includes detailed reporting with actionable insights.</p>
-            </div>
-            <div class="report-preview">
-                <div class="report-preview-visual">
-                    <div class="mock-page">
-                        <div class="mock-bar gold"></div>
-                        <div class="mock-bar"></div>
-                        <div class="mock-bar short"></div>
-                        <div class="mock-bar"></div>
-                        <div class="mock-bar gold"></div>
-                        <div class="mock-bar short"></div>
-                    </div>
-                    <span style="font-size: 0.75rem; color: var(--gray-light);">Sample Report Preview</span>
-                </div>
-                <div class="report-preview-text">
-                    <h3>Your Assessment Reports</h3>
-                    <p>Reports are generated from your force plate data and include objective metrics, visual breakdowns, and clear next steps.</p>
-                    <ul>
-                        <li>Performance snapshot with key metrics</li>
-                        <li>Force-time curve analysis</li>
-                        <li>Asymmetry detection with status ratings</li>
-                        <li>Personalized training recommendations</li>
+                    <ul class="service-details">
+                        <li>Three full force plate assessments</li>
+                        <li>Valid for 6 months from first session</li>
+                        <li>Longitudinal comparison across time points</li>
+                        <li>Performance trend analysis</li>
+                        <li>Updated recommendations after each session</li>
                     </ul>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <a href="Sample_Team_Report_Website.pdf" target="_blank" class="btn-primary" style="font-size: 0.75rem; padding: 0.7rem 1.75rem;">Download Sample Team Report</a>
-                        <span class="btn-disabled">Sample Individual Report &#8212; Coming Soon</span>
+                </div>
+
+                <!-- Individual single session (span 3) -->
+                <div class="service-card span-3 reveal reveal-delay-1">
+                    <div class="service-tag-row">
+                        <span class="service-tag">Individual</span>
+                    </div>
+                    <h3>Athlete Performance Assessment</h3>
+                    <p class="service-desc">Comprehensive force plate testing to quantify power, asymmetry, and neuromuscular strategy &#8212; in one session.</p>
+                    <div class="service-price-row">
+                        <span class="service-price">$225</span>
+                        <span class="service-price-unit">/ session</span>
+                    </div>
+                    <ul class="service-details">
+                        <li>4 assessments tailored to your needs</li>
+                        <li>Force-velocity profiling</li>
+                        <li>Asymmetry &amp; imbalance detection</li>
+                        <li>Individual PDF report with benchmarks</li>
+                        <li>Training recommendations</li>
+                    </ul>
+                </div>
+
+                <!-- Team Baseline (span 4) -->
+                <div class="service-card span-4 reveal">
+                    <div class="service-tag-row">
+                        <span class="service-tag">Teams &amp; Clubs</span>
+                    </div>
+                    <h3>Team Baseline Assessment</h3>
+                    <p class="service-desc">Establish baseline metrics for an entire roster and surface the athletes who'd benefit from individualized follow-up.</p>
+                    <div class="service-price-row">
+                        <span class="service-price">$1,500</span>
+                        <span class="service-price-unit">/ up to 20 athletes</span>
+                    </div>
+                    <ul class="service-details">
+                        <li>2 assessments per athlete</li>
+                        <li>1.5&#8211;2 hour session (excludes warm-up)</li>
+                        <li>Team report with athlete comparisons</li>
+                        <li>Coach summary with follow-up call</li>
+                        <li>Reach out to discuss multiple visits</li>
+                        <li class="note">Need unilateral testing or extra assessments? Contact for custom pricing.</li>
+                    </ul>
+                </div>
+
+                <!-- Team Add-On (span 2) -->
+                <div class="service-card span-2 reveal reveal-delay-1">
+                    <div class="service-tag-row">
+                        <span class="service-tag">Large Groups</span>
+                    </div>
+                    <h3>Team Add-On</h3>
+                    <p class="service-desc">For rosters past the 20-athlete base. Same protocol, same individual reporting.</p>
+                    <div class="service-price-row">
+                        <span class="service-price">$50</span>
+                        <span class="service-price-unit">/ athlete (21&#8211;30)</span>
+                    </div>
+                    <div class="service-price-row" style="margin-top: 0.4rem;">
+                        <span class="service-price-extra">$45</span>
+                        <span class="service-price-unit">/ athlete (31+)</span>
+                    </div>
+                    <ul class="service-details">
+                        <li>Same testing protocol</li>
+                        <li>Individual report included</li>
+                        <li>Volume discount on larger rosters</li>
+                    </ul>
+                </div>
+
+                <!-- Asymmetry Audit (span 6 - full width) -->
+                <div class="service-card span-6 reveal">
+                    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: center;">
+                        <div>
+                            <div class="service-tag-row">
+                                <span class="service-tag">Injured &middot; Return-to-Sport</span>
+                            </div>
+                            <h3 style="font-size: 2.2rem;">Asymmetry <span style="font-family: 'Instrument Serif', serif; font-style: italic; color: var(--gold-dark); font-weight: 400;">Audit</span></h3>
+                            <p class="service-desc" style="margin-bottom: 1.25rem;">Single-limb testing to uncover side-to-side differences bilateral assessments can't detect &#8212; critical for injury recovery and clearance decisions.</p>
+                            <div class="service-price-row">
+                                <span class="service-price">$299</span>
+                                <span class="service-price-unit">/ session</span>
+                            </div>
+                        </div>
+                        <ul class="service-details" style="border-top: none; margin-top: 0; padding-top: 0; border-left: 1px solid var(--gray-line); padding-left: 2rem;">
+                            <li>Unilateral (single-leg) jump testing</li>
+                            <li>Left vs. right force comparison</li>
+                            <li>Identifies compensations bilateral tests miss</li>
+                            <li>Ideal for post-injury clearance decisions</li>
+                            <li>Detailed asymmetry report with recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTING FREQUENCY -->
+            <div class="freq-callout reveal">
+                <div class="freq-callout-label">Recommended<br>Cadence</div>
+                <div class="freq-callout-content">
+                    <div class="freq-item">
+                        <h5>Performance Monitoring</h5>
+                        <p><strong>4&#8211;8 weeks</strong>to track progress and adjust training.</p>
+                    </div>
+                    <div class="freq-item">
+                        <h5>Rehab / Return-to-Sport</h5>
+                        <p><strong>1&#8211;4 weeks</strong>until cleared.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SPORT CONSULTING -->
-    <section id="consulting" class="consulting-section">
-        <div class="section-inner">
-            <div class="section-header">
-                <p class="section-label">Sport Consulting</p>
-                <h2>Speed &amp; Power Development</h2>
-                <p>For coaches and parents across all sports. Whether your athlete plays soccer, football, basketball, or competes in track &#8212; speed and acceleration are trainable. We help you build a plan to develop them.</p>
+    <!-- HOW IT WORKS (dark timeline) -->
+    <section class="how">
+        <div class="how-inner">
+            <div class="how-header reveal">
+                <div class="eyebrow eyebrow-light">The Process</div>
+                <h2 class="h-display">From first call to <span class="it">actionable</span> data.</h2>
+                <p class="lede">No travel on your end. No setup learning curve. We bring the lab.</p>
             </div>
 
-            <p class="consulting-subsection-label">One-Time Services</p>
-            <p class="consulting-intro">Not sure where to start? A one-time review gives you an expert set of eyes on your current training plan &#8212; no ongoing commitment required.</p>
+            <div class="timeline">
+                <div class="timeline-step reveal">
+                    <div class="timeline-num">01<span class="timeline-num-sub">consult</span></div>
+                    <div class="timeline-content">
+                        <h4>Free <span class="it">consultation</span></h4>
+                        <p>A short call to discuss goals, athletes, and which assessments make sense. No commitment.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal">
+                    <div class="timeline-num">02<span class="timeline-num-sub">on-site</span></div>
+                    <div class="timeline-content">
+                        <h4>We come to <span class="it">you</span></h4>
+                        <p>Force plates arrive at your gym, field, or facility. No travel on your end.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal">
+                    <div class="timeline-num">03<span class="timeline-num-sub">test</span></div>
+                    <div class="timeline-content">
+                        <h4>Athletes get <span class="it">tested</span></h4>
+                        <p>Quick, non-invasive assessments. ~1.5&#8211;2 hours for a team of 20; 30&#8211;60 minutes for individuals.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal">
+                    <div class="timeline-num">04<span class="timeline-num-sub">report</span></div>
+                    <div class="timeline-content">
+                        <h4>Reports <span class="it">delivered</span></h4>
+                        <p>Individual reports within 48 hours. Teams get a follow-up call to walk through results together &#8212; not just a stack of PDFs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DELIVERABLES / SAMPLE REPORT (combined) -->
+    <section class="deliver">
+        <div class="container">
+            <div style="max-width: 700px;">
+                <div class="eyebrow reveal">What You Receive</div>
+                <h2 class="h-display reveal reveal-delay-1">A report you'll <span class="it">actually</span> use.</h2>
+                <p class="lede reveal reveal-delay-2">Each assessment produces a written deliverable engineered for action &#8212; metrics in context, asymmetries flagged, recommendations grounded in what your data actually says.</p>
+            </div>
+
+            <div class="deliver-grid">
+                <div class="deliver-list reveal">
+                    <div class="deliver-item">
+                        <div class="deliver-item-num">i.</div>
+                        <div>
+                            <h4>Professional PDF Report</h4>
+                            <p>Individual athlete reports with metrics, visualizations, and normative comparisons.</p>
+                        </div>
+                    </div>
+                    <div class="deliver-item">
+                        <div class="deliver-item-num">ii.</div>
+                        <div>
+                            <h4>Asymmetry Analysis</h4>
+                            <p>Left-right imbalance detection to flag injury risk and training priorities.</p>
+                        </div>
+                    </div>
+                    <div class="deliver-item">
+                        <div class="deliver-item-num">iii.</div>
+                        <div>
+                            <h4>Benchmark Comparisons</h4>
+                            <p>How your metrics compare to published research data on similar populations, when available.</p>
+                        </div>
+                    </div>
+                    <div class="deliver-item">
+                        <div class="deliver-item-num">iv.</div>
+                        <div>
+                            <h4>Training Recommendations</h4>
+                            <p>Specific, actionable guidance tied to your individual force-velocity profile.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-visual-stack reveal reveal-delay-2">
+                    <div class="report-page report-page-1">
+                        <div class="mock-header">
+                            <span class="h-tag">Performance Report</span>
+                            <span class="h-num">Page 02</span>
+                        </div>
+                        <div class="mock-title">Force-Velocity Profile</div>
+                        <div class="mock-bar gold"></div>
+                        <div class="mock-bar"></div>
+                        <div class="mock-bar gold-dark medium"></div>
+                        <div class="mock-bar short"></div>
+                        <div class="mock-chart">
+                            <div class="mock-chart-bar" style="height: 60%"></div>
+                            <div class="mock-chart-bar" style="height: 75%"></div>
+                            <div class="mock-chart-bar" style="height: 45%"></div>
+                            <div class="mock-chart-bar" style="height: 85%"></div>
+                            <div class="mock-chart-bar" style="height: 65%"></div>
+                            <div class="mock-chart-bar" style="height: 90%"></div>
+                            <div class="mock-chart-bar" style="height: 55%"></div>
+                            <div class="mock-chart-bar" style="height: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="report-page report-page-2">
+                        <div class="mock-header">
+                            <span class="h-tag">Performance Report</span>
+                            <span class="h-num">Page 04</span>
+                        </div>
+                        <div class="mock-title">Asymmetry Summary</div>
+                        <div class="mock-bar"></div>
+                        <div class="mock-bar gold"></div>
+                        <div class="mock-bar medium"></div>
+                        <div class="mock-bar short"></div>
+                        <div class="mock-bar gold-dark"></div>
+                        <div class="mock-bar short"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deliver-cta reveal">
+                <a href="Sample_Team_Report_Website.pdf" target="_blank" class="btn-outline-dark">Download Sample Team Report</a>
+                <span class="btn-coming-soon">Sample individual report &mdash; coming soon</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSULTING -->
+    <section id="consulting" class="consult">
+        <div class="container">
+            <div class="consult-header reveal">
+                <div class="eyebrow">Practice Two &middot; Consulting</div>
+                <h2 class="h-display">Speed &amp; <span class="it">power</span> development.</h2>
+                <p class="lede">For coaches and parents across all sports. Whether your athlete plays soccer, football, basketball, or competes on the track &#8212; speed and acceleration are trainable. We help you build the plan.</p>
+            </div>
+
+            <div class="consult-sub-label">One-Time Services</div>
+            <p class="consult-intro reveal">Not sure where to start? A one-time review puts an expert set of eyes on your training &#8212; no ongoing commitment.</p>
+
             <div class="onetime-grid">
-                <div class="onetime-card">
+                <div class="onetime-card reveal">
                     <h4>Weekly Plan Review</h4>
                     <div class="onetime-price">$225</div>
                     <p>One week of training reviewed, annotated, and returned with written feedback and recommended adjustments.</p>
                 </div>
-                <div class="onetime-card">
+                <div class="onetime-card reveal reveal-delay-1">
                     <h4>Phase Consult</h4>
                     <div class="onetime-price">$375</div>
-                    <p>A 3&#8211;6 week training block or preparation phase reviewed and restructured with speed development principles applied.</p>
+                    <p>A 3&#8211;6 week training block reviewed and restructured with speed development principles applied.</p>
                 </div>
-                <div class="onetime-card">
+                <div class="onetime-card reveal reveal-delay-2">
                     <h4>Season Plan Review</h4>
                     <div class="onetime-price">$550</div>
-                    <p>Full season architecture reviewed &#8212; periodization, loading progression, and competition schedule alignment for peak performance when it matters.</p>
+                    <p>Full season architecture &#8212; periodization, loading progression, and competition alignment for peak performance when it matters.</p>
                 </div>
-                <div class="onetime-card">
+                <div class="onetime-card reveal reveal-delay-3">
                     <h4>Follow-Up Call</h4>
-                    <div class="onetime-price">$37.50 <span>/ 30 min</span></div>
-                    <p>A focused call to discuss results, answer questions, or work through adjustments. Billed in 30-minute increments &#8212; $75 for a full hour.</p>
+                    <div class="onetime-price">$37.50<span>/ 30 min</span></div>
+                    <p>A focused call to discuss results, answer questions, or work through adjustments. $75 for the full hour.</p>
                 </div>
             </div>
 
-            <p class="consulting-subsection-label">Ongoing Consulting</p>
+            <div class="consult-sub-label">Ongoing Consulting</div>
+
             <div class="ongoing-grid">
-                <div class="ongoing-card">
-                    <span class="ongoing-badge">Individual</span>
-                    <h3>Individual Consulting</h3>
-                    <p>For parents or athletes focused on one athlete&#8217;s speed and power development. Includes a monthly call and training plan review with ongoing email access.</p>
-                    <div class="ongoing-price">$500 <span>/ month</span></div>
+                <div class="ongoing-card reveal">
+                    <span class="ongoing-tag">Individual</span>
+                    <h3>Individual <span class="it">Consulting</span></h3>
+                    <p>For parents or athletes focused on one athlete's speed and power development. A monthly call, training plan review, and ongoing email access.</p>
+                    <div class="ongoing-price">$500<span>/ month</span></div>
                     <p class="ongoing-addon">+$250/mo per additional athlete</p>
                     <ul class="ongoing-details">
                         <li>1 athlete included</li>
@@ -1227,47 +2105,54 @@
                         <li>Email access, 48&#8211;72 hr response</li>
                     </ul>
                 </div>
-                <div class="ongoing-card featured">
-                    <span class="ongoing-badge">Coaches / Teams</span>
-                    <h3>Program Consulting</h3>
-                    <p>For coaches managing a multi-athlete program. Covers sprint development planning, training review, and regular calls to keep your program on track. Scales with your roster.</p>
-                    <div class="ongoing-price">$1,000 <span>/ month</span></div>
+                <div class="ongoing-card featured reveal reveal-delay-1">
+                    <span class="ongoing-tag">Coaches &middot; Teams</span>
+                    <h3>Program <span class="it">Consulting</span></h3>
+                    <p>For coaches managing a multi-athlete program. Sprint development planning, training review, and regular calls to keep your program on track.</p>
+                    <div class="ongoing-price">$1,000<span>/ month</span></div>
                     <p class="ongoing-addon">+$150/mo per additional athlete (up to 5 more)</p>
                     <ul class="ongoing-details">
                         <li>Up to 5 athletes included</li>
                         <li>3 calls per month (~1 hour each)</li>
                         <li>1 training plan review per month</li>
                         <li>Questions answered within 24 hours</li>
-                        <li class="note">10+ athletes &#8212; contact us for a custom quote based on roster size and scope.</li>
+                        <li class="note">10+ athletes &#8212; contact for a custom quote based on roster size and scope.</li>
                     </ul>
-                </div>
-            </div>
-
-            <div class="bridge-callout">
-                <div class="bridge-callout-icon">&#128202;</div>
-                <div>
-                    <h4>Pair with Force &amp; Power Assessment</h4>
-                    <p>Force plate data and sport consulting work best together. Objective power output, force-velocity profiling, and asymmetry data give your training recommendations a measurable foundation. Ask about combined services during your free consultation &#8212; assessments and consulting are each available independently.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- BRIDGE (full-bleed dark) -->
+    <section class="bridge">
+        <div class="bridge-inner reveal">
+            <div class="bridge-mark">&times;</div>
+            <div class="bridge-eyebrow">Better Together</div>
+            <h3>Pair <span class="it">assessment</span> with consulting.</h3>
+            <p>Force plate data and sport consulting work best together. Objective power output, force-velocity profiling, and asymmetry data give training recommendations a measurable foundation. Ask about combined services on your free consultation &#8212; both are available independently.</p>
+        </div>
+    </section>
+
     <!-- ABOUT -->
-    <section class="about-section">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>About</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
+    <section class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="reveal">
+                    <div class="eyebrow">About</div>
+                    <h3 class="about-name">Dr. Ferdinand <span class="it">Delgado</span></h3>
+                    <p class="about-role">Founder &middot; Applied Scientist</p>
+                </div>
+                <div class="about-text reveal reveal-delay-1">
                     <p>Move, Measure, Analyze brings professional sports science testing directly to athletes, teams, and clinics across New Hampshire and the Seacoast region.</p>
-                    <p>Using Hawkin Dynamics force plates &#8212; the same technology used by professional and collegiate programs &#8212; we provide objective, data-driven assessments that inform training decisions and track progress over time.</p>
-                    <p>Founded by Dr. Ferdinand Delgado, an exercise scientist with over a decade of experience in athletic performance analysis and research.</p>
+                    <p>Using Hawkin Dynamics force plates &#8212; the same technology used by professional and collegiate programs &#8212; we deliver objective, data-driven assessments that inform training and track progress over time.</p>
+                    <p>Founded by Ferdinand Delgado, PhD, an applied scientist with over a decade of experience in athletic performance, biomechanics research, and quantitative analysis.</p>
+
                     <div class="credentials">
-                        <span class="credential-tag">PhD in Exercise Science</span>
-                        <span class="credential-tag">MS in Kinesiology &amp; Sport Science</span>
-                        <span class="credential-tag">10+ Years Coaching Experience</span>
+                        <span class="credential-tag">PhD &middot; Exercise &amp; Nutritional Sciences</span>
+                        <span class="credential-tag">MS &middot; Kinesiology</span>
+                        <span class="credential-tag">BS &middot; Mathematics</span>
+                        <span class="credential-tag">Grad Cert &middot; Data Science</span>
+                        <span class="credential-tag">10+ Years Coaching</span>
                     </div>
                 </div>
             </div>
@@ -1275,105 +2160,116 @@
     </section>
 
     <!-- SERVICE AREA -->
-    <section>
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Service Area</h2>
+    <section class="area">
+        <div class="area-grid">
+            <div class="reveal">
+                <div class="eyebrow">Service Area</div>
+                <div class="area-big">
+                    Durham, <span class="it">New Hampshire</span>
+                </div>
+                <p class="area-sub">&amp; the surrounding Seacoast. We bring the lab to you &#8212; gyms, fields, clinics, or any facility with space to test.</p>
             </div>
-            <div class="area-content">
-                <div class="area-highlight">Durham, NH &amp; Surrounding Areas</div>
-                <p style="color: var(--gray-text);">We bring the lab to you &#8212; gyms, fields, clinics, or any facility with space for testing.</p>
-                <div class="area-note">
-                    <strong>Travel Policy:</strong><br><br>
-                    <strong>Within 15 miles of Durham, NH</strong> &#8212; included at base price.<br><br>
-                    <strong>15&#8211;50 miles</strong> &#8212; $25 per 10-mile increment added to service price.<br><br>
-                    <strong>Beyond 50 miles</strong> &#8212; further transportation costs apply (driving or airfare) plus potential lodging. Contact us for a quote.
+            <div class="area-policy reveal reveal-delay-1">
+                <h4>Travel Policy</h4>
+                <div class="policy-row">
+                    <span class="policy-range">≤ 15 mi</span>
+                    <span class="policy-detail">Included at base price.</span>
+                </div>
+                <div class="policy-row">
+                    <span class="policy-range">15&#8211;50 mi</span>
+                    <span class="policy-detail">$25 per 10-mile increment added to service price.</span>
+                </div>
+                <div class="policy-row">
+                    <span class="policy-range">50+ mi</span>
+                    <span class="policy-detail">Further transportation (driving or airfare) plus potential lodging. Contact for a quote.</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SCHEDULING POLICY -->
-    <section class="scheduling-section">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Scheduling Policy</h2>
+    <!-- SCHEDULING -->
+    <section class="scheduling">
+        <div class="container-narrow">
+            <div style="text-align: center; margin-bottom: 3rem;" class="reveal">
+                <div class="eyebrow" style="justify-content: center;">Scheduling</div>
+                <h2 class="h-display">The <span class="it">fine</span> print.</h2>
             </div>
-            <ul class="scheduling-list">
-                <li>Multi-session packages must be completed within 6 months of the first session</li>
-                <li>Unused sessions are non-refundable</li>
-                <li>Sessions may be transferred within the same household</li>
+            <ul class="scheduling-list reveal">
+                <li>Multi-session packages must be completed within 6 months of the first session.</li>
+                <li>Unused sessions are non-refundable.</li>
+                <li>Sessions may be transferred within the same household.</li>
             </ul>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Frequently Asked Questions</h2>
+    <section id="faq" class="faq">
+        <div class="container-narrow">
+            <div style="text-align: center; margin-bottom: 3rem;" class="reveal">
+                <div class="eyebrow" style="justify-content: center;">Common Questions</div>
+                <h2 class="h-display">Frequently <span class="it">asked.</span></h2>
             </div>
-            <div class="faq-list">
+            <div class="faq-list reveal">
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Force &amp; Power Assessment</span>How long does a testing session take?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Assessment</span>How long does a testing session take?</span>
                     </div>
                     <div class="faq-a"><p>For individuals, about 30&#8211;60 minutes depending on the assessments. For teams of 20 athletes with 2 assessments each, expect 1.5&#8211;2 hours (excluding warm-up time).</p></div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Force &amp; Power Assessment</span>What space or equipment do you need at our facility?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Assessment</span>What space or equipment do you need at our facility?</span>
                     </div>
                     <div class="faq-a"><p>A flat, hard surface for the force plates is essential. If we're doing isometric testing, access to a weight room with racks is needed. For drop/depth jumps, we'll need boxes or a platform. We'll discuss specifics during the consultation.</p></div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Force &amp; Power Assessment</span>What should athletes wear?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Assessment</span>What should athletes wear?</span>
                     </div>
                     <div class="faq-a"><p>Normal workout clothes that allow unrestricted movement, plus sneakers. Ideally, athletes should wear the same shoes they'd use for training or competition.</p></div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Force &amp; Power Assessment</span>What's the difference between individual and team reports?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Assessment</span>What's the difference between individual and team reports?</span>
                     </div>
                     <div class="faq-a"><p>Individual athletes receive 4 assessments with in-depth analysis, detailed written interpretation, and comprehensive training recommendations. Team athletes receive 2 assessments with streamlined reports focused on key metrics &#8212; coaches then get a follow-up call to discuss the full team picture. If a team athlete needs deeper analysis, they can book an individual session.</p></div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>What sports do you work with?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Consulting</span>What sports do you work with?</span>
                     </div>
                     <div class="faq-a"><p>Any sport where speed, acceleration, and power matter &#8212; track and field, soccer, football, basketball, lacrosse, and more. If your athlete runs, cuts, or jumps, we can help.</p></div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>Do I need force plate data to start consulting?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Consulting</span>Do I need force plate data to start consulting?</span>
                     </div>
                     <div class="faq-a"><p>No. Consulting is available independently. That said, if you do have force plate data, it directly informs the training recommendations we make together.</p></div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>What does a typical month of consulting look like?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Consulting</span>What does a typical month of consulting look like?</span>
                     </div>
                     <div class="faq-a"><p>For individual consulting, expect one scheduled call and one plan review per month with email access in between. For program consulting, three calls per month, one plan review, and faster turnaround on questions.</p></div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>What's the difference between a one-time review and ongoing consulting?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Consulting</span>What's the difference between a one-time review and ongoing consulting?</span>
                     </div>
                     <div class="faq-a"><p>A one-time review gives you expert feedback on a specific plan or phase &#8212; no commitment required. Ongoing consulting means consistent support across a season or training cycle, with regular calls and plan reviews built in.</p></div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>How do I share training plans with you?</span>
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Consulting</span>How do I share training plans with you?</span>
                     </div>
                     <div class="faq-a"><p>Any format works &#8212; document, spreadsheet, photo of a whiteboard. We'll figure out whatever is easiest for you.</p></div>
                 </div>
@@ -1411,69 +2307,82 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Book a Free Consultation</h2>
-                <p>Schedule a free 15&#8211;30 minute call to discuss your needs and goals. No commitment required.</p>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;" class="reveal">
+                <div class="eyebrow" style="justify-content: center;">Get In Touch</div>
+                <h2 class="h-display">Book a free <span class="it">consultation.</span></h2>
+                <p class="lede" style="margin: 0 auto;">A 15&#8211;30 minute call to discuss your needs and goals. No commitment.</p>
             </div>
-            <div class="contact-container">
-                <div style="text-align: center; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--gray-lighter);">
-                    <p style="color: var(--gray-text); margin-bottom: 1.5rem; font-size: 1.05rem;">Ready to schedule? Book directly on my calendar:</p>
-                    <a href="https://calendar.app.google/CUFvaN63vdNEKiyj9" target="_blank" class="btn-primary" style="font-size: 1rem; padding: 1.25rem 3rem;">Schedule a Call</a>
-                    <p style="color: var(--gray-light); margin-top: 1.5rem; font-size: 0.9rem;">All assessment participants must complete a <a href="waiver.html" style="color: var(--gold);">Release of Liability</a> before their session.</p>
+
+            <div class="contact-grid">
+                <div class="contact-left reveal">
+                    <div class="contact-book">
+                        <h3>Ready to <span class="it">schedule?</span></h3>
+                        <p>Book directly on my calendar &#8212; pick a time that works for you and we'll talk it through.</p>
+                        <a href="https://calendar.app.google/CUFvaN63vdNEKiyj9" target="_blank" class="btn-primary">Schedule a Call</a>
+                        <p class="contact-book-note">All assessment participants complete a <a href="waiver.html">Release of Liability</a> before their session.</p>
+                    </div>
+
+                    <div class="contact-direct">
+                        <h4>Or reach out directly</h4>
+                        <div class="contact-links">
+                            <a href="mailto:fdelgadophd@movemeasure.com">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                fdelgadophd@movemeasure.com
+                            </a>
+                            <a href="https://www.instagram.com/movemeasureanalyze" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                @movemeasureanalyze
+                            </a>
+                            <a href="https://www.linkedin.com/company/109068575" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <p style="text-align: center; color: var(--gray-light); margin-bottom: 2rem; font-size: 0.9rem;">Or send a message and I'll get back to you within 24 hours:</p>
-                <form class="contact-form" action="https://formspree.io/f/mvzbzyzn" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a service...</option>
-                            <option value="individual">Athlete Performance Assessment (Individual)</option>
-                            <option value="monitoring">3-Session Performance Package</option>
-                            <option value="asymmetry">Asymmetry Audit (Injured/RTS)</option>
-                            <option value="team">Team Baseline Assessment (Team)</option>
-                            <option value="consulting-onetime">Sport Consulting (One-Time Review)</option>
-                            <option value="consulting-individual">Sport Consulting (Individual Ongoing)</option>
-                            <option value="consulting-program">Sport Consulting (Program Ongoing)</option>
-                            <option value="other">Other / Not Sure</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="athletes">Number of Athletes (if team or program)</label>
-                        <input type="text" id="athletes" name="athletes" placeholder="e.g., 25">
-                    </div>
-                    <div class="form-group">
-                        <label for="location">Your Location / Facility</label>
-                        <input type="text" id="location" name="location" placeholder="e.g., Portsmouth, NH">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Tell Us More</label>
-                        <textarea id="message" name="message" placeholder="Sport, goals, preferred dates, questions..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="border: none; cursor: pointer; font-family: 'Source Sans 3', sans-serif; text-align: center;">Request Consultation</button>
-                </form>
-                <div class="contact-alt">
-                    <p>Or reach out directly:</p>
-                    <div class="contact-links">
-                        <a href="mailto:fdelgadophd@movemeasure.com">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>fdelgadophd@movemeasure.com
-                        </a>
-                        <a href="https://www.instagram.com/movemeasureanalyze" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>@movemeasureanalyze
-                        </a>
-                        <a href="https://www.linkedin.com/company/109068575" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>LinkedIn
-                        </a>
-                    </div>
+
+                <div class="contact-form-wrap reveal reveal-delay-1">
+                    <h3>Send a <span class="serif-it" style="color: var(--gold-deep);">message</span></h3>
+                    <p>I'll respond within 24 hours.</p>
+                    <form class="contact-form" action="https://formspree.io/f/mvzbzyzn" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="individual">Athlete Performance Assessment (Individual)</option>
+                                <option value="monitoring">3-Session Performance Package</option>
+                                <option value="asymmetry">Asymmetry Audit (Injured/RTS)</option>
+                                <option value="team">Team Baseline Assessment (Team)</option>
+                                <option value="consulting-onetime">Sport Consulting (One-Time Review)</option>
+                                <option value="consulting-individual">Sport Consulting (Individual Ongoing)</option>
+                                <option value="consulting-program">Sport Consulting (Program Ongoing)</option>
+                                <option value="other">Other / Not Sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="athletes"># of Athletes (if team or program)</label>
+                            <input type="text" id="athletes" name="athletes" placeholder="e.g., 25">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Your Location / Facility</label>
+                            <input type="text" id="location" name="location" placeholder="e.g., Portsmouth, NH">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell Me More</label>
+                            <textarea id="message" name="message" placeholder="Sport, goals, preferred dates, questions..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Request Consultation</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1481,22 +2390,48 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-contact">
-            <a href="mailto:fdelgadophd@movemeasure.com">fdelgadophd@movemeasure.com</a>
-            <a href="https://www.instagram.com/movemeasureanalyze" target="_blank">@movemeasureanalyze</a>
-            <a href="https://www.linkedin.com/company/109068575" target="_blank">LinkedIn</a>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand">
+                        <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
+                        <div class="footer-brand-text">
+                            <span class="mark">Move, Measure, Analyze</span>
+                            <span class="tag">mobile sports science</span>
+                        </div>
+                    </div>
+                    <p class="footer-byline">Bringing Hawkin Dynamics force plate assessment and speed development consulting to athletes, teams, and clinics across New Hampshire.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Practice</h5>
+                    <a href="index.html">Home</a>
+                    <a href="athletes.html">Athletes &amp; Teams</a>
+                    <a href="balance.html">Balance &amp; Falls</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Connect</h5>
+                    <a href="mailto:fdelgadophd@movemeasure.com">fdelgadophd@movemeasure.com</a>
+                    <a href="https://www.instagram.com/movemeasureanalyze" target="_blank">Instagram</a>
+                    <a href="https://www.linkedin.com/company/109068575" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Move, Measure, Analyze LLC &middot; Durham, NH</p>
+                <p>Designed &amp; built by <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
+            </div>
         </div>
-        <p>&copy; 2026 Move, Measure, Analyze LLC &middot; Durham, NH</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #555;">Website Designed &amp; Developed by <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
     </footer>
 
     <script>
-        // Nav shadow on scroll
+        // Nav background on scroll
+        const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', function() {
-            document.querySelector('nav').style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none';
+            if (window.scrollY > 30) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
 
-        // Hamburger menu
+        // Close mobile menu on link click
         document.querySelectorAll('.nav-links a').forEach(function(link) {
             link.addEventListener('click', function() {
                 document.querySelector('.hamburger').classList.remove('active');
@@ -1504,21 +2439,36 @@
             });
         });
 
-        // Sub-nav active state on scroll
+        // Pillar nav (sub-nav) active state on scroll
         const assessmentSection = document.getElementById('assessment');
         const consultingSection = document.getElementById('consulting');
         const subNavAssessment = document.getElementById('subnav-assessment');
         const subNavConsulting = document.getElementById('subnav-consulting');
 
         window.addEventListener('scroll', function() {
+            if (!consultingSection) return;
             const consultingTop = consultingSection.getBoundingClientRect().top;
-            if (consultingTop <= 120) {
+            if (consultingTop <= 150) {
                 subNavAssessment.classList.remove('active');
                 subNavConsulting.classList.add('active');
             } else {
                 subNavAssessment.classList.add('active');
                 subNavConsulting.classList.remove('active');
             }
+        });
+
+        // Scroll-triggered reveals
+        const revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            revealObserver.observe(el);
         });
     </script>
 </body>
