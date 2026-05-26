@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Athletes & Teams | Move, Measure, Analyze</title>
-    <meta name="description" content="Force plate assessments for athletes and teams in New Hampshire. Quantify power, asymmetry, and neuromuscular strategy with Hawkin Dynamics technology.">
+    <meta name="description" content="Data-driven force and power assessments and speed development consulting for athletes and teams in New Hampshire. Hawkin Dynamics technology brought to your facility.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
             letter-spacing: 0.02em;
         }
 
-        /* ===== NAV (shared) ===== */
+        /* ===== NAV ===== */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -92,7 +92,7 @@
             transition: all 0.3s;
         }
 
-        /* ===== HERO WITH BACKGROUND IMAGE ===== */
+        /* ===== HERO ===== */
         .hero {
             padding: 8rem 2rem 5rem;
             text-align: center;
@@ -117,7 +117,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: 
+            background:
                 linear-gradient(to bottom, rgba(255,255,255,0.85) 0%, rgba(248,248,248,0.7) 50%, rgba(255,255,255,0.95) 100%),
                 radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.06) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.04) 0%, transparent 40%);
@@ -185,6 +185,44 @@
             color: var(--gold-dark);
         }
 
+        /* ===== SUB-NAV ===== */
+        .sub-nav {
+            position: sticky;
+            top: 65px;
+            z-index: 900;
+            background: var(--white);
+            border-bottom: 2px solid var(--gray-lighter);
+            display: flex;
+            justify-content: center;
+        }
+        .sub-nav-inner {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+        }
+        .sub-nav-link {
+            flex: 1;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--gray-text);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        .sub-nav-link:hover {
+            color: var(--gold-dark);
+            border-bottom-color: var(--gold);
+        }
+        .sub-nav-link.active {
+            color: var(--gold-dark);
+            border-bottom-color: var(--gold);
+        }
+
         /* ===== SECTIONS ===== */
         section { padding: 5rem 2rem; }
         .section-inner { max-width: 900px; margin: 0 auto; }
@@ -242,7 +280,6 @@
             opacity: 0.7;
             filter: grayscale(15%);
         }
-        /* Soft fade edges */
         .atmo-image-wrapper::after {
             content: '';
             position: absolute;
@@ -250,14 +287,14 @@
             pointer-events: none;
         }
         .atmo-fade-white::after {
-            background: 
+            background:
                 linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 15%),
                 linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 15%),
                 linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 8%),
                 linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 8%);
         }
         .atmo-fade-offwhite::after {
-            background: 
+            background:
                 linear-gradient(to top, var(--off-white) 0%, rgba(248,248,248,0) 15%),
                 linear-gradient(to bottom, var(--off-white) 0%, rgba(248,248,248,0) 15%),
                 linear-gradient(to left, var(--off-white) 0%, rgba(248,248,248,0) 8%),
@@ -295,7 +332,7 @@
             margin: 0;
         }
 
-        /* ===== SERVICES ===== */
+        /* ===== ASSESSMENT SERVICES ===== */
         .services-section { background: var(--off-white); }
         .services-grid {
             display: grid;
@@ -386,10 +423,7 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
-        .step-card {
-            text-align: center;
-            padding: 1.5rem;
-        }
+        .step-card { text-align: center; padding: 1.5rem; }
         .step-num {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 3rem;
@@ -402,10 +436,7 @@
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
-        .step-card p {
-            color: var(--gray-text);
-            font-size: 0.9rem;
-        }
+        .step-card p { color: var(--gray-text); font-size: 0.9rem; }
 
         /* ===== DELIVERABLES ===== */
         .deliverables-grid {
@@ -495,14 +526,173 @@
             opacity: 0.6;
         }
 
+        /* ===== CONSULTING SECTION ===== */
+        .consulting-section { background: var(--white); }
+        .consulting-subsection-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray-light);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .consulting-intro {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto 2rem;
+            font-size: 0.95rem;
+            color: var(--gray-text);
+            font-weight: 300;
+        }
+        .onetime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+        .onetime-card {
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .onetime-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+        }
+        .onetime-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .onetime-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--gold-dark);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+        .onetime-price span {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.85rem;
+            color: var(--gray-light);
+        }
+        .onetime-card p {
+            color: var(--gray-text);
+            font-size: 0.875rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--gray-lighter);
+            line-height: 1.5;
+        }
+        .ongoing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .ongoing-card {
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .ongoing-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+        }
+        .ongoing-card.featured {
+            border-color: var(--gold);
+            border-width: 2px;
+        }
+        .ongoing-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            background: rgba(201, 162, 39, 0.15);
+            padding: 0.4rem 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .ongoing-card h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .ongoing-card > p {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            font-weight: 300;
+        }
+        .ongoing-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--gold-dark);
+            margin-bottom: 0.25rem;
+            line-height: 1;
+        }
+        .ongoing-price span {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            color: var(--gray-light);
+        }
+        .ongoing-addon {
+            font-size: 0.8rem;
+            color: var(--gray-light);
+            margin-bottom: 1.25rem;
+            font-style: italic;
+        }
+        .ongoing-details {
+            list-style: none;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--gray-lighter);
+        }
+        .ongoing-details li {
+            color: var(--gray-text);
+            font-size: 0.875rem;
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+        }
+        .ongoing-details li::before {
+            content: '\2192';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        .ongoing-details li.note {
+            color: var(--gray-light);
+            font-style: italic;
+            font-size: 0.825rem;
+            padding-top: 0.75rem;
+            margin-top: 0.5rem;
+            border-top: 1px solid var(--gray-lighter);
+        }
+        .ongoing-details li.note::before { content: ''; }
+        .bridge-callout {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--off-white);
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+        .bridge-callout-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .bridge-callout h4 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+        .bridge-callout p { color: var(--gray-text); font-size: 0.9rem; line-height: 1.6; }
+
         /* ===== ABOUT ===== */
         .about-section { background: var(--off-white); }
         .about-content { max-width: 800px; margin: 0 auto; }
-        .about-text p {
-            color: var(--gray-text);
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-        }
+        .about-text p { color: var(--gray-text); margin-bottom: 1rem; font-size: 1.05rem; }
         .credentials {
             display: flex;
             flex-wrap: wrap;
@@ -519,11 +709,7 @@
         }
 
         /* ===== AREA ===== */
-        .area-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
+        .area-content { max-width: 700px; margin: 0 auto; text-align: center; }
         .area-highlight {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 3rem;
@@ -542,11 +728,7 @@
 
         /* ===== SCHEDULING ===== */
         .scheduling-section { background: var(--off-white); }
-        .scheduling-list {
-            max-width: 700px;
-            margin: 0 auto;
-            list-style: none;
-        }
+        .scheduling-list { max-width: 700px; margin: 0 auto; list-style: none; }
         .scheduling-list li {
             color: var(--gray-text);
             font-size: 0.95rem;
@@ -569,6 +751,31 @@
             justify-content: space-between;
             align-items: center;
             user-select: none;
+            gap: 1rem;
+        }
+        .faq-q-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+        }
+        .faq-tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.6rem;
+            border-radius: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .faq-tag-assessment {
+            background: rgba(201, 162, 39, 0.15);
+            color: var(--gold-dark);
+        }
+        .faq-tag-consulting {
+            background: rgba(10, 10, 10, 0.08);
+            color: var(--gray-text);
         }
         .faq-q::after {
             content: '+';
@@ -577,7 +784,6 @@
             color: var(--gold-dark);
             transition: transform 0.3s;
             flex-shrink: 0;
-            margin-left: 1rem;
         }
         .faq-item.open .faq-q::after { transform: rotate(45deg); }
         .faq-a {
@@ -585,10 +791,7 @@
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
         }
-        .faq-item.open .faq-a {
-            max-height: 400px;
-            padding-top: 0.75rem;
-        }
+        .faq-item.open .faq-a { max-height: 400px; padding-top: 0.75rem; }
         .faq-a p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.6; }
 
         /* ===== CONTACT ===== */
@@ -682,6 +885,14 @@
             .report-preview-text ul { text-align: left; }
             .contact-links { flex-direction: column; align-items: center; }
             .atmo-image-wrapper { max-width: 320px; }
+            .sub-nav-link { font-size: 0.7rem; padding: 0.85rem 0.75rem; letter-spacing: 0.06em; }
+            .onetime-grid { grid-template-columns: 1fr 1fr; }
+            .ongoing-grid { grid-template-columns: 1fr; }
+            .bridge-callout { flex-direction: column; gap: 0.75rem; }
+            .faq-tag { display: none; }
+        }
+        @media (max-width: 480px) {
+            .onetime-grid { grid-template-columns: 1fr; }
         }
 
         @keyframes fadeInUp {
@@ -695,7 +906,7 @@
 </head>
 <body>
 
-    <!-- NAV (shared across all pages) -->
+    <!-- NAV -->
     <nav>
         <a href="index.html" class="nav-logo">
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
@@ -717,14 +928,22 @@
         <div class="hero-bg" role="img" aria-label="Athlete performing countermovement jump on force plates (AI-generated illustration)"></div>
         <div class="hero-content">
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze" class="fade-in" style="width: 220px; height: auto; margin-bottom: 2rem;">
-            <h1 class="fade-in fade-in-delay-1">Measure Today,<br><span>Inform Tomorrow's Training</span></h1>
-            <p class="subheadline fade-in fade-in-delay-2">Force plate assessments for athletes and teams. Professional-grade testing brought directly to your facility.</p>
+            <h1 class="fade-in fade-in-delay-1"><span>Inform Tomorrow's Training</span></h1>
+            <p class="subheadline fade-in fade-in-delay-2">Data-driven assessments and speed development consulting for athletes and teams.</p>
             <div class="hero-cta-row fade-in fade-in-delay-2">
                 <a href="#contact" class="btn-primary">Book a Free Consultation</a>
-                <a href="#services" class="btn-secondary">View Services</a>
+                <a href="#assessment" class="btn-secondary">View Services</a>
             </div>
         </div>
     </section>
+
+    <!-- SUB-NAV -->
+    <div class="sub-nav">
+        <div class="sub-nav-inner">
+            <a href="#assessment" class="sub-nav-link active" id="subnav-assessment">Force &amp; Power Assessment</a>
+            <a href="#consulting" class="sub-nav-link" id="subnav-consulting">Speed &amp; Power Consulting</a>
+        </div>
+    </div>
 
     <!-- WHAT ARE FORCE PLATES -->
     <section style="background: var(--off-white);">
@@ -734,8 +953,7 @@
                 <p>The technology behind data-driven performance testing.</p>
             </div>
             <p style="color: var(--gray-text); font-size: 1.05rem; text-align: center; margin-bottom: 2.5rem;">Force plates are precision instruments that measure the forces your body produces during movement &#8212; like jumping, landing, or pushing. Think of them as a highly sensitive scale that captures not just <em>how much</em> force you generate, but <em>how</em> you generate it.</p>
-            
-            <!-- Inline atmospheric image -->
+
             <div class="atmo-image-wrapper atmo-fade-offwhite">
                 <img src="squat-assessment.png" alt="Athlete in countermovement position on dual force plates" loading="lazy">
             </div>
@@ -743,7 +961,7 @@
 
             <div class="fp-grid">
                 <div class="fp-card">
-                    <h4>Power & Explosiveness</h4>
+                    <h4>Power &amp; Explosiveness</h4>
                     <p>How quickly you can generate force &#8212; critical for sprinting, jumping, and change of direction.</p>
                 </div>
                 <div class="fp-card">
@@ -763,10 +981,11 @@
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="services-section">
+    <!-- ASSESSMENT SERVICES -->
+    <section id="assessment" class="services-section">
         <div class="section-header">
-            <h2>Services</h2>
+            <p class="section-label">Force &amp; Power Assessment</p>
+            <h2>Assessment Services</h2>
             <p>Data-driven performance testing with individualized reporting and actionable insights.</p>
         </div>
         <div class="services-grid">
@@ -778,7 +997,7 @@
                 <ul class="service-details">
                     <li>4 assessments tailored to your needs</li>
                     <li>Force-velocity profiling</li>
-                    <li>Asymmetry & imbalance detection</li>
+                    <li>Asymmetry &amp; imbalance detection</li>
                     <li>Individual PDF report with benchmarks</li>
                     <li>Training recommendations</li>
                 </ul>
@@ -798,7 +1017,7 @@
                 </ul>
             </div>
             <div class="service-card">
-                <span class="service-badge">Teams & Clubs</span>
+                <span class="service-badge">Teams &amp; Clubs</span>
                 <h3>Team Baseline Assessment</h3>
                 <p>Establish baseline metrics for your team and identify athletes who may need individualized attention.</p>
                 <div class="service-price">$1,500 <span>/ up to 20 athletes</span></div>
@@ -852,7 +1071,6 @@
                 <p>From first contact to actionable data &#8212; here's what to expect.</p>
             </div>
 
-            <!-- Inline atmospheric image -->
             <div class="atmo-image-wrapper atmo-fade-white">
                 <img src="team-testing.png" alt="Team force plate testing session in weight room" loading="lazy">
             </div>
@@ -960,6 +1178,81 @@
         </div>
     </section>
 
+    <!-- SPORT CONSULTING -->
+    <section id="consulting" class="consulting-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-label">Sport Consulting</p>
+                <h2>Speed &amp; Power Development</h2>
+                <p>For coaches and parents across all sports. Whether your athlete plays soccer, football, basketball, or competes in track &#8212; speed and acceleration are trainable. We help you build a plan to develop them.</p>
+            </div>
+
+            <p class="consulting-subsection-label">One-Time Services</p>
+            <p class="consulting-intro">Not sure where to start? A one-time review gives you an expert set of eyes on your current training plan &#8212; no ongoing commitment required.</p>
+            <div class="onetime-grid">
+                <div class="onetime-card">
+                    <h4>Weekly Plan Review</h4>
+                    <div class="onetime-price">$225</div>
+                    <p>One week of training reviewed, annotated, and returned with written feedback and recommended adjustments.</p>
+                </div>
+                <div class="onetime-card">
+                    <h4>Phase Consult</h4>
+                    <div class="onetime-price">$375</div>
+                    <p>A 3&#8211;6 week training block or preparation phase reviewed and restructured with speed development principles applied.</p>
+                </div>
+                <div class="onetime-card">
+                    <h4>Season Plan Review</h4>
+                    <div class="onetime-price">$550</div>
+                    <p>Full season architecture reviewed &#8212; periodization, loading progression, and competition schedule alignment for peak performance when it matters.</p>
+                </div>
+                <div class="onetime-card">
+                    <h4>Follow-Up Call</h4>
+                    <div class="onetime-price">$37.50 <span>/ 30 min</span></div>
+                    <p>A focused call to discuss results, answer questions, or work through adjustments. Billed in 30-minute increments &#8212; $75 for a full hour.</p>
+                </div>
+            </div>
+
+            <p class="consulting-subsection-label">Ongoing Consulting</p>
+            <div class="ongoing-grid">
+                <div class="ongoing-card">
+                    <span class="ongoing-badge">Individual</span>
+                    <h3>Individual Consulting</h3>
+                    <p>For parents or athletes focused on one athlete&#8217;s speed and power development. Includes a monthly call and training plan review with ongoing email access.</p>
+                    <div class="ongoing-price">$500 <span>/ month</span></div>
+                    <p class="ongoing-addon">+$250/mo per additional athlete</p>
+                    <ul class="ongoing-details">
+                        <li>1 athlete included</li>
+                        <li>1 call per month (~1 hour)</li>
+                        <li>1 training plan review per month</li>
+                        <li>Email access, 48&#8211;72 hr response</li>
+                    </ul>
+                </div>
+                <div class="ongoing-card featured">
+                    <span class="ongoing-badge">Coaches / Teams</span>
+                    <h3>Program Consulting</h3>
+                    <p>For coaches managing a multi-athlete program. Covers sprint development planning, training review, and regular calls to keep your program on track. Scales with your roster.</p>
+                    <div class="ongoing-price">$1,000 <span>/ month</span></div>
+                    <p class="ongoing-addon">+$150/mo per additional athlete (up to 5 more)</p>
+                    <ul class="ongoing-details">
+                        <li>Up to 5 athletes included</li>
+                        <li>3 calls per month (~1 hour each)</li>
+                        <li>1 training plan review per month</li>
+                        <li>Questions answered within 24 hours</li>
+                        <li class="note">10+ athletes &#8212; contact us for a custom quote based on roster size and scope.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bridge-callout">
+                <div class="bridge-callout-icon">&#128202;</div>
+                <div>
+                    <h4>Pair with Force &amp; Power Assessment</h4>
+                    <p>Force plate data and sport consulting work best together. Objective power output, force-velocity profiling, and asymmetry data give your training recommendations a measurable foundation. Ask about combined services during your free consultation &#8212; assessments and consulting are each available independently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ABOUT -->
     <section class="about-section">
         <div class="section-inner">
@@ -973,7 +1266,7 @@
                     <p>Founded by Dr. Ferdinand Delgado, an exercise scientist with over a decade of experience in athletic performance analysis and research.</p>
                     <div class="credentials">
                         <span class="credential-tag">PhD in Exercise Science</span>
-                        <span class="credential-tag">MS in Kinesiology & Sport Science</span>
+                        <span class="credential-tag">MS in Kinesiology &amp; Sport Science</span>
                         <span class="credential-tag">10+ Years Coaching Experience</span>
                     </div>
                 </div>
@@ -988,10 +1281,13 @@
                 <h2>Service Area</h2>
             </div>
             <div class="area-content">
-                <div class="area-highlight">Durham, NH & Surrounding Areas</div>
+                <div class="area-highlight">Durham, NH &amp; Surrounding Areas</div>
                 <p style="color: var(--gray-text);">We bring the lab to you &#8212; gyms, fields, clinics, or any facility with space for testing.</p>
                 <div class="area-note">
-                    <strong>Travel Policy:</strong> Assessments within 15 miles of Durham, NH are included at base price. Beyond 15 miles, a travel fee of $25 per 10-mile increment applies. Contact us for a quote for your location.
+                    <strong>Travel Policy:</strong><br><br>
+                    <strong>Within 15 miles of Durham, NH</strong> &#8212; included at base price.<br><br>
+                    <strong>15&#8211;50 miles</strong> &#8212; $25 per 10-mile increment added to service price.<br><br>
+                    <strong>Beyond 50 miles</strong> &#8212; further transportation costs apply (driving or airfare) plus potential lodging. Contact us for a quote.
                 </div>
             </div>
         </div>
@@ -1018,38 +1314,98 @@
                 <h2>Frequently Asked Questions</h2>
             </div>
             <div class="faq-list">
+
                 <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does a testing session take?</div>
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Force &amp; Power Assessment</span>How long does a testing session take?</span>
+                    </div>
                     <div class="faq-a"><p>For individuals, about 30&#8211;60 minutes depending on the assessments. For teams of 20 athletes with 2 assessments each, expect 1.5&#8211;2 hours (excluding warm-up time).</p></div>
                 </div>
+
                 <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What space or equipment do you need at our facility?</div>
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Force &amp; Power Assessment</span>What space or equipment do you need at our facility?</span>
+                    </div>
                     <div class="faq-a"><p>A flat, hard surface for the force plates is essential. If we're doing isometric testing, access to a weight room with racks is needed. For drop/depth jumps, we'll need boxes or a platform. We'll discuss specifics during the consultation.</p></div>
                 </div>
+
                 <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What should athletes wear?</div>
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Force &amp; Power Assessment</span>What should athletes wear?</span>
+                    </div>
                     <div class="faq-a"><p>Normal workout clothes that allow unrestricted movement, plus sneakers. Ideally, athletes should wear the same shoes they'd use for training or competition.</p></div>
                 </div>
+
                 <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How soon do we get results?</div>
-                    <div class="faq-a"><p>Individual athlete reports are delivered within 48 hours and include detailed analysis and recommendations. For teams, we schedule a follow-up call to walk through the results together rather than just sending a stack of PDFs.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you travel outside New Hampshire?</div>
-                    <div class="faq-a"><p>Yes, with travel fees applied beyond 15 miles from Durham, NH. For recurring sessions outside NH, we'd need to register the business in that state, which we can discuss.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can we retest athletes later to track progress?</div>
-                    <div class="faq-a"><p>Absolutely &#8212; that's the real value of these assessments. Retesting allows you to measure the impact of training interventions and track development over time.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the difference between individual and team reports?</div>
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-assessment">Force &amp; Power Assessment</span>What's the difference between individual and team reports?</span>
+                    </div>
                     <div class="faq-a"><p>Individual athletes receive 4 assessments with in-depth analysis, detailed written interpretation, and comprehensive training recommendations. Team athletes receive 2 assessments with streamlined reports focused on key metrics &#8212; coaches then get a follow-up call to discuss the full team picture. If a team athlete needs deeper analysis, they can book an individual session.</p></div>
                 </div>
+
                 <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What ages or skill levels do you work with?</div>
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>What sports do you work with?</span>
+                    </div>
+                    <div class="faq-a"><p>Any sport where speed, acceleration, and power matter &#8212; track and field, soccer, football, basketball, lacrosse, and more. If your athlete runs, cuts, or jumps, we can help.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>Do I need force plate data to start consulting?</span>
+                    </div>
+                    <div class="faq-a"><p>No. Consulting is available independently. That said, if you do have force plate data, it directly informs the training recommendations we make together.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>What does a typical month of consulting look like?</span>
+                    </div>
+                    <div class="faq-a"><p>For individual consulting, expect one scheduled call and one plan review per month with email access in between. For program consulting, three calls per month, one plan review, and faster turnaround on questions.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>What's the difference between a one-time review and ongoing consulting?</span>
+                    </div>
+                    <div class="faq-a"><p>A one-time review gives you expert feedback on a specific plan or phase &#8212; no commitment required. Ongoing consulting means consistent support across a season or training cycle, with regular calls and plan reviews built in.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Sport Consulting</span>How do I share training plans with you?</span>
+                    </div>
+                    <div class="faq-a"><p>Any format works &#8212; document, spreadsheet, photo of a whiteboard. We'll figure out whatever is easiest for you.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left">How soon do we get results?</span>
+                    </div>
+                    <div class="faq-a"><p>Individual athlete assessment reports are delivered within 48 hours and include detailed analysis and recommendations. For consulting, written feedback on plan reviews is typically returned within 48 hours. Teams receive a follow-up call to walk through assessment results together rather than just sending a stack of PDFs.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left">Do you travel outside New Hampshire?</span>
+                    </div>
+                    <div class="faq-a"><p>Yes. Within 15 miles of Durham, NH, travel is included. From 15&#8211;50 miles, a fee of $25 per 10-mile increment applies. Beyond 50 miles, further transportation costs apply &#8212; driving or airfare &#8212; plus potential lodging. Contact us for a quote for your location.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left">Can we retest athletes later to track progress?</span>
+                    </div>
+                    <div class="faq-a"><p>Absolutely &#8212; that's the real value of these assessments. Retesting allows you to measure the impact of training interventions and track development over time.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span class="faq-q-left">What ages or skill levels do you work with?</span>
+                    </div>
                     <div class="faq-a"><p>Athletes 13 and older. Athletes under 18 require parent/guardian permission. Younger athletes may be included if we determine the assessment would be beneficial for their development.</p></div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1059,13 +1415,13 @@
         <div class="section-inner">
             <div class="section-header">
                 <h2>Book a Free Consultation</h2>
-                <p>Schedule a free 15&#8211;30 minute call to discuss your team's needs and goals. No commitment required.</p>
+                <p>Schedule a free 15&#8211;30 minute call to discuss your needs and goals. No commitment required.</p>
             </div>
             <div class="contact-container">
                 <div style="text-align: center; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--gray-lighter);">
                     <p style="color: var(--gray-text); margin-bottom: 1.5rem; font-size: 1.05rem;">Ready to schedule? Book directly on my calendar:</p>
                     <a href="https://calendar.app.google/CUFvaN63vdNEKiyj9" target="_blank" class="btn-primary" style="font-size: 1rem; padding: 1.25rem 3rem;">Schedule a Call</a>
-                    <p style="color: var(--gray-light); margin-top: 1.5rem; font-size: 0.9rem;">All participants must complete a <a href="waiver.html" style="color: var(--gold);">Release of Liability</a> before their assessment.</p>
+                    <p style="color: var(--gray-light); margin-top: 1.5rem; font-size: 0.9rem;">All assessment participants must complete a <a href="waiver.html" style="color: var(--gold);">Release of Liability</a> before their session.</p>
                 </div>
                 <p style="text-align: center; color: var(--gray-light); margin-bottom: 2rem; font-size: 0.9rem;">Or send a message and I'll get back to you within 24 hours:</p>
                 <form class="contact-form" action="https://formspree.io/f/mvzbzyzn" method="POST">
@@ -1085,11 +1441,14 @@
                             <option value="monitoring">3-Session Performance Package</option>
                             <option value="asymmetry">Asymmetry Audit (Injured/RTS)</option>
                             <option value="team">Team Baseline Assessment (Team)</option>
+                            <option value="consulting-onetime">Sport Consulting (One-Time Review)</option>
+                            <option value="consulting-individual">Sport Consulting (Individual Ongoing)</option>
+                            <option value="consulting-program">Sport Consulting (Program Ongoing)</option>
                             <option value="other">Other / Not Sure</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="athletes">Number of Athletes (if team)</label>
+                        <label for="athletes">Number of Athletes (if team or program)</label>
                         <input type="text" id="athletes" name="athletes" placeholder="e.g., 25">
                     </div>
                     <div class="form-group">
@@ -1128,18 +1487,38 @@
             <a href="https://www.linkedin.com/company/109068575" target="_blank">LinkedIn</a>
         </div>
         <p>&copy; 2026 Move, Measure, Analyze LLC &middot; Durham, NH</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #555;">Website Designed & Developed by <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #555;">Website Designed &amp; Developed by <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
     </footer>
 
     <script>
+        // Nav shadow on scroll
         window.addEventListener('scroll', function() {
             document.querySelector('nav').style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none';
         });
+
+        // Hamburger menu
         document.querySelectorAll('.nav-links a').forEach(function(link) {
             link.addEventListener('click', function() {
                 document.querySelector('.hamburger').classList.remove('active');
                 document.querySelector('.nav-links').classList.remove('open');
             });
+        });
+
+        // Sub-nav active state on scroll
+        const assessmentSection = document.getElementById('assessment');
+        const consultingSection = document.getElementById('consulting');
+        const subNavAssessment = document.getElementById('subnav-assessment');
+        const subNavConsulting = document.getElementById('subnav-consulting');
+
+        window.addEventListener('scroll', function() {
+            const consultingTop = consultingSection.getBoundingClientRect().top;
+            if (consultingTop <= 120) {
+                subNavAssessment.classList.remove('active');
+                subNavConsulting.classList.add('active');
+            } else {
+                subNavAssessment.classList.add('active');
+                subNavConsulting.classList.remove('active');
+            }
         });
     </script>
 </body>
