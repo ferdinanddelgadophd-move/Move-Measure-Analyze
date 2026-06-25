@@ -375,6 +375,57 @@
         }
 
         /* ===== METHODOLOGY (accordion, dark) ===== */
+        /* ===== ORDER FORM ===== */
+        .order-section { background: var(--cream); }
+        .order-grid {
+            display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;
+            margin-top: 3rem;
+        }
+        .order-info-list { display: flex; flex-direction: column; gap: 0; }
+        .order-info-item {
+            padding: 1.5rem 0; border-top: 1px solid var(--gray-line);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;
+        }
+        .order-info-item:last-child { border-bottom: 1px solid var(--gray-line); }
+        .order-info-num {
+            font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.4rem;
+            color: var(--gold-dark); line-height: 1; padding-top: 0.2rem;
+        }
+        .order-info-item h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin-bottom: 0.4rem; color: var(--ink); }
+        .order-info-item p { color: var(--gray-text); font-size: 0.92rem; line-height: 1.5; }
+        .order-form-wrap { background: var(--paper); border: 1px solid var(--gray-line); padding: 2.5rem; }
+        .order-form-wrap h3 { font-size: 1.75rem; margin-bottom: 0.4rem; line-height: 1; }
+        .order-form-wrap > p.form-note { color: var(--gray-mute); font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.95rem; margin-bottom: 2rem; }
+        .order-form { display: flex; flex-direction: column; gap: 1.25rem; }
+        .order-form .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .order-form .form-group label {
+            font-size: 0.72rem; font-weight: 600; color: var(--gray-mute);
+            text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .order-form .form-group input,
+        .order-form .form-group textarea,
+        .order-form .form-group select {
+            padding: 0.85rem 1rem; background: var(--paper); border: 1px solid var(--gray-line);
+            color: var(--ink); font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; transition: all 0.2s;
+        }
+        .order-form .form-group input:focus,
+        .order-form .form-group textarea:focus,
+        .order-form .form-group select:focus {
+            outline: none; border-color: var(--gold-dark); box-shadow: 0 0 0 3px rgba(244,189,42,0.1);
+        }
+        .order-form .form-group textarea { min-height: 100px; resize: vertical; }
+        .order-form .form-group select { cursor: pointer; }
+        .order-form-submit {
+            background: var(--ink); color: var(--paper); border: none; padding: 1.1rem 2rem;
+            font-family: 'Source Sans 3', sans-serif; font-weight: 700; font-size: 0.82rem;
+            letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; margin-top: 0.5rem;
+        }
+        .order-form-submit:hover { background: var(--gold); color: var(--ink); }
+        .order-form-footnote {
+            margin-top: 1.25rem; font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 0.85rem; color: var(--gray-mute); line-height: 1.5;
+        }
+
         .method { background: var(--black); color: var(--paper); }
         .method-header { max-width: 700px; margin-bottom: 3.5rem; }
         .method-header h2 { color: var(--paper); }
@@ -482,6 +533,7 @@
             .events-caveat { grid-template-columns: 1fr; }
             .rel-note { grid-template-columns: 1fr; }
             .sample-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .order-grid { grid-template-columns: 1fr; gap: 3rem; }
             .price-grid-3 { grid-template-columns: 1fr; }
             .rel-grid { grid-template-columns: repeat(2, 1fr); }
             .addon-row { grid-template-columns: 1fr; gap: 1rem; }
@@ -947,6 +999,76 @@
             </div>
 
             <p class="pricing-note">35+ athletes, or need something custom? <a href="athletes.html#contact" style="color: var(--gold-deep); text-decoration: underline;">Get in touch for a quote.</a></p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#order" class="btn-primary">Order a Report</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ORDER FORM -->
+    <section id="order" class="order-section">
+        <div class="container">
+            <div style="max-width: 700px;" class="reveal">
+                <div class="eyebrow">Ready to Order</div>
+                <h2 class="h-display">Start your <span class="it" style="color: var(--gold-deep);">projection report.</span></h2>
+                <p class="lede">Let us know which tier you'd like, and we'll email you back with exactly what to send &ndash; current times, meet history, or a team roster &ndash; followed by an invoice once we have everything we need.</p>
+            </div>
+
+            <div class="order-grid">
+                <div class="order-info-list reveal">
+                    <div class="order-info-item">
+                        <div class="order-info-num">i.</div>
+                        <div>
+                            <h4>Pick a Tier</h4>
+                            <p>Submit this short form with the report tier you're interested in.</p>
+                        </div>
+                    </div>
+                    <div class="order-info-item">
+                        <div class="order-info-num">ii.</div>
+                        <div>
+                            <h4>We'll Email You</h4>
+                            <p>We'll reply with exactly what to send &ndash; current times, meet-by-meet history, or a team roster &ndash; in whatever format is easiest for you.</p>
+                        </div>
+                    </div>
+                    <div class="order-info-item">
+                        <div class="order-info-num">iii.</div>
+                        <div>
+                            <h4>Invoice &amp; Delivery</h4>
+                            <p>Once we have what we need, we'll send a Square invoice. Your report is built and delivered within 48 hours of payment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-form-wrap reveal reveal-delay-1">
+                    <h3>Order a <span class="it" style="color: var(--gold-deep);">report</span></h3>
+                    <p class="form-note">We'll email you to confirm before sending an invoice &ndash; nothing is charged automatically.</p>
+                    <form class="order-form" action="https://formspree.io/f/mvzbzyzn" method="POST">
+                        <div class="form-group">
+                            <label for="order-tier">Report Tier</label>
+                            <select id="order-tier" name="tier" required>
+                                <option value="">Select a tier...</option>
+                                <option value="snapshot">Single-Event Snapshot ($75)</option>
+                                <option value="standard">Standard Projection Report ($129)</option>
+                                <option value="full">Full Multi-Event Report ($179)</option>
+                                <option value="team-starter">Team Starter, 5&ndash;9 athletes ($99/athlete)</option>
+                                <option value="team-standard">Team Standard, 10&ndash;19 athletes ($89/athlete)</option>
+                                <option value="team-complete">Team Complete, 20&ndash;35 athletes ($79/athlete)</option>
+                                <option value="not-sure">Not Sure &ndash; Help Me Choose</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-athlete">Athlete or Team Name (optional)</label>
+                            <input type="text" id="order-athlete" name="athlete_name" placeholder="Athlete name, or team/roster name">
+                        </div>
+                        <div class="form-group">
+                            <label for="order-email">Email</label>
+                            <input type="email" id="order-email" name="email" required>
+                        </div>
+                        <button type="submit" class="order-form-submit">Request This Report</button>
+                    </form>
+                    <p class="order-form-footnote">Submitting this form is not a payment &ndash; we'll reach out by email with next steps before any report work begins.</p>
+                </div>
+            </div>
         </div>
     </section>
 
