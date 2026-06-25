@@ -228,11 +228,24 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            position: relative;
         }
         .path-card:hover {
             border-color: var(--gold);
             transform: translateY(-4px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .path-badge {
+            position: absolute;
+            top: -11px;
+            right: 1.25rem;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.65rem;
         }
         .path-icon {
             width: 64px;
@@ -310,6 +323,7 @@
             .path-card h2 { font-size: 1.2rem; margin-bottom: 0.25rem; }
             .path-card p { font-size: 0.8rem; margin-bottom: 0.5rem; }
             .path-cta { font-size: 0.7rem; }
+            .path-badge { top: -9px; right: 0.85rem; font-size: 0.56rem; padding: 0.25rem 0.55rem; }
             .footer-note { margin-top: 1.25rem; font-size: 0.75rem; }
         }
 
@@ -336,6 +350,7 @@
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="athletes.html">Athletes</a></li>
             <li><a href="balance.html">Balance</a></li>
+            <li><a href="performance-projections.html">Projections</a></li>
             <li><a href="mailto:fdelgadophd@movemeasure.com">Contact</a></li>
         </ul>
     </nav>
@@ -347,7 +362,7 @@
             <p class="tagline fade-in fade-in-delay-1">Mobile Assessment Services</p>
 
             <h1 class="headline fade-in fade-in-delay-1">Objective Data.<br><span>Informed Decisions.</span></h1>
-            <p class="subheadline fade-in fade-in-delay-2">Force &amp; Power Assessments, Sprint Integration Consulting, and Balance Assessments &mdash; we come to you.</p>
+            <p class="subheadline fade-in fade-in-delay-2">Force &amp; Power Assessments, Sprint Integration Consulting, Track &amp; Field Projections, and Balance Assessments &mdash; we come to you.</p>
 
             <!-- TRUST STRIP -->
             <div class="trust-strip fade-in fade-in-delay-2">
@@ -370,7 +385,7 @@
                 <div class="trust-item">
                     <span class="trust-label">Services</span>
                     <span class="trust-value">Force &amp; Power Assessment &middot; Speed Development Consulting</span>
-                    <span class="trust-value">Balance &amp; Fall Prevention</span>
+                    <span class="trust-value">Track &amp; Field Projections &middot; Balance &amp; Fall Prevention</span>
                 </div>
 
                 <div class="trust-divider"></div>
@@ -394,6 +409,26 @@
                     <p>Force &amp; power assessments and speed development consulting for athletes, teams, and sports programs.</p>
                     <span class="path-cta">
                         View Services
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="performance-projections.html" class="path-card">
+                    <span class="path-badge">New</span>
+                    <svg class="path-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 17l4.5-6 4 3L17 7l4 4"/>
+                        <path d="M3 21h18"/>
+                        <circle cx="7.5" cy="11" r="1"/>
+                        <circle cx="11.5" cy="14" r="1"/>
+                        <circle cx="17" cy="7" r="1"/>
+                        <circle cx="21" cy="11" r="1"/>
+                    </svg>
+                    <h2>Track &amp; Field Projections</h2>
+                    <p>Data-driven next-season projections for sprint and hurdle athletes, built from 470,000+ high school performances.</p>
+                    <span class="path-cta">
+                        View Projections
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
