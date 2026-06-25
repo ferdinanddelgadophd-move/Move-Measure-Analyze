@@ -900,6 +900,72 @@
             letter-spacing: 0.06em;
         }
 
+        /* ===== PROJECTIONS TEASER ===== */
+        .proj-teaser {
+            background: var(--cream-deep);
+            position: relative;
+            overflow: hidden;
+        }
+        .proj-teaser-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .proj-teaser h2 .it { color: var(--gold-deep); }
+        .proj-teaser-chips {
+            display: flex; gap: 0.6rem; flex-wrap: wrap;
+            margin-top: 1.75rem;
+        }
+        .proj-chip {
+            font-size: 0.74rem; font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.5rem 0.95rem;
+            background: var(--paper);
+            border: 1px solid var(--gray-line);
+            color: var(--gray-text);
+        }
+        .proj-teaser-cta {
+            margin-top: 2.25rem;
+            display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+        }
+        .proj-teaser-from {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            font-size: 1rem; color: var(--gray-mute);
+        }
+        .proj-teaser-from strong {
+            font-style: normal;
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--gold-deep);
+            font-size: 1.3rem;
+            margin-right: 0.3rem;
+        }
+        .proj-card {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 2rem 2.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .proj-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(to right, var(--gold) 0%, var(--gold-dark) 100%);
+        }
+        .proj-card-label {
+            font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 1rem;
+        }
+        .proj-card-row {
+            display: grid; grid-template-columns: 1fr auto; gap: 1rem;
+            padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: baseline;
+        }
+        .proj-card-row:last-child { border-bottom: none; }
+        .proj-card-event { font-size: 0.92rem; color: rgba(255,255,255,0.85); }
+        .proj-card-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--gold); }
+
         /* ===== CONSULTING ===== */
         .consult {
             background: var(--cream);
@@ -1614,6 +1680,7 @@
             .timeline-step { grid-template-columns: 80px 1fr; gap: 1.5rem; }
             .timeline-num { font-size: 3rem; padding-right: 0.5rem; }
             .statement-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .proj-teaser-inner { grid-template-columns: 1fr; gap: 3rem; }
         }
         @media (max-width: 640px) {
             nav { padding: 0.85rem 1.25rem; }
@@ -1676,6 +1743,7 @@
             <a href="index.html">Home</a>
             <a href="athletes.html" class="active">Athletes</a>
             <a href="balance.html">Balance</a>
+            <a href="performance-projections.html">Projections</a>
             <a href="#contact" class="nav-cta">Book a Call</a>
         </div>
     </nav>
@@ -2074,6 +2142,47 @@
         </div>
     </section>
 
+    <!-- PROJECTIONS TEASER -->
+    <section class="proj-teaser">
+        <div class="proj-teaser-inner">
+            <div class="reveal">
+                <div class="eyebrow">New &middot; Track &amp; Field Projections</div>
+                <h2 class="h-display">Where is next season <span class="it">headed?</span></h2>
+                <p class="lede">Statistical models trained on 470,000+ high school sprint &amp; hurdle performances project next-season times &ndash; with an honest expected range, not a guess. Built for coaches planning ahead, not just looking back.</p>
+                <div class="proj-teaser-chips">
+                    <span class="proj-chip">Same-event &amp; cross-event models</span>
+                    <span class="proj-chip">Reliability-rated projections</span>
+                    <span class="proj-chip">Individual &amp; team reports</span>
+                    <span class="proj-chip">Sprint &amp; hurdle events &middot; HS underclass &ndash; HS senior</span>
+                </div>
+                <div class="proj-teaser-cta">
+                    <a href="performance-projections.html" class="btn-primary">Explore Track &amp; Field Projections</a>
+                    <span class="proj-teaser-from"><strong>$75</strong>starting price</span>
+                </div>
+            </div>
+
+            <div class="proj-card reveal reveal-delay-1">
+                <div class="proj-card-label">Sample Projection &middot; 100m Hurdles</div>
+                <div class="proj-card-row">
+                    <span class="proj-card-event">Current Season Best</span>
+                    <span class="proj-card-val" style="color: rgba(255,255,255,0.7);">16.14s</span>
+                </div>
+                <div class="proj-card-row">
+                    <span class="proj-card-event">Projected Next Season</span>
+                    <span class="proj-card-val">16.08s</span>
+                </div>
+                <div class="proj-card-row">
+                    <span class="proj-card-event">Expected Range</span>
+                    <span class="proj-card-val" style="font-size: 1rem; color: rgba(255,255,255,0.7);">15.67&ndash;16.49s</span>
+                </div>
+                <div class="proj-card-row">
+                    <span class="proj-card-event">Reliability</span>
+                    <span class="proj-card-val" style="font-size: 1rem;">Strong</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONSULTING -->
     <section id="consulting" class="consult">
         <div class="container">
@@ -2385,6 +2494,8 @@
                                 <option value="monitoring">3-Session Performance Package</option>
                                 <option value="asymmetry">Asymmetry Audit (Injured/RTS)</option>
                                 <option value="team">Team Baseline Assessment (Team)</option>
+                                <option value="projections-individual">Track &amp; Field Projections (Individual)</option>
+                                <option value="projections-team">Track &amp; Field Projections (Team)</option>
                                 <option value="consulting-onetime">Sport Consulting (One-Time Review)</option>
                                 <option value="consulting-individual">Sport Consulting (Individual Ongoing)</option>
                                 <option value="consulting-program">Sport Consulting (Program Ongoing)</option>
@@ -2429,6 +2540,7 @@
                     <a href="index.html">Home</a>
                     <a href="athletes.html">Athletes &amp; Teams</a>
                     <a href="balance.html">Balance &amp; Falls</a>
+                    <a href="performance-projections.html">Track &amp; Field Projections</a>
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-col">
