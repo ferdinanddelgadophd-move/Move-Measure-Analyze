@@ -107,22 +107,24 @@
             padding: 9rem 2rem 5rem; overflow: hidden;
         }
         .hero-bg {
-            position: absolute; inset: 0;
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 54%;
             background-image: url('Projections_Hero.png');
-            background-size: cover;
-            background-position: center 50%;
-            opacity: 0.16;
-            filter: grayscale(15%) contrast(1.05);
-            transform: scale(1.02);
-            transform-origin: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center right;
+            opacity: 0.20;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 22%, black 42%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 22%, black 42%);
         }
-        @media (max-width: 980px) { .hero-bg { opacity: 0.10; } }
-        @media (max-width: 640px) { .hero-bg { opacity: 0.12; } }
+        @media (max-width: 980px) { .hero-bg { width: 70%; opacity: 0.14; } }
+        @media (max-width: 640px) { .hero-bg { display: none; } }
         .hero::before {
             content: ''; position: absolute; inset: 0;
             background:
-                radial-gradient(ellipse 60% 50% at 75% 20%, rgba(244,189,42,0.10) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(244,239,230,0.55) 0%, rgba(244,239,230,0.85) 50%, rgba(244,239,230,0.95) 100%);
+                radial-gradient(ellipse 60% 50% at 75% 20%, rgba(244,189,42,0.08) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(244,239,230,0.55) 0%, rgba(244,239,230,0.6) 42%, rgba(244,239,230,0.15) 100%);
             pointer-events: none;
         }
         .hero-inner {
@@ -593,7 +595,7 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-bg" role="img" aria-label="Line chart of projected performance trends"></div>
+        <div class="hero-bg" role="img" aria-label="Sample model projection chart for the 55m indoor sprint"></div>
         <div class="hero-inner">
             <div>
                 <div class="hero-eyebrow reveal">Track &amp; Field Projections</div>
