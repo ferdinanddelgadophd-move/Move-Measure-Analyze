@@ -110,6 +110,11 @@
         }
         .nav-links a:hover,
         .nav-links a.active { color: var(--gold); }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .hamburger span { width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         /* ── LANDING ── */
         .landing {
@@ -303,10 +308,18 @@
         .footer-social a:hover { color: var(--gold); }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
             nav { padding: 0.75rem 1.25rem; }
             .nav-brand span { display: none; }
-            .nav-links { gap: 1.25rem; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--black);
+                flex-direction: column; align-items: flex-start; gap: 0.25rem; padding: 1rem 1.25rem 1.25rem;
+                border-bottom: 2px solid var(--gold);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; padding: 0.6rem 0; }
             .landing { padding: 2rem 1.5rem 1.5rem; justify-content: flex-start; }
             .logo { width: 90px; margin-bottom: 0.5rem; }
             .company-name { font-size: 1.2rem; margin-bottom: 0.15rem; }
@@ -346,8 +359,12 @@
             <img src="MMA_Logo_White_Transparent.png" alt="Move, Measure, Analyze">
             <span>Move, Measure, Analyze</span>
         </a>
+        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
+            <span></span><span></span><span></span>
+        </div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="athletes.html">Athletes</a></li>
             <li><a href="balance.html">Balance</a></li>
             <li><a href="performance-projections.html">Projections</a></li>
@@ -454,6 +471,10 @@
                 </a>
             </div>
 
+            <p class="fade-in fade-in-delay-3" style="margin-top: 1.5rem; font-size: 0.85rem;">
+                <a href="services.html" style="color: var(--gold-dark); text-decoration: none; font-weight: 600; letter-spacing: 0.03em;">See every service &amp; full pricing &rarr;</a>
+            </p>
+
             <p class="footer-note fade-in fade-in-delay-4">
                 Questions? <a href="mailto:fdelgadophd@movemeasure.com">fdelgadophd@movemeasure.com</a>
             </p>
@@ -469,5 +490,14 @@
         <p>&copy; 2026 Move, Measure, Analyze LLC &middot; Durham, NH</p>
         <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #555;">Website Designed &amp; Developed by <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
     </footer>
+
+    <script>
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.querySelector('.hamburger').classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>
