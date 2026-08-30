@@ -647,8 +647,7 @@
             align-items: center;
         }
         .freq-callout-label {
-            font-size: 0.7rem; font-weight: 700;
-            letter-spacing: 0.18em; text-transform: uppercase;
+            font-weight: 700;
             color: var(--gold-deep);
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.4rem;
@@ -1167,6 +1166,33 @@
             border-top-color: rgba(255,255,255,0.12);
         }
         .ongoing-details li.note::before { display: none; }
+
+        /* ===== TESTIMONIAL BAND ===== */
+        .testimonial {
+            background: var(--cream);
+            padding: 6rem 2rem;
+        }
+        .testimonial-inner {
+            max-width: 900px; margin: 0 auto; text-align: center;
+        }
+        .testimonial blockquote {
+            font-size: clamp(1.5rem, 3vw, 2.3rem);
+            line-height: 1.3;
+            color: var(--ink);
+            font-weight: 300;
+            letter-spacing: -0.005em;
+            margin-bottom: 1.5rem;
+        }
+        .testimonial blockquote .it {
+            font-family: 'Instrument Serif', serif; font-style: italic;
+            color: var(--gold-deep);
+        }
+        .testimonial cite {
+            font-style: normal;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--gray-mute);
+        }
 
         /* ===== BRIDGE (full-bleed dark) ===== */
         .bridge {
@@ -1736,7 +1762,7 @@
                 <span class="sub">mobile sports science</span>
             </div>
         </a>
-        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
+        <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
             <span></span><span></span><span></span>
         </div>
         <div class="nav-links">
@@ -2143,6 +2169,15 @@
         </div>
     </section>
 
+    <!-- TESTIMONIAL -->
+    <section class="testimonial">
+        <div class="testimonial-inner reveal">
+            <div class="eyebrow" style="justify-content: center;">What Clients Say</div>
+            <blockquote>&ldquo;We&rsquo;ve really appreciated your ability to translate the data into <span class="it">actionable insights.</span>&rdquo;</blockquote>
+            <cite>Parent of an assessed athlete</cite>
+        </div>
+    </section>
+
     <!-- PROJECTIONS TEASER -->
     <section class="proj-teaser">
         <div class="proj-teaser-inner">
@@ -2158,7 +2193,7 @@
                 </div>
                 <div class="proj-teaser-cta">
                     <a href="performance-projections.html" class="btn-primary">Explore Track &amp; Field Projections</a>
-                    <span class="proj-teaser-from"><strong>$75</strong>starting price</span>
+                    <span class="proj-teaser-from"><strong>$19</strong>starting price</span>
                 </div>
             </div>
 
@@ -2192,11 +2227,11 @@
                 <h2 class="h-display">Speed &amp; <span class="it">power</span> development.</h2>
                 <p class="lede">For coaches and parents across all sports. Whether your athlete plays soccer, football, basketball, or competes on the track &ndash; speed and acceleration are trainable. We help you build the plan.</p>
             </div>
- 
+
             <div class="consult-sub-label">One-Time Services</div>
             <p class="consult-intro reveal">Not sure where to start, or just need a second opinion? One-time reviews put an expert set of eyes on your training &ndash; no ongoing commitment, no retainer.</p>
             <p class="consult-intro reveal" style="font-style: normal; font-family: 'Source Sans 3', sans-serif; font-size: 0.88rem; color: var(--gold-deep); font-weight: 600; letter-spacing: 0.04em; margin-top: -1rem; margin-bottom: 2rem;">These prices will increase as the client roster fills. Lock in current rates by booking now.</p>
- 
+
             <div class="onetime-grid">
                 <div class="onetime-card reveal">
                     <h4>Weekly Plan Review</h4>
@@ -2219,10 +2254,10 @@
                     <p>A focused call to discuss results, answer questions, or work through adjustments after a review. $75 for the full hour.</p>
                 </div>
             </div>
- 
+
             <div class="consult-sub-label">Ongoing Consulting</div>
             <p class="consult-intro reveal" style="font-style: normal; font-family: 'Source Sans 3', sans-serif; font-size: 0.88rem; color: var(--gold-deep); font-weight: 600; letter-spacing: 0.04em; margin-top: -1rem; margin-bottom: 2rem;">These prices will increase as the client roster fills. Lock in current rates by booking now.</p>
- 
+
             <div class="ongoing-grid">
                 <div class="ongoing-card reveal">
                     <span class="ongoing-tag">Individual</span>
@@ -2459,6 +2494,10 @@
                     <div class="contact-direct">
                         <h4>Or reach out directly</h4>
                         <div class="contact-links">
+                            <a href="tel:+16178195825">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.44.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+                                617-819-5825
+                            </a>
                             <a href="mailto:fdelgadophd@movemeasure.com">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
                                 fdelgadophd@movemeasure.com
@@ -2500,6 +2539,7 @@
                                 <option value="consulting-onetime">Sport Consulting (One-Time Review)</option>
                                 <option value="consulting-individual">Sport Consulting (Individual Ongoing)</option>
                                 <option value="consulting-program">Sport Consulting (Program Ongoing)</option>
+                                <option value="balance">Balance &amp; Fall Prevention (Adults 65+)</option>
                                 <option value="other">Other / Not Sure</option>
                             </select>
                         </div>
@@ -2539,6 +2579,7 @@
                 <div class="footer-col">
                     <h5>Practice</h5>
                     <a href="index.html">Home</a>
+                    <a href="services.html">All Services</a>
                     <a href="athletes.html">Athletes &amp; Teams</a>
                     <a href="balance.html">Balance &amp; Falls</a>
                     <a href="performance-projections.html">Track &amp; Field Projections</a>

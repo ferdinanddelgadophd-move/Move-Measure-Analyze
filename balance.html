@@ -90,10 +90,22 @@
             transition: all 0.3s;
         }
         .hero {
-            padding: 8rem 2rem 5rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--white) 0%, var(--off-white) 100%);
             position: relative;
+            padding: 8rem 2rem 5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--off-white) 100%);
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 58%;
+            background-image: url('Balance_Hero.jpg');
+            background-size: cover;
+            background-position: center right;
+            opacity: 0.55;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 28%, black 60%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 28%, black 60%);
+            pointer-events: none;
         }
         .hero::before {
             content: '';
@@ -107,8 +119,17 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 750px;
+            max-width: 1050px;
             margin: 0 auto;
+        }
+        .hero-text { max-width: 580px; text-align: left; }
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
         }
         .hero h1 {
             font-size: clamp(2.5rem, 6vw, 3.5rem);
@@ -120,7 +141,8 @@
             font-size: 1.2rem;
             color: var(--gray-text);
             font-weight: 300;
-            margin-bottom: 2.5rem;
+            max-width: 520px;
+            margin-bottom: 2.25rem;
         }
         .hero-cta {
             display: inline-block;
@@ -448,6 +470,75 @@
             padding-top: 0.75rem;
         }
         .faq-a p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.6; }
+        .stat-source {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--gray-light);
+        }
+        .stat-source a { color: var(--gold-dark); }
+
+        /* ── TESTIMONIALS ── */
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .quote-card {
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            border-left: 3px solid var(--gold);
+            padding: 2rem;
+        }
+        .quote-card blockquote {
+            font-size: 1.15rem;
+            line-height: 1.5;
+            color: var(--black);
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .quote-card cite {
+            font-style: normal;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gray-light);
+        }
+
+        /* ── CONTACT METHODS ── */
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 760px;
+            margin: 0 auto 2rem;
+            text-align: left;
+        }
+        .contact-method {
+            background: var(--off-white);
+            border: 1px solid var(--gray-lighter);
+            border-top: 3px solid var(--gold);
+            padding: 1.5rem;
+        }
+        .contact-method h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+        .contact-method a {
+            display: block;
+            font-size: 1.05rem;
+            overflow-wrap: anywhere;
+            font-weight: 600;
+            color: var(--gold-dark);
+            text-decoration: none;
+            word-break: break-word;
+        }
+        .contact-method a:hover { text-decoration: underline; }
+        .contact-method.email a { font-size: 0.92rem; }
+        .contact-method p {
+            font-size: 0.85rem;
+            color: var(--gray-text);
+            margin-top: 0.35rem;
+            font-weight: 400;
+        }
         .cta-section { text-align: center; }
         .cta-section .section-title { margin-bottom: 1rem; }
         .cta-section p {
@@ -465,6 +556,12 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+        .cta-waiver-note {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-light);
+        }
+        .cta-waiver-note a { color: var(--gold-dark); }
         .btn-primary {
             display: inline-block;
             background: var(--gold);
@@ -531,7 +628,17 @@
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
             section { padding: 3.5rem 1.5rem; }
+            .hero { padding: 7rem 1.5rem 3.5rem; }
+            .hero-bg {
+                width: 100%;
+                opacity: 0.14;
+                background-position: center 30%;
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
             .problem-grid { grid-template-columns: 1fr; }
+            .quotes-grid { grid-template-columns: 1fr; }
+            .contact-methods { grid-template-columns: 1fr; }
             .identify-grid { grid-template-columns: 1fr; }
             .pricing-grid { grid-template-columns: 1fr; }
             .addon-row { grid-template-columns: 1fr; }
@@ -557,7 +664,7 @@
             <img src="Logo_Transparent.png" alt="Move, Measure, Analyze">
             <span>Move, Measure, Analyze</span>
         </a>
-        <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
+        <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
             <span></span><span></span><span></span>
         </div>
         <div class="nav-links">
@@ -572,11 +679,14 @@
 
     <!-- SECTION 1: HERO -->
     <section class="hero">
+        <div class="hero-bg" role="img" aria-label="An older adult performing a gentle seated balance exercise on a chair"></div>
         <div class="hero-content">
-            <img src="Logo_Transparent.png" alt="Move, Measure, Analyze" class="fade-in" style="width: 220px; height: auto; margin-bottom: 2rem;">
-            <h1 class="fade-in fade-in-delay-1">Understand Your Balance.<br><span>Maintain Your Independence.</span></h1>
-            <p class="subheadline fade-in fade-in-delay-2">Balance assessments designed for adults age 65+.</p>
-            <a href="#pricing" class="hero-cta fade-in fade-in-delay-2">View Assessment Options</a>
+            <div class="hero-text">
+                <div class="hero-eyebrow fade-in">Balance &amp; Fall Prevention &middot; Adults 65+</div>
+                <h1 class="fade-in fade-in-delay-1">Understand Your Balance.<br><span>Maintain Your Independence.</span></h1>
+                <p class="subheadline fade-in fade-in-delay-2">Gentle, research-grade balance assessments with a personalized report and take-home exercises. We come to you.</p>
+                <a href="#pricing" class="hero-cta fade-in fade-in-delay-2">View Assessment Options</a>
+            </div>
         </div>
     </section>
 
@@ -598,6 +708,7 @@
                     <p class="problem-text">Falling once doubles the chance of falling again</p>
                 </div>
             </div>
+            <p class="stat-source">Source: <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noopener">CDC Falls Data &amp; Research</a></p>
         </div>
     </section>
 
@@ -807,6 +918,25 @@
         </div>
     </section>
 
+    <!-- WHAT PEOPLE SAY -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">What People Say</div>
+            <h2 class="section-title">Worth Knowing</h2>
+            <p class="section-intro">Most people are surprised by something in their results. That is the point &mdash; you cannot work on what you have not measured.</p>
+            <div class="quotes-grid">
+                <div class="quote-card">
+                    <blockquote>&ldquo;It was the kick in the pants I needed.&rdquo;</blockquote>
+                    <cite>Assessment client, after learning their balance was worse than expected</cite>
+                </div>
+                <div class="quote-card">
+                    <blockquote>&ldquo;I didn&rsquo;t do as well as I thought I would, but this information was useful to know.&rdquo;</blockquote>
+                    <cite>Assessment client</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section class="faq-section">
         <div class="section-inner">
@@ -831,7 +961,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can you come to our facility or community center?</div>
-                    <div class="faq-a"><p>Yes. The equipment is fully portable. We need a flat floor surface and a standard chair. We serve locations throughout New Hampshire.</p></div>
+                    <div class="faq-a"><p>Yes. The equipment is fully portable. We need a flat floor surface and a standard chair, and we serve locations throughout New Hampshire. Screenings can be a one-time community wellness event, a recurring quarterly or semi-annual screening day, or ongoing referrals for individual clients. Free on-site demos are available for facilities &mdash; call 617-819-5825 to set one up.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Which assessment should I choose?</div>
@@ -850,21 +980,39 @@
         <div class="section-inner">
             <h2 class="section-title">Ready to Get Started?</h2>
             <p>Schedule your assessment or reach out with questions. We serve individuals, couples, and facilities throughout New Hampshire.</p>
-            <div class="cta-buttons">
-                <a href="mailto:fdelgadophd@movemeasure.com" class="btn-primary">Email Us</a>
-                <a href="index.html" class="btn-secondary">Back to Home</a>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <h3>Call</h3>
+                    <a href="tel:+16178195825">617-819-5825</a>
+                    <p>Happy to answer questions by phone.</p>
+                </div>
+                <div class="contact-method">
+                    <h3>Book Online</h3>
+                    <a href="https://calendar.app.google/CUFvaN63vdNEKiyj9" target="_blank" rel="noopener">Pick a time &rarr;</a>
+                    <p>Choose a time that works for you.</p>
+                </div>
+                <div class="contact-method email">
+                    <h3>Email</h3>
+                    <a href="mailto:fdelgadophd@movemeasure.com">fdelgadophd@movemeasure.com</a>
+                    <p>We reply within 24 hours.</p>
+                </div>
             </div>
+            <div class="cta-buttons">
+                <a href="https://calendar.app.google/CUFvaN63vdNEKiyj9" target="_blank" rel="noopener" class="btn-primary">Schedule an Assessment</a>
+                <a href="tel:+16178195825" class="btn-secondary">Call 617-819-5825</a>
+            </div>
+            <p class="cta-waiver-note">All assessment participants complete a <a href="waiver.html">Release of Liability</a> before their session.</p>
         </div>
     </section>
 
     <footer>
         <div class="footer-contact">
+            <a href="tel:+16178195825">617-819-5825</a>
             <a href="mailto:fdelgadophd@movemeasure.com">fdelgadophd@movemeasure.com</a>
-            <a href="https://www.instagram.com/movemeasureanalyze" target="_blank">@movemeasureanalyze</a>
-            <a href="https://www.linkedin.com/company/109068575" target="_blank">LinkedIn</a>
+            <a href="https://www.instagram.com/movemeasureanalyze" target="_blank" rel="noopener">@movemeasureanalyze</a>
+            <a href="https://www.linkedin.com/company/109068575" target="_blank" rel="noopener">LinkedIn</a>
         </div>
         <p>&copy; 2026 Move, Measure, Analyze LLC &middot; Durham, NH</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #555;">Website Designed & Developed by <a href="https://ferdinanddelgadophd-move.github.io" target="_blank">Dr. Ferdinand Delgado</a></p>
         <p class="footer-disclaimer">Assessments are for informational and screening purposes only. Not a medical diagnosis.</p>
     </footer>
 

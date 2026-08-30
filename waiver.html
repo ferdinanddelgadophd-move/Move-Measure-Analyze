@@ -145,12 +145,12 @@
 
         .btn-secondary:hover {
             border-color: var(--gold);
-            color: var(--gold);
+            color: var(--gold-dark);
         }
 
         .btn-primary {
             background: var(--gold);
-            color: var(--white);
+            color: var(--black);
         }
 
         .btn-primary:hover {
@@ -345,7 +345,7 @@
     <div class="container">
         <div class="waiver-content">
             <p class="warning"><strong>Read Carefully — This Affects Your Legal Rights</strong></p>
-            
+
             <p>In exchange for being permitted to participate in physical performance and health assessments (the "Activities") conducted by Move, Measure, Analyze LLC, I agree to the following terms and conditions. The Activities include, but are not limited to, jump testing, balance and stability testing, grip strength, body composition assessments using specialized equipment, and consulting services involving the interpretation of results and recommendations. I acknowledge that I have been advised to consult my own primary care provider for any medical concerns before participating in the Activities. On behalf of myself and (if applicable) for the members of my family, I agree to the following:</p>
 
             <h3>1. Agreement To Follow Directions</h3>
@@ -383,10 +383,10 @@
 
         <form class="signature-form" action="https://formspree.io/f/mvzbzyzn" method="POST">
             <h2>Sign Electronically</h2>
-            
+
             <input type="hidden" name="_subject" value="New Waiver Signed - Move, Measure, Analyze">
             <input type="hidden" name="form_type" value="Release of Liability Waiver">
-            
+
             <div class="form-section">
                 <h3>Participant Information</h3>
                 <div class="form-group">
@@ -436,7 +436,7 @@
                     <input type="checkbox" id="agree" name="agreement" value="I agree to the terms" required>
                     <label for="agree"><strong>I HAVE READ THIS DOCUMENT AND UNDERSTAND IT. I FURTHER UNDERSTAND THAT BY SIGNING THIS RELEASE, I VOLUNTARILY SURRENDER CERTAIN LEGAL RIGHTS.</strong></label>
                 </div>
-                
+
                 <div class="signature-box">
                     <label>Type your full legal name as your electronic signature *</label>
                     <input type="text" id="signature" name="electronic_signature" placeholder="Type your full name" required>
@@ -458,7 +458,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Move, Measure, Analyze LLC. All rights reserved. | <a href="index.html">Back to Home</a></p>
+        <p>&copy; 2026 Move, Measure, Analyze LLC. All rights reserved. | <a href="index.html">Back to Home</a></p>
     </footer>
 
     <script>
@@ -467,7 +467,7 @@
             const minorSection = document.getElementById('minor-section');
             const guardianName = document.getElementById('guardian_name');
             const guardianPhone = document.getElementById('guardian_phone');
-            
+
             if (select.value === 'minor') {
                 minorSection.classList.add('visible');
                 guardianName.required = true;
