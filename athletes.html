@@ -1038,9 +1038,12 @@
         }
         .ongoing-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-bottom: 0;
+        }
+        .ongoing-card.program-card {
+            grid-column: 1 / -1;
         }
         .ongoing-card {
             background: var(--paper);
@@ -1054,6 +1057,23 @@
             border-color: var(--gold-dark);
             transform: translateY(-3px);
             box-shadow: 0 18px 50px -15px rgba(10,10,10,0.12);
+        }
+        .ongoing-card.recommended {
+            border-color: var(--gold-dark);
+            box-shadow: 0 14px 35px -18px rgba(10,10,10,0.22);
+        }
+        .ongoing-card.recommended .ongoing-tag {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+        .ongoing-card.program-card .ongoing-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 2rem;
+        }
+        .ongoing-card.program-card .ongoing-details li.note {
+            grid-column: 1 / -1;
         }
         .ongoing-card.featured {
             background: var(--ink);
@@ -1695,6 +1715,8 @@
             .deliver-grid { grid-template-columns: 1fr; gap: 3rem; }
             .onetime-grid { grid-template-columns: repeat(2, 1fr); }
             .ongoing-grid { grid-template-columns: 1fr; }
+            .ongoing-card.program-card .ongoing-details { grid-template-columns: 1fr; }
+            .ongoing-card.program-card .ongoing-details li.note { grid-column: auto; }
             .about-grid { grid-template-columns: 1fr; gap: 3rem; }
             .area-grid { grid-template-columns: 1fr; gap: 3rem; }
             .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -2261,28 +2283,70 @@
             <div class="ongoing-grid">
                 <div class="ongoing-card reveal">
                     <span class="ongoing-tag">Individual</span>
-                    <h3>Individual <span class="it">Consulting</span></h3>
-                    <p>For parents or athletes focused on one athlete's speed and power development. A monthly call, training plan review, and ongoing email access in between.</p>
-                    <div class="ongoing-price">$500<span>/ month</span></div>
-                    <p class="ongoing-addon">+$250/mo per additional athlete</p>
+                    <h3>Individual <span class="it">Essentials</span></h3>
+                    <p>For athletes who primarily need programming guidance and periodic expert feedback without intensive month-to-month oversight.</p>
+                    <div class="ongoing-price">$250<span>/ month</span></div>
+                    <p class="ongoing-addon">1 athlete included</p>
                     <ul class="ongoing-details">
-                        <li>1 athlete included</li>
-                        <li>1 call per month (~1 hour)</li>
-                        <li>1 training plan review per month</li>
-                        <li>Email access, 48&ndash;72 hr response</li>
+                        <li>Initial training and performance review</li>
+                        <li>1 training plan review and adjustment per month</li>
+                        <li>1 call per month (~30 minutes)</li>
+                        <li>Review of selected training data, sprint times, or video when relevant</li>
+                        <li>Email access, 72-hour weekday response</li>
                     </ul>
                 </div>
-                <div class="ongoing-card featured reveal reveal-delay-1">
+
+                <div class="ongoing-card recommended reveal reveal-delay-1">
+                    <span class="ongoing-tag">Individual &middot; Most Popular</span>
+                    <h3>Individual <span class="it">Performance</span></h3>
+                    <p>Ongoing performance oversight for athletes who want regular training decisions, monitoring, and adjustments throughout the month.</p>
+                    <div class="ongoing-price">$500<span>/ month</span></div>
+                    <p class="ongoing-addon">1 athlete included</p>
+                    <ul class="ongoing-details">
+                        <li>Initial performance and training assessment</li>
+                        <li>1 strategy call per month (~60 minutes)</li>
+                        <li>Weekly asynchronous check-in</li>
+                        <li>Monthly training plan review, modification, and progression</li>
+                        <li>Up to 2 additional programming adjustments per month</li>
+                        <li>Sprint, jump, strength, training-data, and selected video review</li>
+                        <li>Monthly progress summary and next-block priorities</li>
+                        <li>Email access, 48-hour weekday response</li>
+                    </ul>
+                </div>
+
+                <div class="ongoing-card reveal reveal-delay-2">
+                    <span class="ongoing-tag">Individual &middot; Priority</span>
+                    <h3>Performance <span class="it">Plus</span></h3>
+                    <p>For athletes who want more active involvement, faster feedback, and closer monitoring as training changes across the season.</p>
+                    <div class="ongoing-price">$750<span>/ month</span></div>
+                    <p class="ongoing-addon">1 athlete included</p>
+                    <ul class="ongoing-details">
+                        <li>Everything in Individual Performance</li>
+                        <li>2 strategy calls per month (~60 minutes each)</li>
+                        <li>More frequent programming adjustments as needed</li>
+                        <li>Priority video and performance-data review</li>
+                        <li>Detailed monitoring of training trends</li>
+                        <li>Monthly written performance analysis</li>
+                        <li>Quarterly comprehensive performance review</li>
+                        <li>24-hour weekday response</li>
+                    </ul>
+                </div>
+
+                <div class="ongoing-card featured program-card reveal reveal-delay-3">
                     <span class="ongoing-tag">Coaches &middot; Teams</span>
                     <h3>Program <span class="it">Consulting</span></h3>
-                    <p>For coaches managing a multi-athlete program. Sprint development planning, training review, and regular calls to keep your program on track. Questions answered within 24 hours &ndash; not end of week.</p>
+                    <p>For coaches managing a multi-athlete program. We consult on the training system itself, including program design, athlete monitoring, progression, performance analysis, and decision support.</p>
                     <div class="ongoing-price">$1,000<span>/ month</span></div>
-                    <p class="ongoing-addon">+$150/mo per additional athlete (up to 5 more)</p>
+                    <p class="ongoing-addon">Up to 3 athletes included &middot; +$150/mo per additional athlete</p>
                     <ul class="ongoing-details">
-                        <li>Up to 5 athletes included</li>
-                        <li>3 calls per month (~1 hour each)</li>
-                        <li>1 training plan review per month</li>
-                        <li>Questions answered within 24 hours</li>
+                        <li>Initial program and training review</li>
+                        <li>3 consulting calls per month (~60 minutes each)</li>
+                        <li>Monthly programming review, modification, and progression</li>
+                        <li>Performance-data and training-trend analysis</li>
+                        <li>Review of selected sprint, jump, strength, or testing data</li>
+                        <li>Training-block planning and progression support</li>
+                        <li>Monthly program priorities and recommendations</li>
+                        <li>Coach access with 24-hour weekday response</li>
                         <li class="note">10+ athletes &ndash; contact for a custom quote based on roster size and scope.</li>
                     </ul>
                 </div>
@@ -2424,7 +2488,7 @@
                     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
                         <span class="faq-q-left"><span class="faq-tag faq-tag-consulting">Consulting</span>What does a typical month of consulting look like?</span>
                     </div>
-                    <div class="faq-a"><p>For individual consulting, expect one scheduled call and one plan review per month with email access in between. For program consulting, three calls per month, one plan review, and faster turnaround on questions.</p></div>
+                    <div class="faq-a"><p>It depends on the tier. Individual Essentials provides a monthly 30-minute call, one plan review and adjustment, selected data or video review, and email access. Individual Performance adds a 60-minute strategy call, weekly check-ins, ongoing programming adjustments, performance review, and a monthly progress summary. Performance Plus adds a second monthly strategy call, priority review, closer trend monitoring, and faster response. Program Consulting includes three monthly calls, ongoing program review, performance analysis, and 24-hour weekday coach access.</p></div>
                 </div>
 
                 <div class="faq-item">
