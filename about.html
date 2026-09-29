@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Move, Measure, Analyze</title>
-    <meta name="description" content="An overview of every service Move, Measure, Analyze offers: force plate assessment, speed development consulting, track & field projections, and balance & fall-risk assessments.">
+    <title>About | Move, Measure, Analyze</title>
+    <meta name="description" content="Meet Dr. Ferdinand Delgado, the applied scientist and founder behind Move, Measure, Analyze's force plate assessments, track & field projections, and balance & fall-risk screenings.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -100,46 +100,102 @@
             pointer-events: none;
         }
         .hero-inner {
-            position: relative; z-index: 1; max-width: 1300px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr; gap: 2rem;
+            position: relative; z-index: 1; max-width: 900px; margin: 0 auto; text-align: center;
         }
-        .hero-eyebrow {
+        .hero-founder {
+            display: grid; grid-template-columns: 300px 1fr; gap: 3.5rem;
+            align-items: center; text-align: left; max-width: 1020px;
+        }
+        .hero-founder .eyebrow { justify-content: flex-start; }
+        .hero-founder .eyebrow::before { display: none; }
+        .founder-photo {
+            width: 300px; height: 300px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--gold); box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+            display: block;
+        }
+        .eyebrow {
             display: inline-flex; align-items: center; gap: 0.75rem;
             font-size: 0.75rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--gold-deep); margin-bottom: 1.5rem;
+        }
+        .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold-deep); }
+        .hero-inner .eyebrow { justify-content: center; }
+        .hero h1 {
+            font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1;
+            letter-spacing: -0.01em; margin-bottom: 1rem; color: var(--ink);
+        }
+        .hero-role {
+            font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.2rem;
             color: var(--gold-deep); margin-bottom: 1.75rem;
         }
-        .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold-deep); }
-        .hero h1 {
-            font-size: clamp(2.8rem, 6.5vw, 5.2rem); line-height: 0.95;
-            letter-spacing: -0.01em; margin-bottom: 1.5rem; max-width: 18ch;
-            color: var(--ink);
-        }
         .hero-sub {
-            font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--gray-text);
-            font-weight: 300; max-width: 600px; margin-bottom: 2.5rem; line-height: 1.55;
+            font-size: clamp(1.02rem, 1.5vw, 1.15rem); color: var(--gray-text);
+            font-weight: 300; max-width: 640px; margin: 0 auto; line-height: 1.6;
         }
 
         /* ===== SECTION BASE ===== */
         section { padding: 6.5rem 2rem; }
         .container { max-width: 1200px; margin: 0 auto; }
+        .container-narrow { max-width: 800px; margin: 0 auto; }
+        .section-alt { background: var(--cream); }
+        .section-head { max-width: 700px; margin: 0 auto 3rem; text-align: center; }
+        .section-head .eyebrow { justify-content: center; }
+        .section-head h2 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.05; }
+        .section-lead { color: var(--gray-text); font-size: 1.02rem; margin-top: 1rem; }
 
-        /* ===== SERVICES OVERVIEW ===== */
-        .services-list { display: flex; flex-direction: column; gap: 1.5rem; }
-        .service-row {
-            background: var(--paper); border: 1px solid var(--gray-line);
-            padding: 2.5rem 2.75rem;
-            display: grid; grid-template-columns: 1fr auto; gap: 2.5rem; align-items: center;
+        /* ===== FOUNDER STORY ===== */
+        .bio-story p {
+            color: var(--gray-text); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.4rem;
         }
-        .service-row-tag {
-            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-            color: var(--gold-deep); margin-bottom: 0.85rem;
+        .bio-story p:last-child { margin-bottom: 0; }
+
+        /* ===== CREDENTIALS ===== */
+        .credentials-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem;
         }
-        .service-row h3 { font-size: 2.1rem; margin-bottom: 0.85rem; line-height: 1.05; }
-        .service-row h3 .it { color: var(--gold-dark); }
-        .service-row p { color: var(--gray-text); font-size: 1rem; line-height: 1.6; max-width: 560px; }
-        .service-row-side { text-align: right; flex-shrink: 0; }
-        .service-row-from { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--gray-mute); font-size: 0.92rem; display: block; margin-bottom: 0.3rem; }
-        .service-row-price { font-family: 'Bebas Neue', sans-serif; font-size: 2.3rem; color: var(--ink); display: block; margin-bottom: 1.1rem; }
+        .credential-item { background: var(--paper); border: 1px solid var(--gray-line); padding: 1.85rem 2rem; }
+        .credential-tag {
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--gold-deep); margin-bottom: 0.7rem;
+        }
+        .credential-item h4 { font-size: 1.3rem; margin-bottom: 0.4rem; line-height: 1.1; }
+        .credential-item p { color: var(--gray-text); font-size: 0.9rem; margin: 0; }
+
+        /* ===== BACKGROUND ===== */
+        .background-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.75rem;
+        }
+        .background-item h4 {
+            font-size: 1.5rem; margin-bottom: 0.85rem; color: var(--ink);
+            border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem; display: inline-block;
+        }
+        .background-item p { color: var(--gray-text); font-size: 0.98rem; line-height: 1.7; }
+
+        /* ===== EXPERTISE TIE-IN ===== */
+        .expertise-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.75rem;
+        }
+        .expertise-card {
+            background: var(--paper); border: 1px solid var(--gray-line); border-top: 3px solid var(--gold);
+            padding: 2.1rem 2.35rem;
+        }
+        .expertise-tag {
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.02em;
+            color: var(--ink); margin-bottom: 0.85rem;
+        }
+        .expertise-card p { color: var(--gray-text); font-size: 0.98rem; line-height: 1.7; margin: 0; }
+
+        /* ===== PHILOSOPHY ===== */
+        .philosophy-card {
+            max-width: 760px; margin: 0 auto; text-align: center;
+            padding: 3.25rem 2.5rem; background: var(--cream);
+            border: 1px solid var(--gray-line); border-top: 3px solid var(--gold);
+        }
+        .philosophy-card h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 1.4rem; }
+        .philosophy-card p {
+            color: var(--gray-text); font-size: 1.05rem; line-height: 1.75;
+            max-width: 620px; margin: 0 auto;
+        }
 
         /* ===== CTA / CONTACT BRIDGE ===== */
         .cta-bridge {
@@ -183,10 +239,12 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 980px) {
             .footer-top { grid-template-columns: 1fr; }
-            .service-row { grid-template-columns: 1fr; gap: 1.5rem; }
-            .service-row-side { text-align: left; }
+            .background-grid { grid-template-columns: 1fr; gap: 2rem; }
         }
         @media (max-width: 640px) {
+            .hero-founder { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .hero-founder .eyebrow { justify-content: center; }
+            .founder-photo { width: 220px; height: 220px; margin: 0 auto; }
             nav { padding: 0.85rem 1.25rem; }
             .nav-links {
                 display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--black);
@@ -201,7 +259,9 @@
             .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
             section { padding: 4.5rem 1.25rem; }
             .hero { padding: 7rem 1.25rem 3.5rem; }
-            .service-row { padding: 1.75rem 1.5rem; }
+            .credential-item { padding: 1.5rem 1.6rem; }
+            .expertise-card { padding: 1.75rem 1.85rem; }
+            .philosophy-card { padding: 2.5rem 1.75rem; }
         }
     </style>
 </head>
@@ -224,91 +284,144 @@
             <a href="athletes.html">Athletes</a>
             <a href="balance.html">Balance</a>
             <a href="performance-projections.html">Projections</a>
-            <a href="services.html" class="active">Services</a>
-            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="about.html" class="active">About</a>
             <a href="athletes.html#contact" class="nav-cta">Book a Call</a>
         </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-inner">
+        <div class="hero-inner hero-founder">
+            <div class="reveal">
+                <img src="ferdinand-delgado.jpg" alt="Dr. Ferdinand Delgado" class="founder-photo">
+            </div>
             <div>
-                <div class="hero-eyebrow reveal">What We Do</div>
-                <h1 class="reveal reveal-delay-1">Every way we <span class="it" style="color: var(--gold-deep);">help</span> &ndash; in one place.</h1>
+                <div class="eyebrow reveal">About</div>
+                <h1 class="reveal reveal-delay-1">Meet Dr. Ferdinand Delgado</h1>
+                <p class="hero-role reveal reveal-delay-2">Founder, Move, Measure, Analyze</p>
                 <p class="hero-sub reveal reveal-delay-2">
-                    Four practices, one mobile lab. Below is a quick look at each &ndash; click through to any of them for full pricing, session details, and booking.
+                    This practice is built and run by one applied scientist, not a franchise or a call center. Every assessment, every projection, and every report comes from the same person who designed the methods behind them.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES LIST -->
-    <section>
-        <div class="container">
-            <div class="services-list">
-
-                <div class="service-row reveal">
-                    <div>
-                        <div class="service-row-tag">For Athletes &amp; Teams</div>
-                        <h3>Force &amp; <span class="it">Power</span> Assessment</h3>
-                        <p>Professional-grade force plate testing that quantifies power, force-velocity profiling, and side-to-side asymmetry &ndash; use it as a one-time snapshot, or repeat it across a season to track what's actually changing.</p>
-                    </div>
-                    <div class="service-row-side">
-                        <span class="service-row-from">from</span>
-                        <span class="service-row-price">$225</span>
-                        <a href="athletes.html#assessment" class="btn-outline-dark">See assessment options</a>
-                    </div>
-                </div>
-
-                <div class="service-row reveal">
-                    <div>
-                        <div class="service-row-tag">For Coaches &amp; Parents &middot; Any Sport</div>
-                        <h3>Speed &amp; Power <span class="it">Consulting</span></h3>
-                        <p>One-time plan reviews or ongoing monthly consulting to build a speed and power development plan &ndash; for a single athlete or a full program, in any sport.</p>
-                    </div>
-                    <div class="service-row-side">
-                        <span class="service-row-from">reviews from</span>
-                        <span class="service-row-price">$225</span>
-                        <a href="athletes.html#consulting" class="btn-outline-dark">See consulting options</a>
-                    </div>
-                </div>
-
-                <div class="service-row reveal">
-                    <div>
-                        <div class="service-row-tag">New &middot; Track &amp; Field</div>
-                        <h3>Track &amp; Field <span class="it">Projections</span></h3>
-                        <p>Data-driven next-season performance projections for sprint and hurdle athletes, built on statistical models trained on 470,000+ high school performances.</p>
-                    </div>
-                    <div class="service-row-side">
-                        <span class="service-row-from">from</span>
-                        <span class="service-row-price">$19</span>
-                        <a href="performance-projections.html#pricing" class="btn-outline-dark">See report options</a>
-                    </div>
-                </div>
-
-                <div class="service-row reveal">
-                    <div>
-                        <div class="service-row-tag">For Adults 65+</div>
-                        <h3>Balance &amp; <span class="it">Fall Prevention</span></h3>
-                        <p>Research-grade balance and fall-risk assessments for older adults, with a personalized report, take-home exercises, and progress tracking across visits.</p>
-                    </div>
-                    <div class="service-row-side">
-                        <span class="service-row-from">from</span>
-                        <span class="service-row-price">$75</span>
-                        <a href="balance.html#pricing" class="btn-outline-dark">See assessment options</a>
-                    </div>
-                </div>
-
+    <!-- FOUNDER STORY -->
+    <section id="story">
+        <div class="container-narrow">
+            <div class="section-head reveal">
+                <div class="eyebrow">Why This Practice Exists</div>
+                <h2>From the sprint track to the spreadsheet</h2>
             </div>
+            <div class="bio-story reveal reveal-delay-1">
+                <p>I didn't set out to build an assessment business. I set out to understand how people move, and to get better at explaining what the data actually says once you measure it.</p>
+                <p>That started with a degree in mathematics, then a shift into kinesiology and coaching, and it's kept going ever since: over a decade coaching track and field, and just as long doing hands-on research into the movement itself, starting with a thesis testing whether a four-week sprint training protocol changed jumping performance, and expanding since then into biomechanics, motor control, and how balance changes as people age.</p>
+                <p>Move, Measure, Analyze exists because that combination, someone who has coached, who has run the research, and who can build the statistical models underneath a report, is rare to find in one person. Most practices split it across a lab, a gym, and a data team. Here, it's one person end to end, which means nothing gets lost in translation between the measurement and the recommendation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="section-alt" id="credentials">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="eyebrow">Credentials</div>
+                <h2>Credentials &amp; Training</h2>
+            </div>
+            <div class="credentials-grid">
+                <div class="credential-item reveal">
+                    <div class="credential-tag">PhD</div>
+                    <h4>Exercise &amp; Nutritional Sciences</h4>
+                    <p>Biomechanics &amp; motor control</p>
+                </div>
+                <div class="credential-item reveal reveal-delay-1">
+                    <div class="credential-tag">MS</div>
+                    <h4>Kinesiology</h4>
+                    <p>Sports science</p>
+                </div>
+                <div class="credential-item reveal reveal-delay-2">
+                    <div class="credential-tag">BS</div>
+                    <h4>Mathematics</h4>
+                    <p>Quantitative foundation</p>
+                </div>
+                <div class="credential-item reveal">
+                    <div class="credential-tag">Graduate Certificate</div>
+                    <h4>Data Science</h4>
+                    <p>Applied statistics &amp; modeling</p>
+                </div>
+                <div class="credential-item reveal reveal-delay-1">
+                    <div class="credential-tag">10+ Years</div>
+                    <h4>Research Experience</h4>
+                    <p>Movement science, athletics, and aging</p>
+                </div>
+                <div class="credential-item reveal reveal-delay-2">
+                    <div class="credential-tag">10+ Years</div>
+                    <h4>Coaching</h4>
+                    <p>Track &amp; field</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BACKGROUND -->
+    <section id="background">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="eyebrow">Background</div>
+                <h2>Research, teaching, and coaching</h2>
+            </div>
+            <div class="background-grid">
+                <div class="background-item reveal">
+                    <h4>Research</h4>
+                    <p>Postdoctoral research studying human movement, including wearable sensor data, gait analysis, and fall-risk modeling in older adults, alongside earlier biomechanics research in athletic performance.</p>
+                </div>
+                <div class="background-item reveal reveal-delay-1">
+                    <h4>Teaching</h4>
+                    <p>University-level kinesiology instruction, including coursework in applied biomechanics and exercise physiology.</p>
+                </div>
+                <div class="background-item reveal reveal-delay-2">
+                    <h4>Coaching</h4>
+                    <p>Over a decade coaching track and field, working directly with sprint and hurdle athletes on the same speed and power principles this practice consults on.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE TIE-IN -->
+    <section class="section-alt" id="expertise">
+        <div class="container">
+            <div class="section-head reveal">
+                <div class="eyebrow">How It Shows Up In The Work</div>
+                <h2>Research behind the reports</h2>
+                <p class="section-lead">The two sides of this practice come from two different research threads.</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card reveal">
+                    <div class="expertise-tag">Force &amp; Power / Track &amp; Field Projections</div>
+                    <p>Built on years of biomechanics and sprint performance research, from an early thesis on a sprint training protocol's effect on jumping performance to the statistical modeling behind hundreds of thousands of tracked athlete performances.</p>
+                </div>
+                <div class="expertise-card reveal reveal-delay-1">
+                    <div class="expertise-tag">Balance &amp; Fall Prevention</div>
+                    <p>Built on research into gait, balance, and fall risk in older adults, including wearable sensor studies and community fall-prevention presentations for older adult groups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section id="philosophy">
+        <div class="philosophy-card reveal">
+            <h2>Objective Data. Informed Decisions.</h2>
+            <p>Every claim on this site is one I can defend with the data behind it. A projection report tells you how well a model has matched real outcomes in the past, not a promise about any single athlete's future. A balance report compares your results to published research thresholds, not a guess dressed up as a diagnosis. I would rather undersell a result than overstate one, because the value of measurement disappears the moment the claims stop being accurate.</p>
         </div>
     </section>
 
     <!-- CTA BRIDGE -->
     <section class="cta-bridge">
         <div class="cta-bridge-inner reveal">
-            <h3>Not sure which one <span class="it">fits?</span></h3>
-            <p>Most questions get answered faster on a quick call than by reading four pages. Tell us what you're working with and we'll point you to the right service.</p>
+            <h3>Have questions before <span class="it">booking?</span></h3>
+            <p>The fastest way to find out if this is the right fit is a short call. No pressure, no obligation.</p>
             <a href="athletes.html#contact" class="btn-primary">Book a Free Call</a>
         </div>
     </section>
@@ -334,6 +447,7 @@
                     <a href="athletes.html">Athletes &amp; Teams</a>
                     <a href="balance.html">Balance &amp; Falls</a>
                     <a href="performance-projections.html">Track &amp; Field Projections</a>
+                    <a href="about.html">About</a>
                     <a href="athletes.html#contact">Contact</a>
                 </div>
                 <div class="footer-col">
