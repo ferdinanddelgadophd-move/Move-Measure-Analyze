@@ -203,6 +203,35 @@
             .hero { padding: 7rem 1.25rem 3.5rem; }
             .service-row { padding: 1.75rem 1.5rem; }
         }
+        /* Free estimator strip (links to track-estimator.movemeasure.com) */
+        .tool-strip { background: var(--gold); padding: 1.1rem 2rem; }
+        .tool-strip-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 0.75rem 1.5rem;
+        }
+        .tool-strip-tag {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            background: var(--black); color: var(--gold); padding: 0.25rem 0.6rem; border-radius: 3px;
+        }
+        .tool-strip-text { flex: 1 1 420px; max-width: 720px; }
+        .tool-strip p { margin: 0; color: var(--black); font-size: 1.02rem; line-height: 1.45; }
+        .tool-strip p.tool-strip-events { margin-top: 0.4rem; font-size: 0.9rem; }
+        .tool-strip-season {
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            border: 1px solid var(--black); border-radius: 3px; padding: 0.05rem 0.4rem; margin-right: 0.25rem;
+        }
+        .tool-strip-group { display: inline-block; margin-right: 0.9rem; }
+        .tool-strip-btn {
+            background: var(--black); color: #ffffff; font-weight: 700; text-decoration: none;
+            padding: 0.7rem 1.25rem; border-radius: 4px; white-space: nowrap;
+        }
+        .tool-strip-btn:hover { background: #2a2a2a; }
+        @media (max-width: 640px) {
+            .tool-strip { padding: 1rem 1.25rem; }
+            .tool-strip-btn { width: 100%; text-align: center; }
+            .tool-strip-group { display: block; margin: 0.3rem 0 0; }
+        }
     </style>
 </head>
 <body>
@@ -242,6 +271,18 @@
             </div>
         </div>
     </section>
+
+    <!-- FREE ESTIMATOR -->
+    <div class="tool-strip">
+        <div class="tool-strip-inner">
+            <span class="tool-strip-tag">Free tool</span>
+            <div class="tool-strip-text">
+                <p><strong>Track &amp; Field Sprint Estimator.</strong> For high school sprinters and hurdlers: enter this season's race times and see estimates for your other events, including an indoor-to-outdoor preview.</p>
+                <p class="tool-strip-events"><span class="tool-strip-group"><span class="tool-strip-season">Indoor</span> 55m &middot; 300m &middot; 55m hurdles</span> <span class="tool-strip-group"><span class="tool-strip-season">Outdoor</span> 100m &middot; 200m &middot; 400m &middot; 100m/110m hurdles &middot; 400m hurdles</span></p>
+            </div>
+            <a href="https://track-estimator.movemeasure.com" class="tool-strip-btn">Estimate your times &rarr;</a>
+        </div>
+    </div>
 
     <!-- SERVICES LIST -->
     <section>
